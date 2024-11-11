@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Welcome from './components/Welcome';
+import Home from './components/Home';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
 const PrivateRoute = ({ children }) => {
@@ -16,11 +17,14 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Toaster position="top-center" />
+        
         <Routes>
+
+           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route
-            path="/"
+            path="/welcome"
             element={
               <PrivateRoute>
                 <Welcome />
