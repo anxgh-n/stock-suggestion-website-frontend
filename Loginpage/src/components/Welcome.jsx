@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
 import axios from 'axios';
-//
 import { useAuth } from '../context/AuthContext';
-
 
 function Welcome() {
   const navigate = useNavigate();
