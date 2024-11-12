@@ -4,6 +4,7 @@ import { LogIn } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
+import bgImage from '../Images/blue_bg.jpg'
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -33,12 +34,16 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
-        <div className="flex items-center justify-center mb-8">
-          <LogIn className="h-12 w-12 text-blue-600" />
+    <div className="min-h-screen flex items-center justify-center p-4" style={{
+      backgroundImage: `url(${bgImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }}>
+      
+      <div className="bg-black rounded-3xl shadow-xl p-10 w-full max-w-md bg-opacity-80">
+        <div className="flex items-center justify-center mb-8 text-4xl font-extrabold text-gray-800 sm:text-4xl">
+          StockWise
         </div>
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Welcome Back</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
