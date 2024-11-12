@@ -2,7 +2,23 @@ import { LogOut } from "lucide-react";
 import axios from "axios";
 //import textImage from './Images/text2.png'; // adjust the path according to the folder structure
 //import logoImage from './Images/preview2.png';
+import { useEffect, useState } from "react";
 export default function Home() {
+  const categoryUrl = "http://localhost:7063/category/get-category-by-id/3";
+  const [allcategories,setAllCategories] = useState();
+  useEffect(() => {
+    fetch(categoryUrl) 
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch books");
+        }
+        return response.json();
+      })
+      .then((data) => setAllCategories(data))
+      .catch((error) =>
+        console.error("There was an error fetching the books!", error)
+      );
+  }, []);
   return (
     <>
 
@@ -21,6 +37,7 @@ export default function Home() {
           <p className="bg-gradient-to-r from-pink-500 to-indigo-500 bg-clip-text text-2xl font-medium text-transparent sm:text-3xl mt-4">
             Welcome to StockWise, where smart investing meets personalization.
           </p>
+          <h4>Categoryname :{allcategories.categoryName}</h4>
         </div>
       </section>
     </>
