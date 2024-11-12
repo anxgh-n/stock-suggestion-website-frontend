@@ -36,9 +36,9 @@ function App() {
           <Route
             path="/welcome"
             element={
-              <PrivateRoute>
+              // <PrivateRoute>
                 <Welcome />
-              </PrivateRoute>
+              // </PrivateRoute>
             }
           />
         </Routes>
