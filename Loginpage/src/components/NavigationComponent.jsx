@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 export default function NavigationComponent(){
   let navigate = useNavigate();
 
@@ -12,21 +13,22 @@ export default function NavigationComponent(){
 
     return (<>
       {/* Navigation Bar */}
-      <nav className="absolute top-0 left-0 w-full py-4 bg-transparent z-10">
+      <header className="shadow mb-2 sticky top-0 z-50 bg-white">
+      <nav className="relative flex max-w-screen-xl flex-col overflow-hidden px-2 py-4 md:mx-auto md:flex-row md:items-center">
         <div className="container mx-auto flex justify-between items-center px-4">
-          <div className="text-2xl font-bold text-gray-800">
+          <div className="text-3xl font-bold text-gray-800">
           {/* <img src={logoImage} alt="" style={{ width: '50px', height: 'auto' }}/> */}
             {/* <img src={textImage} alt="" style={{ width: '250px', height: 'auto' }}/> */}
             StockWise
           </div>
           <div className="flex space-x-6">
-            <a href="#" className="text-indigo-900 hover:text-pink-800">
+            <Link to="/" className="text-indigo-900 hover:text-black-500 text-lg">
               Home
-            </a>
-            <a href="#" className="text-indigo-900 hover:text-pink-800">
+            </Link>
+            <Link to="/about" className="text-indigo-900 hover:text-black-500 text-lg">
               About
-            </a>
-            <a href="#" className="text-indigo-900 hover:text-pink-800">
+            </Link>
+            <a href="#" className="text-indigo-900 hover:text-black-800 text-lg">
               Contacts
             </a>
           </div>
@@ -36,7 +38,7 @@ export default function NavigationComponent(){
             >
               Login
             </button>
-            <button className="bg-blue-900 text-white rounded-full px-4 py-2"
+            <button className="rounded-md border-2 border-indigo-900 px-6 py-1 font-medium text-indigo-900 transition-colors hover:bg-indigo-900 hover:text-white"
             onClick={handleSignUp}
             >
               Sign Up
@@ -44,5 +46,6 @@ export default function NavigationComponent(){
           </div>
         </div>
       </nav>
+      </header>
     </>);
 }

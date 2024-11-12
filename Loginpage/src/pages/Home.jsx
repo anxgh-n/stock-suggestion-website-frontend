@@ -8,13 +8,13 @@ export default function Home() {
 
       {/* Main Section */}
       <section
-        className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+        className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat -mt-12"
         // style={{
         //   backgroundImage:
         //     "url('https://media.istockphoto.com/id/1051313070/photo/abstract-blur-beautiful-pink-color-pastel-tone-background-with-double-exposure-of-bokeh-for.webp?a=1&b=1&s=612x612&w=0&k=20&c=aUUinpnISirSqeQJRwzUG5qMNg5cXnztUWiDh4M1fxU=')",
         // }}
       >
-        <div className="container mx-auto flex flex-col items-center justify-center text-center">
+        <div className="container mx-auto flex flex-col items-center justify-center text-center py-9">
           <h2 className="text-4xl font-extrabold text-gray-800 sm:text-6xl">
             StockWise
           </h2>
