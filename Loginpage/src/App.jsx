@@ -11,10 +11,10 @@ import NavigationComponent from './components/NavigationComponent';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Questionaire from './pages/Questionaire';
 
-const PrivateRoute = ({ children }) => {
-  const { token } = useAuth();
-  return token ? <>{children}</> : <Navigate to="/login" />;
-};
+// const PrivateRoute = ({ children }) => {
+//   const { token } = useAuth();
+//   return token ? <>{children}</> : <Navigate to="/login" />;
+// };
 
 function App() {
   return (
