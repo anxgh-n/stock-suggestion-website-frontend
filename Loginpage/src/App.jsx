@@ -9,6 +9,7 @@ import About from './pages/About';
 import Footer from './components/Footer';
 import NavigationComponent from './components/NavigationComponent';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import Questionaire from './pages/Questionaire';
 
 const PrivateRoute = ({ children }) => {
   const { token } = useAuth();
@@ -33,6 +34,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About/>}/>
           <Route path="/footer" element={<Footer/>}/>
+          <Route path="/questionaire" element={<Questionaire/>}></Route>
           <Route
             path="/welcome"
             element={
