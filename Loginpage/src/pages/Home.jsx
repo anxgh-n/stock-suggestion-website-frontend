@@ -1,7 +1,5 @@
 import { LogOut } from "lucide-react";
 import axios from "axios";
-//import textImage from './Images/text2.png'; // adjust the path according to the folder structure
-//import logoImage from './Images/preview2.png';
 import { useEffect, useState } from "react";
 export default function Home() {
   // const categoryUrl = "http://localhost:7063/category/get-category-by-id/3";
