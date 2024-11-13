@@ -28,7 +28,7 @@ export default function Profile() {
         {/* Counter Section (optional) */}
         <div className="counter grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
           <div className="count-data text-center bg-white rounded-lg p-6 shadow-lg">
-            <button onClick={handleWatchlist} className="btn btn-primary">
+            <button onClick={handleWatchlist} className="btn btn-primary count text-2xl font-bold text-blue-900">
               Edit
             </button>
             <h6 className="count text-2xl font-bold text-blue-900"></h6>
