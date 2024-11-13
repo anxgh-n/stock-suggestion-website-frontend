@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -9,7 +9,8 @@ import About from './pages/About';
 import Footer from './components/Footer';
 import NavigationComponent from './components/NavigationComponent';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import Questionaire from './pages/Questionaire';
+import MainHeader from './components/MainHeader';
+import Profile from './pages/Profile';
 
 // const PrivateRoute = ({ children }) => {
 //   const { token } = useAuth();
@@ -29,20 +30,24 @@ function App() {
           </Route>
           
           {/* Other Routes */}
-          
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/about" element={<About/>}/>
-          <Route path="/footer" element={<Footer/>}/>
-          <Route path="/questionaire" element={<Questionaire/>}/>
-          <Route
+
+
+          <Route element={<LayoutWithMainHeader/>}>
+            <Route path="/welcome" element={<Welcome />} />
+            <Route path="/profile" element={<Profile />}/>
+          </Route>
+
+          {/* <Route
             path="/welcome"
             element={
               // <PrivateRoute>
                 <Welcome />
               // </PrivateRoute>
             }
-          />
+          /> */}
+
         </Routes>
       </BrowserRouter>
     </AuthProvider>
@@ -56,10 +61,27 @@ function LayoutWithNavAndFooter() {
       <NavigationComponent />
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-          </Routes>
+          {/* this allows each layout to render its respective component */}
+          <Outlet/>
+        {/* <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} /> </Routes> */}
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+}
+
+function LayoutWithMainHeader() {
+  return (
+    <>
+      <MainHeader />
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-grow">
+          <Outlet/>
+        {/* <Routes>
+        <Route path="/welcome" element={<Welcome />} /></Routes> */}
         </main>
         <Footer />
       </div>
