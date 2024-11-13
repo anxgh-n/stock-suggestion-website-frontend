@@ -17,7 +17,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:7060/usercredentials/validate-user', formData);
+      const response = await axios.post('http://localhost:7061/usercredentials/validate-user', formData);
       if (response.data) {
         localStorage.setItem('token', response.data);
         localStorage.setItem('username', formData.username);
@@ -69,7 +69,7 @@ function Login() {
           </div>
           <button
             type="submit"
-            className="w-full text-white py-2 px-4 rounded-md bg-[#003236] hover:bg-[#015E6D] transition duration-200" 
+            className="w-full text-white py-2 px-4 rounded-md bg-[#003236] hover:bg-[#015E6D] transition duration-200 hover:scale-105" 
           >
             Sign In
           </button>

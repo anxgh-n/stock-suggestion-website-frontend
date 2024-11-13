@@ -33,8 +33,19 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About/>}/>
           <Route path="/footer" element={<Footer/>}/>
+<<<<<<< HEAD
           <Route path="/welcome" element={<Welcome />}/>
 
+=======
+          <Route
+            path="/welcome"
+            element={
+              // <PrivateRoute>
+                <Welcome />
+              // </PrivateRoute>
+            }
+          />
+>>>>>>> fda83026ebe0631d751da92f1fb0f738148dddbf
         </Routes>
       </BrowserRouter>
     </AuthProvider>

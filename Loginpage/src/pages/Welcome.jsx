@@ -29,7 +29,7 @@ function Welcome() {
     localStorage.removeItem('username');
     setToken(null);
     setUsername(null);
-    navigate('/login');
+    navigate('/');
   };
 
   return (

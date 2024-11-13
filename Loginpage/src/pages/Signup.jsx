@@ -17,7 +17,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/usercredentials/register', formData);
+      await axios.post('http://localhost:7061/usercredentials/register', formData);
       toast.success('Registration successful! Please login.');
       navigate('/login');
     } catch (error) {
@@ -84,7 +84,7 @@ function Signup() {
           </div>
           <button
             type="submit"
-            className="w-full bg-[#003236] text-white py-2 px-4 rounded-md hover:bg-[#015E6D] transition duration-200"
+            className="w-full bg-[#003236] text-white py-2 px-4 rounded-md hover:bg-[#015E6D] transition duration-200 hover:scale-105"
           >
             Sign Up
           </button>
