@@ -2,7 +2,6 @@ import { LogOut } from "lucide-react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 export default function Home() {
-
   // const categoryUrl = "http://localhost:7063/category/get-category-by-id/3";
   // const [allcategories,setAllCategories] = useState();
   // useEffect(() => {
