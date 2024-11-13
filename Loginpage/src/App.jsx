@@ -24,7 +24,7 @@ function App() {
           {/* Define the route that will wrap children with the Navigation */}
           <Route element={<LayoutWithNavAndFooter />}>
           <Route path="/about" element={<About/>}/>
-            <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           </Route>
           
           {/* Other Routes */}
@@ -33,14 +33,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About/>}/>
           <Route path="/footer" element={<Footer/>}/>
-          <Route
-            path="/welcome"
-            element={
-              <PrivateRoute>
-                <Welcome />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/welcome" element={<Welcome />}/>
+
         </Routes>
       </BrowserRouter>
     </AuthProvider>
@@ -52,12 +46,11 @@ function LayoutWithNavAndFooter() {
   return (
     <>
       <NavigationComponent />
-      {/* Outlet to render child routes like Home or About */}
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+              <Route path="/about" element={<About />} />
           </Routes>
         </main>
         <Footer />
