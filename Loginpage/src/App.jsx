@@ -12,6 +12,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import MainHeader from './components/MainHeader';
 import Profile from './pages/Profile';
 import TickerHeader from './components/TickerHeader';
+import CryptoData from './pages/CryptoData';
 
 // const PrivateRoute = ({ children }) => {
 //   const { token } = useAuth();
@@ -41,6 +42,7 @@ function App() {
           <Route element={<LayoutWithMainHeader/>}>
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/profile" element={<Profile />}/>
+            <Route path="/crypto/:id" element={<CryptoData />} />
           </Route>
 
           {/* <Route
