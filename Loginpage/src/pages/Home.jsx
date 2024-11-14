@@ -26,7 +26,7 @@ export default function Home() {
 <section
   className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat -mt-12"
   style={{
-    background: "radial-gradient(789px at 100.2% 3%, rgb(255, 255, 255) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(255, 255, 255) 72.6%)",
+    // background: "radial-gradient(789px at 100.2% 3%, rgb(255, 255, 255) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(255, 255, 255) 72.6%)",
   }}
 >
   <div className="container mx-auto flex flex-col items-center justify-center text-center py-9">

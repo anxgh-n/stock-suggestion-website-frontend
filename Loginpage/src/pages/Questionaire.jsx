@@ -71,6 +71,7 @@ export default function Questionaire() {
         })
         .then((data) => {
           console.log("Answer saved:", data);
+          navigate("/welcome");
           
         })
         .catch((error) =>
