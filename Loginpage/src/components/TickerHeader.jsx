@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 export default function TickerHeader() {
-
   return (
     <>
       <header className="shadow-none mb-0 sticky top-0 z-50 bg-black">

@@ -11,6 +11,7 @@ import NavigationComponent from './components/NavigationComponent';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import MainHeader from './components/MainHeader';
 import Profile from './pages/Profile';
+import Questionaire from './pages/Questionaire';
 import TickerHeader from './components/TickerHeader';
 import CryptoData from './pages/CryptoData';
 
@@ -35,8 +36,10 @@ function App() {
           </Route>
           
           {/* Other Routes */}
+
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/questionaire" element={<Questionaire />} ></Route>
 
 
           <Route element={<LayoutWithMainHeader/>}>
