@@ -19,6 +19,7 @@ function Signup() {
     try {
       await axios.post('http://localhost:7061/usercredentials/register', formData);
       toast.success('Registration successful! Please login.');
+      sessionStorage.setItem("categoryId",formData.categoryId);
       navigate('/login');
     } catch (error) {
       toast.error('Registration failed. Please try again.');

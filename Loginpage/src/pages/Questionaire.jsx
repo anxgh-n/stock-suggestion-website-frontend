@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Questionaire() {
+export default function Questionnaire() {
   const [questions, setQuestions] = useState([]);
   const [formData, setFormData] = useState({});
-  const categoryId = "2";
-  const username = "anjali"; 
-  let navigate = useNavigate();
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [isOptionSelected, setIsOptionSelected] = useState(false);
+  const categoryId = sessionStorage.getItem("categoryId");
+  const username = sessionStorage.getItem("username");
+  const navigate = useNavigate();
   const questionUrl =
     "http://localhost:7064/questions/get-questions-by-categoryid";
-  
-    const submitUrl = "http://localhost:7065/answer/save";
+  const submitUrl = "http://localhost:7065/answer/save"; //
+  const updateStatusUrl = `http://localhost:7061/usercredentials/update-questionnaire-status/${username}?status=true`;
 
   useEffect(() => {
     fetch(`${questionUrl}/${categoryId}`)
@@ -21,116 +23,167 @@ export default function Questionaire() {
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched Questions:", data);
         const transformedQuestions = data.map((q) => ({
           ...q,
-          options: [q.optionA, q.optionB, q.optionC, q.optionD].filter(Boolean), // Transform and filter options
+          options: [q.optionA, q.optionB, q.optionC, q.optionD].filter(Boolean),
         }));
         setQuestions(transformedQuestions);
       })
       .catch((error) =>
         console.error("There was an error fetching the questions!", error)
       );
-  }, []);
+  }, [categoryId]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    console.log(formData);
+  const handleOptionClick = (questionId, option) => {
+    if (formData[questionId] === option) {
+      const updatedFormData = { ...formData };
+      delete updatedFormData[questionId];
+      setFormData(updatedFormData);
+      setIsOptionSelected(false);
+    } else {
+      setFormData({
+        ...formData,
+        [questionId]: option,
+      });
+      setIsOptionSelected(true);
+    }
   };
 
-  const handleReset = () => {
-    setFormData({}); // Reset formData to an empty object
+  const handleNext = () => {
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      const nextQuestionId = questions[currentQuestionIndex + 1]?.questionId;
+      setIsOptionSelected(!!formData[nextQuestionId]);
+    } else {
+      handleSubmit();
+    }
+  };
+
+  const handleBack = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+      const prevQuestionId = questions[currentQuestionIndex - 1]?.questionId;
+      setIsOptionSelected(!!formData[prevQuestionId]);
+    }
   };
 
   const handleSubmit = () => {
-    // Convert formData to the required format
     const answers = Object.entries(formData).map(([questionId, userAnswer]) => ({
       userAnswer,
       username,
       questionId,
     }));
 
-    // Send each answer to the server
-    answers.forEach((answer) => {
+    const saveAnswersPromises = answers.map((answer) =>
       fetch(submitUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(answer),
+      }).then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to save the answer");
+        }
+        return response.json();
       })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to save the answer");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log("Answer saved:", data);
-          navigate("/welcome");
-          
-        })
-        .catch((error) =>
-          console.error("There was an error saving the answer!", error)
-        );
-    });
+    );
+
+    Promise.all(saveAnswersPromises)
+      .then(() => {
+        console.log("All answers saved successfully.");
+        return fetch(updateStatusUrl, {
+          method: "PATCH",
+        });
+      })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to update questionnaire status");
+        }
+        return response.text(); // Handle plain text response
+      })
+      .then((responseText) => {
+        console.log(responseText); // Log "Questionnaire status updated successfully"
+        sessionStorage.setItem("questionnaireStatus", "true");
+        navigate("/welcome");
+      })
+      .catch((error) =>
+        console.error(
+          "There was an error submitting the questionnaire!",
+          error
+        )
+      );
   };
+
+  if (questions.length === 0) {
+    return <div>Loading questions...</div>;
+  }
+
+  const currentQuestion = questions[currentQuestionIndex];
 
   return (
     <div className="max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-lg">
       <h4 className="text-4xl font-extrabold text-indigo-900 py-9 px-20">
         Stock Questionnaire
       </h4>
-      {questions.map((question) => (
-        <div key={question.questionId} className="mb-4">
-          <label className="block mb-2 text-xl font-serif text-black-700">
-            {question.questionDescription}
-          </label>
-          <div className="flex space-x-4">
-            {question.options.map((option, index) => (
-              <div key={index} className="flex items-center">
-                <input
-                  type="radio"
-                  id={`${question.questionId}-${index}`}
-                  name={question.questionId}
-                  value={option}
-                  className="hidden"
-                  checked={formData[question.questionId] === option} // Controlled by formData
-                  onChange={handleChange} // Updates formData when clicked
-                />
-                <label
-                  htmlFor={`${question.questionId}-${index}`}
-                  className={`block w-full text-center bg-gray-100 p-4 rounded-md hover:bg-[#305072] hover:text-white ${
-                    formData[question.questionId] === option
-                      ? "bg-[#305072] text-white"
-                      : ""
-                  }`}
-                >
-                  {option}
-                </label>
-              </div>
-            ))}
-          </div>
+      <div key={currentQuestion.questionId} className="mb-4">
+        <h5 className="text-lg font-semibold text-gray-700">
+          Question {currentQuestionIndex + 1} of {questions.length}
+        </h5>
+        <label className="block mb-2 text-xl font-serif text-black-700">
+          {currentQuestion.questionDescription}
+        </label>
+        <div className="flex space-x-4">
+          {currentQuestion.options.map((option, index) => (
+            <div key={index} className="flex items-center">
+              <input
+                type="radio"
+                id={`${currentQuestion.questionId}-${index}`}
+                name={currentQuestion.questionId}
+                value={option}
+                className="hidden"
+              />
+              <label
+                htmlFor={`${currentQuestion.questionId}-${index}`}
+                className={`block w-full text-center bg-gray-100 p-4 rounded-md hover:bg-[#d4e3f3] hover:text-black ${
+                  formData[currentQuestion.questionId] === option
+                    ? "bg-[#d4e3f3] text-black font-bold"
+                    : ""
+                }`}
+                onClick={() =>
+                  handleOptionClick(currentQuestion.questionId, option)
+                }
+              >
+                {option}
+              </label>
+            </div>
+          ))}
         </div>
-      ))}
-      <div className="flex space-x-9">
+      </div>
+      <div className="flex justify-between space-x-9">
         <button
-          type="submit"
-          className="rounded-md border-2 border-indigo-900 px-6 py-1 font-medium text-indigo-900 transition-colors hover:bg-indigo-900 hover:text-white"
-          onClick={handleSubmit} 
+          type="button"
+          className={`rounded-md border-2 border-indigo-900 px-6 py-1 font-medium transition-colors ${
+            currentQuestionIndex > 0
+              ? "text-indigo-900 hover:bg-indigo-900 hover:text-white"
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          onClick={handleBack}
+          disabled={currentQuestionIndex === 0}
         >
-          Submit
+          Back
         </button>
         <button
-          type="button" // Prevents form submission
-          onClick={handleReset} // Calls the reset handler
-          className="rounded-md border-2 border-indigo-900 px-6 py-1 font-medium text-indigo-900 transition-colors hover:bg-indigo-900 hover:text-white"
+          type="button"
+          className={`rounded-md border-2 border-indigo-900 px-6 py-1 font-medium transition-colors ${
+            isOptionSelected
+              ? "text-indigo-900 hover:bg-indigo-900 hover:text-white"
+              : "text-gray-400 cursor-not-allowed"
+          }`}
+          onClick={handleNext}
+          disabled={!isOptionSelected}
         >
-          Clear
+          {currentQuestionIndex < questions.length - 1 ? "Next" : "Submit"}
         </button>
       </div>
     </div>
