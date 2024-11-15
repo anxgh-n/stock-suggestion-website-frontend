@@ -8,7 +8,8 @@ export default function TickerHeader() {
           <div className="container mx-auto flex justify-between items-center px-4">
             <div className="tickername text-1xl font-light text-white">
               {/* Join the ticker names and display them */}
-              8
+              {/* {tickers.length > 0 ? tickers.join(", ") : "Loading tickers..."}  */}
+              <h6>Ticker</h6>
             </div>
           </div>
         </nav>
