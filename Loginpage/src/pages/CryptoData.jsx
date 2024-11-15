@@ -102,7 +102,7 @@ function CryptoData() {
   };
 
   return (
-    <div className="flex m-10 space-x-8">
+    <div className="flex m-5 space-x-8 ">
       <div className="relative w-1/2 flex flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
         <div className="relative mx-3 mt-3">
           <div className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-xs font-medium text-white">
