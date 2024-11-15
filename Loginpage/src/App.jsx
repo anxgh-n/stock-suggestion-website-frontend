@@ -39,12 +39,13 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/questionaire" element={<Questionaire />} ></Route>
+          {/* <Route path="/questionaire" element={<Questionaire />} ></Route> */}
 
 
           <Route element={<LayoutWithMainHeader/>}>
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/profile" element={<Profile />}/>
+            <Route path="/questionaire" element={<Questionaire/>}/>
             <Route path="/crypto/:id" element={<CryptoData />} />
           </Route>
 

@@ -14,17 +14,38 @@ function Login() {
   const navigate = useNavigate();
   const { setToken, setUsername } = useAuth();
 
+  const fetchCategoryByUsername = async (username) => {
+    try {
+      const response = await axios.get(`http://localhost:7061/usercredentials/get-category-by-username/${username}`);
+      if (response.data && response.data.category) {
+        const categoryId = response.data.category.categoryId;
+        sessionStorage.setItem('categoryId', categoryId);
+        console.log('CategoryId set in sessionStorage:', categoryId);
+      } else {
+        console.error('No category data found for the user.');
+        //toast.error('Failed to fetch category information.');
+      }
+    } catch (error) {
+      console.error('Error fetching category:', error);
+      //toast.error('Failed to fetch category information.');
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:7061/usercredentials/validate-user', formData);
       if (response.data) {
-        localStorage.setItem('token', response.data);
-        localStorage.setItem('username', formData.username);
+        sessionStorage.setItem('token', response.data);
+        // localStorage.setItem('username', formData.username);
+        sessionStorage.setItem('username',formData.username);
+        // console.log(`username is set:${sessionStorage.getItem("username")}`);
         setToken(response.data);
         setUsername(formData.username);
+
+        await fetchCategoryByUsername(formData.username);
         toast.success('Login successful!');
-        navigate('/');
+        navigate('/welcome');
       } else {
         toast.error('Invalid credentials');
       }
