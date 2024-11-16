@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Filter from "./Filter"; // Import the Filter component
 
 export default function Welcome() {
   let navigate = useNavigate();
@@ -9,6 +10,7 @@ export default function Welcome() {
   const [error, setError] = useState(null);
   const [questionnaireStatus, setQuestionnaireStatus] = useState(false); // Track questionnaire status
   const [loadingStatus, setLoadingStatus] = useState(true); // Handle loading state
+  const [showFilter, setShowFilter] = useState(false); // Manage filter visibility
 
   const API_URL = ""; // CoinGecko API  https://api.coingecko.com/api/v3/search/trending
   const username = sessionStorage.getItem("username"); // Replace with the actual username or fetch dynamically
@@ -61,6 +63,10 @@ export default function Welcome() {
 
   const handleQuestionnaireButton = () => {
     navigate("/questionaire");
+  };
+
+  const handleFilterButton = () => {
+    setShowFilter((prevState) => !prevState); // Toggle the visibility of the Filter component
   };
 
   return (
@@ -126,6 +132,13 @@ export default function Welcome() {
                   You have already filled out the questionnaire. The displayed
                   stocks are filtered based on your preferences.
                 </p>
+                <button
+                  onClick={handleFilterButton}
+                  className="rounded-md border-2 border-green-900 px-6 py-2 font-medium text-green-900 transition-colors hover:bg-green-900 hover:text-white"
+                >
+                  {showFilter ? "Hide Filtered Stocks" : "View Filtered Stocks"}
+                </button>
+                {showFilter && <Filter />} {/* Conditionally render Filter component */}
               </div>
             ) : (
               <div className="w-full md:w-5/12 bg-blue-100 p-6 m-10 rounded-lg">

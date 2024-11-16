@@ -14,6 +14,7 @@ import Profile from './pages/Profile';
 import Questionaire from './pages/Questionaire';
 import TickerHeader from './components/TickerHeader';
 import CryptoData from './pages/CryptoData';
+import Filter from './pages/Filter';
 
 // const PrivateRoute = ({ children }) => {
 //   const { token } = useAuth();
@@ -46,6 +47,7 @@ function App() {
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/profile" element={<Profile />}/>
             <Route path="/questionaire" element={<Questionaire/>}/>
+            <Route path='/filter' element={<Filter></Filter>}></Route>
             <Route path="/crypto/:id" element={<CryptoData />} />
           </Route>
 
