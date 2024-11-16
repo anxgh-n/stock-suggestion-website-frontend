@@ -32,7 +32,6 @@ function App() {
         <Routes>
           {/* Define the route that will wrap children with the Navigation */}
           <Route element={<LayoutWithNavAndFooter />}>
-          <Route path="/about" element={<Documentation/>}/>
           <Route path="/" element={<Home />} />
           </Route>
           
@@ -49,6 +48,7 @@ function App() {
             <Route path="/questionaire" element={<Questionaire/>}/>
             <Route path='/filter' element={<Filter></Filter>}></Route>
             <Route path="/crypto/:id" element={<CryptoData />} />
+            <Route path="/docs" element={<Documentation/>}/>
           </Route>
 
           {/* <Route

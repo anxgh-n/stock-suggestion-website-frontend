@@ -28,9 +28,6 @@ export default function NavigationComponent(){
             <Link to="/about" className="text-indigo-900 hover:text-black-500 text-lg">
               About
             </Link>
-            <a href="#" className="text-indigo-900 hover:text-black-800 text-lg">
-              Contacts
-            </a>
           </div>
           <div className="flex space-x-4">
             <button className="text-black-600 rounded-full px-4 py-2"

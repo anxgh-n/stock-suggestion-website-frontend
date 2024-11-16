@@ -128,7 +128,7 @@ export default function MainHeader() {
               <Link to="/welcome" className="text-indigo-900 hover:text-black-500 text-lg">
                 Home
               </Link>
-              <Link to="/documentation" className="text-indigo-900 hover:text-black-500 text-lg">
+              <Link to="/docs" className="text-indigo-900 hover:text-black-500 text-lg">
                 Documentation
               </Link>
 
