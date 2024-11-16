@@ -1,92 +1,161 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import Welcome from './pages/Welcome';
-import Home from './pages/Home';
-import About from './pages/About';
-import Footer from './components/Footer';
-import NavigationComponent from './components/NavigationComponent';
-import { AuthProvider, useAuth } from './context/AuthContext';
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import ReactApexChart from "react-apexcharts";
 
-// const PrivateRoute = ({ children }) => {
-//   const { token } = useAuth();
-//   return token ? <>{children}</> : <Navigate to="/login" />;
-// };
+function CryptoData() {
+  const { id } = useParams();
+  const [cryptoData, setCryptoData] = useState(null);
+  const [chartData, setChartData] = useState([]);
+  const [timeRange, setTimeRange] = useState("1year"); // Tracks the selected time range
+  const [loading, setLoading] = useState(true);
+  const [hovered, setHovered] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
 
-function App() {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${id}`
+        );
+        const data = await response.json();
+        setCryptoData(data[0]);
+
+        const chartResponse = await fetch(
+          `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=365`
+        );
+        const chartData = await chartResponse.json();
+
+        setChartData(chartData.prices); // Set the chart data
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
+  const filterDataByTimeRange = () => {
+    const now = Date.now();
+    let filteredData = [];
+
+    switch (timeRange) {
+      case "current":
+        filteredData = chartData.slice(-1); // Show the latest point
+        break;
+      case "weekly":
+        filteredData = chartData.filter(
+          ([timestamp]) => now - timestamp <= 7 * 24 * 60 * 60 * 1000
+        );
+        break;
+      case "monthly":
+        filteredData = chartData.filter(
+          ([timestamp]) => now - timestamp <= 30 * 24 * 60 * 60 * 1000
+        );
+        break;
+      case "1year":
+      default:
+        filteredData = chartData; // Show all 1-year data
+        break;
+    }
+
+    return filteredData.map(([timestamp, price]) => ({
+      x: new Date(timestamp).toISOString(),
+      y: price,
+    }));
+  };
+
+  const chartOptions = {
+    chart: {
+      type: "area",
+      height: "100%",
+      toolbar: { show: false },
+    },
+    series: [
+      {
+        name: "Price (USD)",
+        data: filterDataByTimeRange(),
+      },
+    ],
+    xaxis: {
+      type: "datetime",
+      labels: { show: false },
+    },
+    yaxis: {
+      labels: { formatter: (value) => `$${value.toFixed(2)}` },
+    },
+    tooltip: {
+      x: { format: "dd MMM yyyy" },
+    },
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (!cryptoData) return <div>Data not available</div>;
+
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Toaster position="top-center" />
-        <Routes>
-          {/* Define the route that will wrap children with the Navigation */}
-          <Route element={<LayoutWithNavAndFooter />}>
-          <Route path="/about" element={<About/>}/>
-          <Route path="/" element={<Home />} />
-          </Route>
-          
-          {/* Other Routes */}
-          
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/about" element={<About/>}/>
-          <Route path="/footer" element={<Footer/>}/>
-          <Route path="/welcome" element={<Welcome />}/>
-
-          <Route element={<LayoutWithMainHeaderandFooter />}>
-          <Route path="/welcome" element={<Welcome/>}/>
-          </Route>
-
-          {/* <Route
-            path="/welcome"
-            element={
-              // <PrivateRoute>
-                <Welcome />
-              // </PrivateRoute>
-            }
-          /> */}
-
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
-  );
-}
-
-// Layout with Navbar and Footer
-function LayoutWithNavAndFooter() {
-  return (
-    <>
-      <NavigationComponent />
-      <div className="flex flex-col min-h-screen">
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-          </Routes>
-        </main>
-        <Footer />
+    <div className="flex m-5 space-x-8">
+      <div className="relative w-1/2 flex flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+        {/* Details Section */}
+        <div className="mt-4 px-5 pb-5">
+          <a href="#">
+            <h5 className="text-xl tracking-tight text-slate-900">
+              {cryptoData.name} ({cryptoData.symbol.toUpperCase()})
+            </h5>
+          </a>
+          <div className="mt-2 mb-5 flex items-center justify-between">
+            <p className="flex justify-between w-full">
+              <span className="text-2xl font-bold text-slate-900">
+                ${cryptoData.current_price}
+              </span>
+              <span
+                className={`ml-auto text-medium ${
+                  cryptoData.price_change_percentage_24h > 0
+                    ? "text-green-500"
+                    : "text-red-500"
+                } font-bold`}
+              >
+                {cryptoData.price_change_percentage_24h.toFixed(2)}%
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
-    </>
-  );
-}
 
-function LayoutWithMainHeaderandFooter() {
-  return (
-    <>
-      <MainHeader />
-      <div className="flex flex-col min-h-screen">
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/welcome" element={<Welcome />} />
-          </Routes>
-        </main>
-        <Footer />
+      {/* Chart Section */}
+      <div className="w-1/2">
+        {/* Header with Time Range Buttons */}
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-lg font-bold text-gray-700">Price Chart</h2>
+          <div className="flex space-x-2">
+            {["current", "weekly", "monthly", "1year"].map((range) => (
+              <button
+                key={range}
+                onClick={() => setTimeRange(range)}
+                className={`px-3 py-1 rounded-md text-sm font-medium ${
+                  timeRange === range
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-200 text-gray-700"
+                }`}
+              >
+                {range.charAt(0).toUpperCase() + range.slice(1)}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Chart */}
+        <div className="w-full h-full p-4 bg-white rounded-xl shadow-md">
+          <ReactApexChart
+            options={chartOptions}
+            series={chartOptions.series}
+            type="area"
+            height="100%"
+          />
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
-
-export default App;
+export default CryptoData;

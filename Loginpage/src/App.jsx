@@ -5,7 +5,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Welcome from './pages/Welcome';
 import Home from './pages/Home';
-import About from './pages/About';
+import Documentation from './pages/Documentation';
 import Footer from './components/Footer';
 import NavigationComponent from './components/NavigationComponent';
 import { AuthProvider, useAuth } from './context/AuthContext';
@@ -31,7 +31,7 @@ function App() {
         <Routes>
           {/* Define the route that will wrap children with the Navigation */}
           <Route element={<LayoutWithNavAndFooter />}>
-          <Route path="/about" element={<About/>}/>
+          <Route path="/about" element={<Documentation/>}/>
           <Route path="/" element={<Home />} />
           </Route>
           

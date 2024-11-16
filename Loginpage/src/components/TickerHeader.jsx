@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import '../CSS/ticker.css'; 
 
-import upp from '../Images/upward.png'
-import downn from '../Images/downward.png'
+import upp from '../Images/upward.png';
+import downn from '../Images/downward.png';
 
 export default function TickerHeader() {
   const [cryptos, setCryptos] = useState([]);
@@ -25,36 +25,34 @@ export default function TickerHeader() {
   }, []);
 
   return (
-    <header className="shadow-none mb-0 sticky top-0 z-50 bg-black p-1">
-    <nav className="relative flex max-w-screen-xl flex-col overflow-visible px-2 py-0.2 md:mx-auto md:flex-row md:items-center">
-      <div className="container mx-auto flex justify-between items-center px-4">
-        <div className="tickername text-1xl font-light text-white overflow-hidden max-w-full whitespace-nowrap">
-          <h6 className="ticker-scroll" style={{ fontFamily: "Poppins, sans-serif" }}>
-            {/* Displaying each symbol and price change percentage */}
-            {cryptos.map((crypto, index) => {
-              const isNegative = crypto.price_change_percentage_24h < 0;
-              return (
-                <span key={crypto.id} className="inline-flex items-center">
-                  <span className="px-1">{crypto.symbol.toUpperCase()}</span>
-                  <img
-                    src={isNegative ? downn : upp}
-                    alt={isNegative ? "Downward" : "Upward"}
-                    className="w-4 h-4 mx-2" // Adjust size and spacing
-                  />
-                  <span>{crypto.price_change_percentage_24h.toFixed(2)}%</span>
-                  {/* Equidistant "•" */}
-                  {index < cryptos.length - 1 && (
-                    <span className="mx-4 text-gray-400">•</span> // Add consistent margin
-                  )}
-                </span>
-              );
-            })}
-          </h6>
+    <header className="shadow-none mb-0 sticky top-0 z-50 bg-black p-0">
+      <nav className="relative flex w-full flex-col overflow-hidden">
+        <div className="flex items-center w-full">
+          <div className="tickername text-1xl font-light text-white overflow-hidden whitespace-nowrap w-full">
+            <h6 className="ticker-scroll" style={{ fontFamily: "Poppins, sans-serif" }}>
+              {/* Displaying each symbol and price change percentage */}
+              {cryptos.map((crypto, index) => {
+                const isNegative = crypto.price_change_percentage_24h < 0;
+                return (
+                  <span key={crypto.id} className="inline-flex items-center">
+                    <span className="px-1">{crypto.symbol.toUpperCase()}</span>
+                    <img
+                      src={isNegative ? downn : upp}
+                      alt={isNegative ? "Downward" : "Upward"}
+                      className="w-4 h-4 mx-2" // Adjust size and spacing
+                    />
+                    <span>{crypto.price_change_percentage_24h.toFixed(2)}%</span>
+                    {/* Equidistant "•" */}
+                    {index < cryptos.length - 1 && (
+                      <span className="mx-4 text-gray-400">•</span> // Add consistent margin
+                    )}
+                  </span>
+                );
+              })}
+            </h6>
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
-
-
+      </nav>
+    </header>
   );
 }

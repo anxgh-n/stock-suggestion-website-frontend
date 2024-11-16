@@ -31,10 +31,12 @@ export default function MainHeader() {
 
   const handleProfile = () => {
     navigate("/profile");
+    setIsDropdownOpen(false); // Close the dropdown after selecting Profile
   };
 
   const handleLogout = () => {
     navigate("/login");
+    setIsDropdownOpen(false); // Close the dropdown after Logout
   };
 
   const toggleDropdown = () => {
@@ -50,10 +52,10 @@ export default function MainHeader() {
       const filtered = cryptoList.filter((crypto) =>
         crypto.name.toLowerCase().startsWith(query.toLowerCase())
       );
-      setFilteredCryptos(filtered.slice(0, 12)); // Limit to 5 results
+      setFilteredCryptos(filtered.slice(0, 12)); // Limit to 12 results
       setShowSuggestions(true); // Show suggestions as soon as user types
     } else {
-      // Reset to initial top 5 suggestions
+      // Reset to initial top 12 suggestions
       setFilteredCryptos(cryptoList.slice(0, 12));
       setShowSuggestions(false); // Hide suggestions if the search is empty
     }
@@ -65,6 +67,7 @@ export default function MainHeader() {
 
   const handleCryptoClick = (id) => {
     navigate(`/crypto/${id}`); // Navigate to the crypto's data page
+    setSearchQuery(""); // Clear search text after selecting a crypto
     setShowSuggestions(false); // Hide suggestions on selection
   };
 
@@ -87,7 +90,7 @@ export default function MainHeader() {
         <nav className="relative flex max-w-screen-xl flex-col overflow-visible px-2 py-4 md:mx-auto md:flex-row md:items-center">
           <div className="container mx-auto flex justify-between items-center px-4">
             <div className="text-3xl font-bold text-gray-800">StockWise</div>
-            <div className="relative w-1/3" ref={searchRef}> {/* Attach ref here */}
+            <div className="relative w-1/3" ref={searchRef}>
               <form className="flex items-center">
                 <input
                   type="text"
@@ -125,17 +128,15 @@ export default function MainHeader() {
               <Link to="/welcome" className="text-indigo-900 hover:text-black-500 text-lg">
                 Home
               </Link>
-              <Link to="/about" className="text-indigo-900 hover:text-black-500 text-lg">
-                About
+              <Link to="/documentation" className="text-indigo-900 hover:text-black-500 text-lg">
+                Documentation
               </Link>
-              <a href="#" className="text-indigo-900 hover:text-black-800 text-lg">
-                Contacts
-              </a>
+
             </div>
 
             <div className="relative">
               <div
-                className="w-10 h-10 overflow-hidden cursor-pointer"
+                className="w-7 h-7 overflow-hidden cursor-pointer"
                 onClick={toggleDropdown}
               >
                 <img

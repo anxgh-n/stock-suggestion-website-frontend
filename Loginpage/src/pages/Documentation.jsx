@@ -1,4 +1,4 @@
-export default function About(){
+export default function Documentation(){
     return(<>
       <section
         className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"

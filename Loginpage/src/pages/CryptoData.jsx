@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import ReactApexChart from 'react-apexcharts';
+import ReactApexChart from "react-apexcharts";
+import upp from "../Images/upwardb.png";
+import downn from "../Images/downwardb.png";
 
 function CryptoData() {
   const { id } = useParams();
   const [cryptoData, setCryptoData] = useState(null);
+  const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [hovered, setHovered] = useState(false);
   const [isAdded, setIsAdded] = useState(false); // New state for tracking cart status
@@ -12,11 +15,28 @@ function CryptoData() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Fetch cryptocurrency details
         const response = await fetch(
           `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${id}`
         );
         const data = await response.json();
         setCryptoData(data[0]);
+
+        // Fetch historical chart data
+        const chartResponse = await fetch(
+          `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=365`
+        );
+        const chartData = await chartResponse.json();
+
+        // Transform chart data for the graph
+        const transformedChartData = chartData.prices.map(
+          ([timestamp, price]) => ({
+            x: new Date(timestamp).toISOString(), // Convert timestamp to ISO format
+            y: price,
+          })
+        );
+        setChartData(transformedChartData);
+
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -50,7 +70,8 @@ function CryptoData() {
     tooltip: {
       enabled: true,
       x: {
-        show: false,
+        show: true, // Show tooltips on hover
+        format: "dd MMM yyyy", // Tooltip date format
       },
     },
     fill: {
@@ -66,7 +87,7 @@ function CryptoData() {
       enabled: false,
     },
     stroke: {
-      width: 6,
+      width: 2,
     },
     grid: {
       show: false,
@@ -79,15 +100,15 @@ function CryptoData() {
     },
     series: [
       {
-        name: "New users",
-        data: [6500, 6418, 6456, 6526, 6356, 6456],
+        name: `${cryptoData.name} Price (USD)`,
+        data: chartData,
         color: "#1A56DB",
       },
     ],
     xaxis: {
-      categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+      type: "datetime", // Use datetime for x-axis
       labels: {
-        show: false,
+        show: false, // Hide x-axis labels
       },
       axisBorder: {
         show: false,
@@ -97,14 +118,16 @@ function CryptoData() {
       },
     },
     yaxis: {
-      show: false,
+      labels: {
+        formatter: (value) => `$${value.toFixed(2)}`, // Format y-axis labels as USD
+      },
     },
   };
 
   return (
-    <div className="flex m-5 space-x-8 ">
-      <div className="relative w-1/2 flex flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
-        <div className="relative mx-3 mt-3">
+    <div className="flex m-5 space-x-5 ">
+      <div className="relative w-[33%] flex flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+        <div className="relative mx-3 mt-3 ">
           <div className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-xs font-medium text-white">
             Last Updated:{" "}
             {new Date(cryptoData.last_updated).toLocaleDateString("en-US", {
@@ -132,23 +155,33 @@ function CryptoData() {
 
         <div className="mt-4 px-5 pb-5">
           <a href="#">
-            <h5 className="text-xl tracking-tight text-slate-900">
-              {cryptoData.name} ({cryptoData.symbol.toUpperCase()})
+            <h5 className="text-xl font-bold tracking-tight text-slate-900">
+              <span className="text-[30px]">{cryptoData.name}</span> (
+              {cryptoData.symbol.toUpperCase()}){" "}
+              <span>{cryptoData.market_cap_rank}</span>
             </h5>
           </a>
           <div className="mt-2 mb-5 flex items-center justify-between">
             <p className="flex justify-between w-full">
-              <span className="text-2xl font-bold text-slate-900">
-                ${cryptoData.current_price}
-              </span>
+              <span className="text-[30px] font-bold text-black">{cryptoData.current_price}</span>
               <span
-                className={`ml-auto text-medium ${
+                className={`text-medium font-bold ${
                   cryptoData.price_change_percentage_24h > 0
-                    ? "text-green-500"
+                    ? "text-[#75FB4C]"
                     : "text-red-500"
-                } font-bold`}
+                }`}
               >
+                <img
+                  src={cryptoData.price_change_percentage_24h > 0 ? upp : downn}
+                  alt={
+                    cryptoData.price_change_percentage_24h > 0
+                      ? "upward"
+                      : "downward"
+                  }
+                  className="inline-block ml-2 w-8 h-8"
+                />
                 {cryptoData.price_change_percentage_24h.toFixed(2)}%
+                
               </span>
             </p>
           </div>
@@ -192,8 +225,8 @@ function CryptoData() {
               <strong className="text-slate-900 relative group">
                 High (24h):
                 <span className="absolute left-0 bottom-full mb-1 hidden group-hover:block text-sm text-gray-700 bg-gray-200 rounded-md px-2 py-1 font-normal">
-                  The highest price the cryptocurrency has reached in the last 24
-                  hours.
+                  The highest price the cryptocurrency has reached in the last
+                  24 hours.
                 </span>
               </strong>
               <span>${cryptoData.high_24h}</span>
@@ -209,7 +242,6 @@ function CryptoData() {
               </strong>
               <span>${cryptoData.low_24h}</span>
             </div>
-
             <div className="flex flex-col">
               <strong className="text-slate-900 relative group">
                 Max Supply:
@@ -244,8 +276,16 @@ function CryptoData() {
         </div>
       </div>
 
+      <div className="w-[5%] bg-gray-100 rounded-xl p-5 shadow-md">
+        <h6 className="text-lg font-semibold text-gray-700">Additional Info</h6>
+        <p className="text-sm text-gray-500">
+          This section can hold any additional information about the cryptocurrency or other data relevant to your app.
+        </p>
+      </div>
+
+  
       {/* Chart Section */}
-      <div className="w-1/2">
+      <div className="w-[57%]">
         <div className="w-full h-full p-4 bg-white rounded-xl shadow-md">
           <ReactApexChart
             options={chartOptions}
