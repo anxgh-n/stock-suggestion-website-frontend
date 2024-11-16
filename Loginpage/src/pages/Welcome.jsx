@@ -121,44 +121,48 @@ export default function Welcome() {
         </div>
 
         {/* Right Section */}
-        {!loadingStatus && (
-          <>
-            {questionnaireStatus ? (
-              <div className="w-full md:w-5/12 bg-green-100 p-6 m-10 rounded-lg">
-                <h2 className="text-2xl font-bold text-green-900 mb-4">
-                  Filtered Stocks
-                </h2>
-                <p className="text-gray-700">
-                  You have already filled out the questionnaire. The displayed
-                  stocks are filtered based on your preferences.
-                </p>
-                <button
-                  onClick={handleFilterButton}
-                  className="rounded-md border-2 border-green-900 px-6 py-2 font-medium text-green-900 transition-colors hover:bg-green-900 hover:text-white"
-                >
-                  {showFilter ? "Hide Filtered Stocks" : "View Filtered Stocks"}
-                </button>
-                {showFilter && <Filter />} {/* Conditionally render Filter component */}
-              </div>
-            ) : (
-              <div className="w-full md:w-5/12 bg-blue-100 p-6 m-10 rounded-lg">
-                <h2 className="text-2xl font-bold text-indigo-900 mb-4">
-                  Fill Questionnaire
-                </h2>
-                <p className="text-gray-700 mb-6">
-                  Fill the questionnaire to explore more stock options tailored
-                  to your interests.
-                </p>
-                <button
-                  onClick={handleQuestionnaireButton}
-                  className="rounded-md border-2 border-indigo-900 px-6 py-2 font-medium text-indigo-900 transition-colors hover:bg-indigo-900 hover:text-white"
-                >
-                  Fill Questionnaire
-                </button>
-              </div>
-            )}
-          </>
-        )}
+        <div className="w-full md:w-5/12 flex flex-col space-y-6">
+          {!loadingStatus && (
+            <>
+              {questionnaireStatus ? (
+                <div className="bg-green-100 p-6 rounded-lg">
+                  <h2 className="text-2xl font-bold text-green-900 mb-4">
+                    Filtered Stocks
+                  </h2>
+                  <p className="text-gray-700">
+                    You have already filled out the questionnaire. The displayed
+                    stocks are filtered based on your preferences.
+                  </p>
+                  <button
+                    onClick={handleFilterButton}
+                    className="rounded-md border-2 border-green-900 px-6 py-2 font-medium text-green-900 transition-colors hover:bg-green-900 hover:text-white"
+                  >
+                    {showFilter ? "Hide Filtered Stocks" : "View Filtered Stocks"}
+                  </button>
+                </div>
+              ) : (
+                <div className="bg-blue-100 p-6 rounded-lg">
+                  <h2 className="text-2xl font-bold text-indigo-900 mb-4">
+                    Fill Questionnaire
+                  </h2>
+                  <p className="text-gray-700 mb-6">
+                    Fill the questionnaire to explore more stock options tailored
+                    to your interests.
+                  </p>
+                  <button
+                    onClick={handleQuestionnaireButton}
+                    className="rounded-md border-2 border-indigo-900 px-6 py-2 font-medium text-indigo-900 transition-colors hover:bg-indigo-900 hover:text-white"
+                  >
+                    Fill Questionnaire
+                  </button>
+                </div>
+              )}
+            </>
+          )}
+
+          {/* Filter Section Below */}
+          {showFilter && <Filter />} {/* Conditionally render Filter component below */}
+        </div>
       </div>
     </section>
   );

@@ -10,7 +10,7 @@ export default function Filter() {
   const categoryId = sessionStorage.getItem("categoryId"); // Get categoryId from sessionStorage
   const questionAnswersUrl = `http://localhost:7065/answer/get-questions-with-answers/${username}`;
   const stocksUrl =
-    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd";
+    ""; //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
 
   useEffect(() => {
     // Fetch user answers
@@ -227,59 +227,26 @@ export default function Filter() {
 
   return (
     <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg">
-      <h4 className="text-xl font-medium text-gray-800 mb-4">
-        Filtered Stocks
-      </h4>
-      {filteredStocks.length > 0 ? (
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-gray-800">
-            <thead>
-              <tr className="bg-indigo-200 text-gray-900 font-bold">
-                <th className="px-4 py-2">Name</th>
-                <th className="px-4 py-2">Current Price</th>
-                <th className="px-4 py-2">24h Change</th>
-                <th className="px-4 py-2">Volume</th>
-                <th className="px-4 py-2">ATH Change</th>
-                <th className="px-4 py-2">Market Cap</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredStocks.map((stock) => (
-                <tr
-                  key={stock.id}
-                  className="hover:bg-gray-200 transition duration-200"
-                >
-                  <td className="px-4 py-2">
-                    <div className="flex items-center space-x-2">
-                      <img
-                        src={stock.image}
-                        alt={`${stock.name} icon`}
-                        className="w-10 h-10 rounded-full"
-                      />
-                      <span>{stock.name}</span>
-                    </div>
-                  </td>
-                  <td className="px-4 py-2">
-                    ${stock.current_price?.toFixed(2) || "N/A"}
-                  </td>
-                  <td className="px-4 py-2">
-                    {stock.price_change_percentage_24h?.toFixed(2) || "N/A"}%
-                  </td>
-                  <td className="px-4 py-2">{stock.total_volume || "N/A"}</td>
-                  <td className="px-4 py-2">
-                    {stock.ath_change_percentage?.toFixed(2) || "N/A"}%
-                  </td>
-                  <td className="px-4 py-2">
-                    {stock.market_cap || "N/A"} billion
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <p className="text-gray-600">No stocks match your criteria.</p>
-      )}
-    </div>
+    {filteredStocks.length > 0 ? (
+      <ul className="space-y-4">
+        {filteredStocks.map((stock) => (
+          <li
+            key={stock.id}
+            className="flex items-center space-x-4 bg-gray-100 p-4 rounded-lg shadow-sm hover:bg-gray-200 transition duration-200"
+          >
+            <img
+              src={stock.image}
+              alt={`${stock.name} icon`}
+              className="w-12 h-12 rounded-full"
+            />
+            <span className="text-lg font-medium text-gray-800">{stock.name}</span>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p className="text-gray-600">No stocks match your criteria.</p>
+    )}
+  </div>
+  
   );
 }

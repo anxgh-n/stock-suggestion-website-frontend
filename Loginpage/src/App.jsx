@@ -15,7 +15,7 @@ import Questionaire from './pages/Questionaire';
 import TickerHeader from './components/TickerHeader';
 import CryptoData from './pages/CryptoData';
 import Filter from './pages/Filter';
-
+import About from './pages/About';
 // const PrivateRoute = ({ children }) => {
 //   const { token } = useAuth();
 //   return token ? <>{children}</> : <Navigate to="/login" />;
@@ -32,6 +32,7 @@ function App() {
         <Routes>
           {/* Define the route that will wrap children with the Navigation */}
           <Route element={<LayoutWithNavAndFooter />}>
+          <Route path="/about" element={<About></About>}></Route>
           <Route path="/" element={<Home />} />
           </Route>
           
@@ -45,6 +46,7 @@ function App() {
           <Route element={<LayoutWithMainHeader/>}>
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/profile" element={<Profile />}/>
+            <Route path="/docs" element={<Documentation/>}/>
             <Route path="/questionaire" element={<Questionaire/>}/>
             <Route path='/filter' element={<Filter></Filter>}></Route>
             <Route path="/crypto/:id" element={<CryptoData />} />
