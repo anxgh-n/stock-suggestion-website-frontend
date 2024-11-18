@@ -12,9 +12,9 @@ export default function Documentation() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Left Navigation Bar */}
-      <aside className="w-1/4 bg-gray-100 py-10 px-6 sticky top-0 h-screen">
+      <aside className="w-1/4 bg-blue-50 py-10 px-6 sticky top-0 h-screen">
         <nav className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Navigation</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">Documentation</h2>
           <ul className="space-y-2">
             <li>
               <a

@@ -20,21 +20,45 @@ export default function Home() {
   //     );
   // }, []);
 
+  const styles = {
+    container: {
+      display: "flex",
+      //flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center",
+      background: "linear-gradient(135deg, #1c4e80, #1a73e8)",
+      color: "#fff",
+      height: "70vh",
+      padding: "0px 20px",
+    },
+    heroSection: {
+      marginTop: "20px",
+    },
+    heading: {
+      fontSize: "2.5rem",
+      fontWeight: "bold",
+    },
+    subheading: {
+      marginTop: "10px",
+      fontSize: "1.2rem",
+      color: "#dbe5f1",
+    },
+  }
   return (
     <>
 
-<section
-  className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat -mt-12"
-  style={{
-    // background: "radial-gradient(789px at 100.2% 3%, rgb(255, 255, 255) 31.1%, rgb(205, 181, 93) 36.4%, rgb(244, 102, 90) 50.9%, rgb(199, 206, 187) 60.7%, rgb(249, 140, 69) 72.5%, rgb(255, 255, 255) 72.6%)",
-  }}
->
-  <div className="container mx-auto flex flex-col items-center justify-center text-center py-9">
-    <h2 className="text-4xl font-extrabold text-gray-800 sm:text-6xl">StockWise</h2>
-    <p className="bg-gradient-to-r from-pink-500 to-indigo-500 bg-clip-text text-2xl font-medium text-transparent sm:text-3xl mt-4">
-      Welcome to StockWise, where smart investing meets personalization.
-    </p>
-  </div>
+<section>
+ <div style={styles.container}>
+ <div style={styles.heroSection}>
+   <h1 style={styles.heading}>
+   StockWise
+   </h1>
+   <p style={styles.subheading}>
+   Welcome to StockWise, where smart investing meets personalization.
+   </p>
+ </div>
+</div>
 </section>
 
     </>

@@ -16,6 +16,7 @@ import TickerHeader from './components/TickerHeader';
 import CryptoData from './pages/CryptoData';
 import Filter from './pages/Filter';
 import About from './pages/About';
+import Stock from './pages/Stock';
 // const PrivateRoute = ({ children }) => {
 //   const { token } = useAuth();
 //   return token ? <>{children}</> : <Navigate to="/login" />;
@@ -39,6 +40,7 @@ function App() {
           {/* Other Routes */}
 
           <Route path="/login" element={<Login />} />
+          <Route path="/stock" element={<Stock/>}/>
           <Route path="/signup" element={<Signup />} />
           {/* <Route path="/questionaire" element={<Questionaire />} ></Route> */}
 
