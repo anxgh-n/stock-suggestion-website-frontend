@@ -1,31 +1,15 @@
-import { LogOut } from "lucide-react";
-import axios from "axios";
-import { useEffect, useState } from "react";
-export default function Home() {
-  // const categoryUrl = "http://localhost:7063/category/get-category-by-id/3";
-  // const [allcategories,setAllCategories] = useState();
-  // useEffect(() => {
-  //   fetch(categoryUrl) 
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Failed to fetch books");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setAllCategories(data);
-  //     })
-  //     .catch((error) =>
-  //       console.error("There was an error fetching the categories!", error)
-  //     );
-  // }, []);
+//Animation - 1731827119973.json
 
+import { LogOut } from "lucide-react";
+import Lottie from "lottie-react"; // Correct default import
+import animationData from "../images/Animation - 1731827119973.json"; // Import your Lottie JSON file
+
+export default function Home() {
   const styles = {
     container: {
       display: "flex",
-      //flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "space-between", // Adjust alignment to space items
       textAlign: "center",
       background: "linear-gradient(135deg, #1c4e80, #1a73e8)",
       color: "#fff",
@@ -33,34 +17,49 @@ export default function Home() {
       padding: "0px 20px",
     },
     heroSection: {
-      marginTop: "20px",
+      //marginTop: "20px",
+      flex: 1, // Allow space for the Lottie animation
     },
     heading: {
-      fontSize: "2.5rem",
+     // marginBottom:"100px",
+      fontSize: "4.5rem",
       fontWeight: "bold",
     },
     subheading: {
-      marginTop: "10px",
+      marginTop: "5px",
+     marginBottom:"150px",
       fontSize: "1.2rem",
       color: "#dbe5f1",
     },
-  }
+    animationContainer: {
+      flex: 1, // Allow space for the Lottie animation
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    animation: {
+      width: "100%", // Adjust size of the Lottie animation
+      maxWidth: "400px", // Limit max width
+    },
+  };
+
   return (
     <>
-
-<section>
- <div style={styles.container}>
- <div style={styles.heroSection}>
-   <h1 style={styles.heading}>
-   StockWise
-   </h1>
-   <p style={styles.subheading}>
-   Welcome to StockWise, where smart investing meets personalization.
-   </p>
- </div>
-</div>
-</section>
-
+      <section>
+        <div style={styles.container}>
+          <div style={styles.heroSection}>
+            <h1 style={styles.heading}>StockWise</h1>
+            <p style={styles.subheading}>
+              Welcome to StockWise, where smart investing meets personalization.
+            </p>
+          </div>
+          <div style={styles.animationContainer}>
+            <Lottie animationData={animationData} style={styles.animation} />
+          </div>
+        </div>
+      </section>
     </>
   );
 }
+
+
