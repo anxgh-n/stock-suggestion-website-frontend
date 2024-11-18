@@ -86,7 +86,7 @@ export default function MainHeader() {
 
   return (
     <>
-      <header className="shadow mb-2 sticky top-0 z-50 bg-white">
+      <header className="shadow mb-0 sticky top-0 z-50 bg-white">
         <nav className="relative flex max-w-screen-xl flex-col overflow-visible px-2 py-4 md:mx-auto md:flex-row md:items-center">
           <div className="container mx-auto flex justify-between items-center px-4">
             <div className="text-3xl font-bold text-gray-800">StockWise</div>

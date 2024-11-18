@@ -1,0 +1,9 @@
+/* Import Squada One Font */
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+
+/* Apply Font to Navigation Bar */
+.squada-one-regular {
+  font-family: "Squada One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

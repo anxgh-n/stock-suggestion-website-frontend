@@ -23,6 +23,8 @@ import Stock from './pages/Stock';
 // };
 
 function App() {
+
+  
   return (
     
     <AuthProvider>
@@ -42,12 +44,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/stock" element={<Stock/>}/>
           <Route path="/signup" element={<Signup />} />
+          
           {/* <Route path="/questionaire" element={<Questionaire />} ></Route> */}
 
 
           <Route element={<LayoutWithMainHeader/>}>
             <Route path="/welcome" element={<Welcome />} />
-            <Route path="/profile" element={<Profile />}/>
+            
             <Route path="/docs" element={<Documentation/>}/>
             <Route path="/questionaire" element={<Questionaire/>}/>
             <Route path='/filter' element={<Filter></Filter>}></Route>

@@ -92,7 +92,7 @@ function CryptoData() {
     tooltip: {
       enabled: true,
       x: {
-        format: timeRange === "1D" ? "HH:mm" : "dd MMM yyyy", // Show hours:minutes for "1D", otherwise show full date
+        format: "dd MMM yyyy, HH:mm", // Show hours:minutes for "1D", otherwise show full date
       },
     },
     fill: {
