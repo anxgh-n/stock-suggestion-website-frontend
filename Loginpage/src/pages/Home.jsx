@@ -1,5 +1,3 @@
-//Animation - 1731827119973.json
-
 import { LogOut } from "lucide-react";
 import Lottie from "lottie-react"; // Correct default import
 import animationData from "../images/Animation - 1731827119973.json"; // Import your Lottie JSON file
@@ -9,35 +7,38 @@ export default function Home() {
     container: {
       display: "flex",
       alignItems: "center",
-      justifyContent: "space-between", // Adjust alignment to space items
+      justifyContent: "space-between", // Keeps items equally spaced
       textAlign: "center",
-      background: "rgb(8,34,73)",
-      background: "radial-gradient(circle, rgba(8,34,73,1) 0%, rgba(17,66,138,1) 62%, rgba(0,1,8,1) 100%)",
-      // background: "linear-gradient(135deg, #1c4e80, #1a73e8)",
+      background: "rgb(15,38,78)",
+      background:
+        " linear-gradient(356deg, rgba(0,0,0,1) 8%, rgba(3,20,48,1) 53%, rgba(0,0,0,1) 100%, rgba(8,29,66,1) 100%)",
       color: "#fff",
       height: "70vh",
-      padding: "0px 20px",
+      padding: "0px", // Adjust padding to remove any unwanted space
+      margin: "0", // Ensure no margin is added to prevent spacing
     },
     heroSection: {
-      //marginTop: "20px",
-      flex: 1, // Allow space for the Lottie animation
+      flex: 1, // Take up equal space
+      display: "flex",
+      flexDirection: "column", // Stack text vertically
+      alignItems: "center", // Align items in the center
+      justifyContent: "center", // Align text in the center
     },
     heading: {
-     // marginBottom:"100px",
       fontSize: "4.5rem",
       fontWeight: "bold",
     },
     subheading: {
       marginTop: "5px",
-     marginBottom:"150px",
+      marginBottom: "50px", // Reduced margin to remove gap
       fontSize: "1.2rem",
       color: "#dbe5f1",
     },
     animationContainer: {
-      flex: 1, // Allow space for the Lottie animation
+      flex: 1, // Take up equal space
       display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "center", // Center the animation
+      alignItems: "center", // Center the animation vertically
     },
     animation: {
       width: "100%", // Adjust size of the Lottie animation
@@ -46,22 +47,18 @@ export default function Home() {
   };
 
   return (
-    <>
-      <section>
-        <div style={styles.container}>
-          <div style={styles.heroSection}>
-            <h1 style={styles.heading}>StockWise</h1>
-            <p style={styles.subheading}>
-              Welcome to StockWise, where smart investing meets personalization.
-            </p>
-          </div>
-          <div style={styles.animationContainer}>
-            <Lottie animationData={animationData} style={styles.animation} />
-          </div>
+    <section>
+      <div style={styles.container}>
+        <div style={styles.heroSection}>
+          <h1 style={styles.heading}>StockWise</h1>
+          <p style={styles.subheading}>
+            Welcome to StockWise, where smart investing meets personalization.
+          </p>
         </div>
-      </section>
-    </>
+        <div style={styles.animationContainer}>
+          <Lottie animationData={animationData} style={styles.animation} />
+        </div>
+      </div>
+    </section>
   );
 }
-
-

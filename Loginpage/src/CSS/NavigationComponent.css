@@ -7,3 +7,10 @@
   font-weight: 400;
   font-style: normal;
 }
+
+
+/* Set up the background with a solid color and gradient */
+.header-background {
+  background: rgb(0, 0, 0), linear-gradient(357deg, rgba(0, 0, 0, 1) 0%, rgba(4, 14, 32, 1) 53%, rgba(3, 8, 17, 1) 80%, rgba(8, 29, 66, 1) 100%);
+  background-blend-mode: overlay; /* Ensures the gradient blends over the solid color */
+}
