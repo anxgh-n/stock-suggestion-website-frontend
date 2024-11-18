@@ -3,6 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import ReactApexChart from "react-apexcharts";
 import upp from "../Images/upwardb.png";
 import downn from "../Images/downwardb.png";
+import axios from "axios";
+import toast from "react-hot-toast";
+//import { toast } from "react-toastify";
 
 function CryptoData() {
   const { id } = useParams();
@@ -14,6 +17,7 @@ function CryptoData() {
   const [activeTab, setActiveTab] = useState("description");
   const [timeRange, setTimeRange] = useState("1Y");
   
+  console.log(isAdded);
   const descriptionContent =
     "This is the description content about the selected cryptocurrency.";
   const relatedNewsContent = "This is where related news will be displayed.";
@@ -22,8 +26,46 @@ function CryptoData() {
     setActiveTab(tab);
   };
 
-  const handleCartClick = () => {
-    setIsAdded((prev) => !prev);
+  const handleCartClick = async () => {
+    const username = sessionStorage.getItem("username");
+    const payload = {
+      username: username,
+      stockId: cryptoData.id, // Replace with the actual stock ID
+    };
+  
+    try {
+      // Fetch the user's existing watchlist
+      const watchlistResponse = await axios.get(
+        `http://localhost:7062/watchlist/get-watchlist-by-username/${username}`
+      );
+  
+      const watchlist = watchlistResponse.data;
+  
+      // Check if the stock is already in the watchlist
+      const isStockInWatchlist = watchlist.some(
+        (item) => item.stockId === cryptoData.id
+      );
+  
+      if (isStockInWatchlist) {
+        toast.error("This stock is already in your watchlist");
+        console.log("Stock is already in the watchlist:", cryptoData.id);
+        return; // Exit the function
+      }
+  
+      // Stock is not in the watchlist, proceed to add it
+      const response = await axios.post(
+        `http://localhost:7062/watchlist/save`,
+        payload
+      );
+  
+      setIsAdded(true); // Update the state
+      toast.success("Added to watchlist");
+      console.log("Response from server:", response.data);
+    } catch (error) {
+      // Handle errors
+      console.error("Error handling watchlist:", error);
+      toast.error("An error occurred while updating the watchlist");
+    }
   };
 
   const handleTimeRangeClick = async (range) => {
@@ -65,6 +107,17 @@ function CryptoData() {
 
         // Fetch initial chart data
         await fetchChartData(timeRange);
+        const watchlistResponse = await axios.get(
+          `http://localhost:7062/watchlist/get-watchlist-by-username/${username}`
+        );
+        const watchlist = watchlistResponse.data;
+
+        // Check if the current stockId is in the watchlist
+        const isStockInWatchlist = watchlist.some((item) => item.stockId === id);
+
+        // Set isAdded state if stock is in the watchlist
+        setIsAdded(isStockInWatchlist);
+
 
         setLoading(false);
       } catch (error) {

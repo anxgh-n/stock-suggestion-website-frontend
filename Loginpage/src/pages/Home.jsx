@@ -11,7 +11,9 @@ export default function Home() {
       alignItems: "center",
       justifyContent: "space-between", // Adjust alignment to space items
       textAlign: "center",
-      background: "linear-gradient(135deg, #1c4e80, #1a73e8)",
+      background: "rgb(8,34,73)",
+      background: "radial-gradient(circle, rgba(8,34,73,1) 0%, rgba(17,66,138,1) 62%, rgba(0,1,8,1) 100%)",
+      // background: "linear-gradient(135deg, #1c4e80, #1a73e8)",
       color: "#fff",
       height: "70vh",
       padding: "0px 20px",

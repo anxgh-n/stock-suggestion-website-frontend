@@ -15,7 +15,7 @@ export default function NavigationComponent() {
   return (
     <>
       {/* Navigation Bar with Dark Gradient */}
-      <header className="shadow mb-2 sticky top-0 z-50 bg-gradient-to-r from-gray-900 via-gray-800 to-black">
+      <header className="shadow mb-0 sticky top-0 z-50 bg-gradient-to-r from-gray-900 via-gray-800 to-black">
         <nav className="relative flex max-w-screen-xl flex-col overflow-hidden px-2 py-4 md:mx-auto md:flex-row md:items-center">
           <div className="container mx-auto flex justify-between items-center px-4">
             {/* Logo */}
