@@ -35,7 +35,7 @@ export default function MainHeader() {
   };
 
   const handleLogout = () => {
-    navigate("/login");
+    navigate("/");
     setIsDropdownOpen(false); // Close the dropdown after Logout
   };
 

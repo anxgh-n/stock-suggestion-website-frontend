@@ -36,7 +36,6 @@ function CryptoData() {
       "1D": 1,
       "7D": 7,
       "30D": 30,
-      "90D": 90,
       "1Y": 365,
     };
     try {
@@ -92,7 +91,9 @@ function CryptoData() {
     },
     tooltip: {
       enabled: true,
-      x: { format: "dd MMM yyyy" },
+      x: {
+        format: timeRange === "1D" ? "HH:mm" : "dd MMM yyyy", // Show hours:minutes for "1D", otherwise show full date
+      },
     },
     fill: {
       type: "gradient",
@@ -303,12 +304,6 @@ function CryptoData() {
                 className="bg-gray-200 p-2 rounded-md"
               >
                 30D
-              </button>
-              <button
-                onClick={() => handleTimeRangeClick("90D")}
-                className="bg-gray-200 p-2 rounded-md"
-              >
-                90D
               </button>
               <button
                 onClick={() => handleTimeRangeClick("1Y")}
