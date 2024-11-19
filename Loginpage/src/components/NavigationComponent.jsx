@@ -28,8 +28,8 @@ export default function NavigationComponent() {
           <div className="container mx-auto flex justify-between items-center px-4">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <img src={logo} alt="AthenaBlock Logo" className="h-20 w-25" />
-              <div className="text-[45px] font-bold text-white">
+              <img src={logo} alt="AthenaBlock Logo" className="h-[200px] w-[200px]" />
+              <div className="text-[55px] font-bold text-white">
                 AthenaBlock
               </div>
             </div>
