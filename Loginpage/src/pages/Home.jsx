@@ -50,10 +50,10 @@ export default function Home() {
     <section>
       <div style={styles.container}>
         <div style={styles.heroSection}>
-          <h1 style={styles.heading}>StockWise</h1>
+          {/* <h1 style={styles.heading}>StockWise</h1>
           <p style={styles.subheading}>
             Welcome to StockWise, where smart investing meets personalization.
-          </p>
+          </p> */}
         </div>
         <div style={styles.animationContainer}>
           <Lottie animationData={animationData} style={styles.animation} />

@@ -36,7 +36,12 @@ function CryptoData() {
     try {
       // Fetch the user's existing watchlist
       const watchlistResponse = await axios.get(
-        `http://localhost:7062/watchlist/get-watchlist-by-username/${username}`
+        `http://localhost:7060/watchlist/get-watchlist-by-username/${username}`,
+        {
+          headers: {
+              Authorization: `Bearer ${sessionStorage.getItem('token')}`
+          }
+        }
       );
   
       const watchlist = watchlistResponse.data;
@@ -54,8 +59,13 @@ function CryptoData() {
   
       // Stock is not in the watchlist, proceed to add it
       const response = await axios.post(
-        `http://localhost:7062/watchlist/save`,
-        payload
+        `http://localhost:7060/watchlist/save`,
+        payload,
+        {
+          headers: {
+              Authorization: `Bearer ${sessionStorage.getItem('token')}`
+          }
+        }
       );
   
       setIsAdded(true); // Update the state
@@ -108,7 +118,12 @@ function CryptoData() {
         // Fetch initial chart data
         await fetchChartData(timeRange);
         const watchlistResponse = await axios.get(
-          `http://localhost:7062/watchlist/get-watchlist-by-username/${username}`
+          `http://localhost:7060/watchlist/get-watchlist-by-username/${username}`,
+          {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            }
+          }
         );
         const watchlist = watchlistResponse.data;
 

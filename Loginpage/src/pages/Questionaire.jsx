@@ -10,17 +10,16 @@ export default function Questionnaire() {
   const username = sessionStorage.getItem("username");
   const navigate = useNavigate();
   const questionUrl =
-    "http://localhost:7064/questions/get-questions-by-categoryid";
-  const submitUrl = "http://localhost:7065/answer/save"; //
-  const updateStatusUrl = `http://localhost:7061/usercredentials/update-questionnaire-status/${username}?status=true`;
+    "http://localhost:7060/questions/get-questions-by-categoryid";
+  const submitUrl = "http://localhost:7060/answer/save"; //
+  const updateStatusUrl = `http://localhost:7060/usercredentials/update-questionnaire-status/${username}?status=true`;
 
   useEffect(() => {
-    fetch(`${questionUrl}/${categoryId}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch questions");
-        }
-        return response.json();
+    fetch(`${questionUrl}/${categoryId}`, {
+        method: 'GET', 
+        headers: {
+          "Authorization": `Bearer ${sessionStorage.getItem('token')}`,
+        },
       })
       .then((data) => {
         const transformedQuestions = data.map((q) => ({
@@ -79,6 +78,7 @@ export default function Questionnaire() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${sessionStorage.getItem('token')}`,
         },
         body: JSON.stringify(answer),
       }).then((response) => {
@@ -94,6 +94,9 @@ export default function Questionnaire() {
         console.log("All answers saved successfully.");
         return fetch(updateStatusUrl, {
           method: "PATCH",
+          headers: {
+            "Authorization": `Bearer ${sessionStorage.getItem('token')}`,
+          },
         });
       })
       .then((response) => {
