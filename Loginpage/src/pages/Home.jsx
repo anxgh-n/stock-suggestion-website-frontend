@@ -1,8 +1,10 @@
 import { LogOut } from "lucide-react";
+import React, { useState, useEffect } from "react";
 import Lottie from "lottie-react"; // Correct default import
-import animationData from "../images/Animation - 1731827119973.json"; // Import your Lottie JSON file
+import animationData from "../images/loading.json"; // Import your Lottie JSON file
 
 export default function Home() {
+  
   const styles = {
     container: {
       display: "flex",
@@ -45,6 +47,8 @@ export default function Home() {
       maxWidth: "400px", // Limit max width
     },
   };
+
+
 
   return (
     <section>

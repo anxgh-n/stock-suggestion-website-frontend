@@ -2,6 +2,9 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import profileImage from "../Images/profile_pic.png";
+import logo from "../Images/athenablock.png";
+import grc1 from "../Images/greece.jpg";
+import "../CSS/MainHeader.css";
 
 export default function MainHeader() {
   let navigate = useNavigate();
@@ -86,10 +89,35 @@ export default function MainHeader() {
 
   return (
     <>
-      <header className="shadow mb-0 sticky top-0 z-50 bg-white">
-        <nav className="relative flex max-w-screen-xl flex-col overflow-visible px-2 py-4 md:mx-auto md:flex-row md:items-center">
+      <header
+        className="shadow mb-0 sticky top-0 z-50 red-hat-display-header bg-black bg-opacity-30"
+        style={{
+          backgroundImage: `url(${grc1}) `,
+          backgroundSize: "cover", // Ensures both gradient and image cover the header
+          backgroundRepeat: "no-repeat", // Prevents repetition for both layers
+          backgroundPosition: "center", // Centers both the image and gradient
+        }}
+      >
+        <nav className="relative flex w-full flex-col overflow-hidden px-2 py-0 md:py-4 md:flex-row md:items-center rounded-3xl ">
           <div className="container mx-auto flex justify-between items-center px-4">
-            <div className="text-3xl font-bold text-gray-800">StockWise</div>
+            <div className="flex items-center space-x-3">
+              <img
+                src={logo}
+                alt="AthenaChain Logo"
+                className="h-[120px] w-[80px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
+                style={{
+                  transition: "transform 1s ease-out", // Slow zoom-out effect with smooth transition
+                }}
+              />
+              <div className="text-white flex flex-col text-left">
+                <span className="text-[50px] font-bold leading-none slide-in-right">
+                  Athena
+                </span>
+                <span className="text-[50px] font-bold leading-none slide-in-right">
+                  Chain
+                </span>
+              </div>
+            </div>
             <div className="relative w-1/3" ref={searchRef}>
               <form className="flex items-center">
                 <input
@@ -118,20 +146,27 @@ export default function MainHeader() {
                         alt={`${crypto.name} icon`}
                         className="w-6 h-6 mr-2" // Style for icon
                       />
-                      <span>{crypto.name} ({crypto.symbol.toUpperCase()})</span>
+                      <span>
+                        {crypto.name} ({crypto.symbol.toUpperCase()})
+                      </span>
                     </div>
                   ))}
                 </div>
               )}
             </div>
             <div className="flex space-x-6">
-              <Link to="/welcome" className="text-indigo-900 hover:text-black-500 text-lg">
+              <Link
+                to="/welcome"
+                className="text-indigo-900 hover:text-black-500 text-lg"
+              >
                 Home
               </Link>
-              <Link to="/docs" className="text-indigo-900 hover:text-black-500 text-lg">
+              <Link
+                to="/docs"
+                className="text-indigo-900 hover:text-black-500 text-lg"
+              >
                 Documentation
               </Link>
-
             </div>
 
             <div className="relative">

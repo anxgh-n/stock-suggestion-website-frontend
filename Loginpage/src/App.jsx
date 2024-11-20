@@ -1,6 +1,8 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, Outlet, useNavigationType } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import Lottie from 'lottie-react'; // Lottie for animation
+import loadingAnimation from './images/loading.json'; // Import your Lottie animation
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Welcome from './pages/Welcome';
@@ -8,7 +10,7 @@ import Home from './pages/Home';
 import Documentation from './pages/Documentation';
 import Footer from './components/Footer';
 import NavigationComponent from './components/NavigationComponent';
-import { AuthProvider, useAuth } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext';
 import MainHeader from './components/MainHeader';
 import Profile from './pages/Profile';
 import Questionaire from './pages/Questionaire';
@@ -18,58 +20,57 @@ import Filter from './pages/Filter';
 import About from './pages/About';
 import Stock from './pages/Stock';
 import Watchlist from './pages/Watchlist';
-// const PrivateRoute = ({ children }) => {
-//   const { token } = useAuth();
-//   return token ? <>{children}</> : <Navigate to="/login" />;
-// };
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false); // Global loading state
 
-  
+  const styles = {
+    loadingContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      backgroundColor: '#ffffff', // White background
+      position: 'fixed', // Ensures it covers the screen
+      top: 0,
+      left: 0,
+      width: '100%',
+      zIndex: 9999, // Ensures it's above other elements
+    },
+    animation: {
+      width: '200px', // Adjust animation size
+    },
+  };
+
   return (
-    
     <AuthProvider>
-      
       <BrowserRouter>
         <Toaster position="top-center" />
-        <TickerHeader/>
+        <TickerHeader />
+        {isLoading && (
+          <div style={styles.loadingContainer}>
+            <Lottie animationData={loadingAnimation} style={styles.animation} />
+          </div>
+        )}
         <Routes>
-          {/* Define the route that will wrap children with the Navigation */}
-          <Route element={<LayoutWithNavAndFooter />}>
-          <Route path="/about" element={<About></About>}></Route>
-          <Route path="/" element={<Home />} />
+          <Route element={<LayoutWithNavAndFooter setIsLoading={setIsLoading} />}>
+            <Route path="/about" element={<About />} />
+            <Route path="/" element={<Home />} />
           </Route>
-          
-          {/* Other Routes */}
 
           <Route path="/login" element={<Login />} />
-          <Route path="/stock" element={<Stock/>}/>
+          <Route path="/stock" element={<Stock />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
-          
-          
-          {/* <Route path="/questionaire" element={<Questionaire />} ></Route> */}
 
-
-          <Route element={<LayoutWithMainHeader/>}>
+          <Route element={<LayoutWithMainHeader setIsLoading={setIsLoading} />}>
             <Route path="/welcome" element={<Welcome />} />
-            <Route path="/watchlist" element={<Watchlist/>}/>
-            <Route path="/docs" element={<Documentation/>}/>
-            <Route path="/questionaire" element={<Questionaire/>}/>
-            <Route path='/filter' element={<Filter></Filter>}></Route>
+            <Route path="/watchlist" element={<Watchlist />} />
+            <Route path="/docs" element={<Documentation />} />
+            <Route path="/questionaire" element={<Questionaire />} />
+            <Route path="/filter" element={<Filter />} />
             <Route path="/crypto/:id" element={<CryptoData />} />
-            <Route path="/docs" element={<Documentation/>}/>
           </Route>
-
-          {/* <Route
-            path="/welcome"
-            element={
-              // <PrivateRoute>
-                <Welcome />
-              // </PrivateRoute>
-            }
-          /> */}
-
         </Routes>
       </BrowserRouter>
     </AuthProvider>
@@ -77,17 +78,14 @@ function App() {
 }
 
 // Layout with Navbar and Footer
-function LayoutWithNavAndFooter() {
+function LayoutWithNavAndFooter({ setIsLoading }) {
+  useLoadingEffect(setIsLoading);
   return (
     <>
       <NavigationComponent />
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow">
-          {/* this allows each layout to render its respective component */}
-          <Outlet/>
-        {/* <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} /> </Routes> */}
+          <Outlet />
         </main>
         <Footer />
       </div>
@@ -95,15 +93,14 @@ function LayoutWithNavAndFooter() {
   );
 }
 
-function LayoutWithMainHeader() {
+function LayoutWithMainHeader({ setIsLoading }) {
+  useLoadingEffect(setIsLoading);
   return (
     <>
       <MainHeader />
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow">
-          <Outlet/>
-        {/* <Routes>
-        <Route path="/welcome" element={<Welcome />} /></Routes> */}
+          <Outlet />
         </main>
         <Footer />
       </div>
@@ -111,7 +108,18 @@ function LayoutWithMainHeader() {
   );
 }
 
+// Custom hook to handle loading state on navigation
+function useLoadingEffect(setIsLoading) {
+  const navigationType = useNavigationType();
 
+  React.useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // Adjust loading time as needed
 
+    return () => clearTimeout(timer);
+  }, [navigationType, setIsLoading]);
+}
 
 export default App;

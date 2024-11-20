@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Filter from "./Filter"; // Import the Filter component
+import profileImage from "../Images/profile_pic.png";
 
 export default function Welcome() {
   let navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function Welcome() {
   const [loadingStatus, setLoadingStatus] = useState(true); // Handle loading state
   const [showFilter, setShowFilter] = useState(false); // Manage filter visibility
 
-  const API_URL = ""; // CoinGecko API  https://api.coingecko.com/api/v3/search/trending
+  const API_URL = "https://api.coingecko.com/api/v3/search/trending"; // CoinGecko API  
   const username = sessionStorage.getItem("username"); // Replace with the actual username or fetch dynamically
   const BACKEND_URL = `http://localhost:7060/usercredentials/get-questionnaire-status/${username}`; // Backend API
   const API_TOKEN = "CG-y1GGhURGBtELwoPE88Xk7Vvc";
