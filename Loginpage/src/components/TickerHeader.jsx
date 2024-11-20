@@ -25,23 +25,23 @@ export default function TickerHeader() {
   }, []);
 
   return (
-    <header className="shadow-none mb-0 sticky top-0 z-50 bg-[rgba(0,0,0,1)] p-2">
+    <header className="shadow-none mb-0 top-0 z-50 bg-black p-2">
       <nav className="relative flex w-full flex-col overflow-hidden">
         <div className="flex items-center w-full">
           <div className="tickername text-1xl font-light text-white overflow-hidden whitespace-nowrap w-full">
-            <h6 className="ticker-scroll" style={{ fontFamily: "Poppins, sans-serif" }}>
+            <h6 className="ticker-scroll" >
               {/* Displaying each symbol and price change percentage */}
               {cryptos.map((crypto, index) => {
                 const isNegative = crypto.price_change_percentage_24h < 0;
                 return (
                   <span key={crypto.id} className="inline-flex items-center">
-                    <span className="px-1">{crypto.symbol.toUpperCase()}</span>
+                    <span className="px-1" ><strong>{crypto.symbol.toUpperCase()}</strong></span>
                     <img
                       src={isNegative ? downn : upp}
                       alt={isNegative ? "Downward" : "Upward"}
                       className="w-4 h-4 mx-2" // Adjust size and spacing
                     />
-                    <span>{crypto.price_change_percentage_24h.toFixed(2)}%</span>
+                    <span><strong className="">{crypto.price_change_percentage_24h.toFixed(2)}%</strong></span>
                     {/* Equidistant "•" */}
                     {index < cryptos.length - 1 && (
                       <span className="mx-4 text-gray-400">•</span> // Add consistent margin

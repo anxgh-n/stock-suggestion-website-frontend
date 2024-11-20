@@ -1,23 +1,26 @@
 import { LogOut } from "lucide-react";
+import NavigationComponent from "../components/NavigationComponent";
 import React, { useState, useEffect } from "react";
 import Lottie from "lottie-react"; // Correct default import
 import animationData from "../images/loading.json"; // Import your Lottie JSON file
+import grc1 from "../Images/greece.jpg";
+import Footer from "../components/Footer";
 
 export default function Home() {
-  
   const styles = {
     container: {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between", // Keeps items equally spaced
       textAlign: "center",
-      background: "rgb(15,38,78)",
-      background:
-        " linear-gradient(356deg, rgba(0,0,0,1) 8%, rgba(3,20,48,1) 53%, rgba(0,0,0,1) 100%, rgba(8,29,66,1) 100%)",
-      color: "#fff",
-      height: "70vh",
+      height: "100",
       padding: "0px", // Adjust padding to remove any unwanted space
       margin: "0", // Ensure no margin is added to prevent spacing
+      backgroundImage: `url(${grc1}) `,
+      backgroundSize: "cover", // Ensures both gradient and image cover the header
+      backgroundRepeat: "no-repeat", // Prevents repetition for both layers
+      backgroundPosition: "center",
+      backgroundAttachment: "fixed", // Centers both the image and gradient
     },
     heroSection: {
       flex: 1, // Take up equal space
@@ -48,18 +51,17 @@ export default function Home() {
     },
   };
 
-
-
   return (
     <section>
+      
       <div style={styles.container}>
-        <div style={styles.heroSection}>
-          
-        </div>
+        <div style={styles.heroSection}></div>
         <div style={styles.animationContainer}>
           <Lottie animationData={animationData} style={styles.animation} />
         </div>
       </div>
+      
     </section>
+    
   );
 }

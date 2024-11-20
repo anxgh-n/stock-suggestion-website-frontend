@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import "../CSS/NavigationComponent.css";
 import logo from "../Images/athenablock.png";
-import grc1 from "../Images/greece.jpg";
+import sky from "../Images/skyimage.jpg";
 
 export default function NavigationComponent() {
   let navigate = useNavigate();
@@ -13,15 +13,13 @@ export default function NavigationComponent() {
     <>
       {/* Navigation Bar with Dark Gradient */}
       <header
-        className="shadow mb-0 sticky top-0 z-50 red-hat-display-header bg-black bg-opacity-30 "
+        className="shadow mb-0 sticky top-0 z-50 red-hat-display-header "
         style={{
-          backgroundImage: `url(${grc1}) `,
-          backgroundSize: "cover", // Ensures both gradient and image cover the header
-          backgroundRepeat: "no-repeat", // Prevents repetition for both layers
-          backgroundPosition: "center", // Centers both the image and gradient
+          backgroundColor: "black", // Transparent header
+          backdropFilter: "blur(10px)", // Optional blur effect for a glassy look
         }}
       >
-        <nav className="relative flex w-full flex-col overflow-hidden px-2 py-0 md:py-4 md:flex-row md:items-center rounded-3xl ">
+        <nav className="relative flex w-full flex-col bg-transparent overflow-hidden px-2 py-0 md:py-4 md:flex-row md:items-center">
           <div className="container mx-auto w-full flex justify-between items-center px-4">
             {/* Logo */}
             <div className="flex items-center space-x-3">
@@ -30,7 +28,7 @@ export default function NavigationComponent() {
                 alt="AthenaChain Logo"
                 className="h-[120px] w-[80px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
                 style={{
-                  transition: "transform 1s ease-out", // Slow zoom-out effect with smooth transition
+                  transition: "transform 1s ease-out",
                 }}
               />
               <div className="text-white flex flex-col text-left">
@@ -47,24 +45,29 @@ export default function NavigationComponent() {
             <div className="flex items-center space-x-3">
               <Link
                 to="/"
-                className="text-white text-[25px]  rounded-full bg-black bg-opacity-50 hover:text-gray-300  hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
+                className="text-white text-[20px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
               >
-                Home
+                HOME
               </Link>
               <Link
                 to="/about"
-                className="text-white text-[25px]   rounded-full bg-black bg-opacity-50 hover:text-gray-300  hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
+                className="text-white text-[20px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
               >
-                About
+                ABOUT
               </Link>
               <Link
                 to="/login"
-                className="text-white text-[25px] border-2 border-white rounded-full bg-black bg-opacity-50 hover:text-gray-300  hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
+                className="text-white text-[20px] border-2 border-white rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
               >
-                Login/SignUp
+                LOGIN
+              </Link>
+              <Link
+                to="/signup"
+                className="text-black text-[20px] border-2 border-white rounded-full bg-white  hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
+              >
+                SIGNUP
               </Link>
             </div>
-
           </div>
         </nav>
       </header>
