@@ -34,7 +34,7 @@ export default function Welcome() {
         symbol: coin.item.symbol,
         name: coin.item.name,
         rank: coin.item.market_cap_rank,
-        //price: coin.item.price_btc ? `${coin.item.price_btc}` : "N/A",
+        id: coin.item.id
       }));
       setStocks(coins);
     } catch (err) {
@@ -46,10 +46,10 @@ export default function Welcome() {
   // Fetch questionnaire status from the backend
   const fetchQuestionnaireStatus = async () => {
     try {
-      const response = await axios.get(BACKEND_URL,{
+      const response = await axios.get(BACKEND_URL, {
         headers: {
-            Authorization: `Bearer ${sessionStorage.getItem('token')}`
-        }
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+        },
       });
       setQuestionnaireStatus(response.data); // Directly set the boolean value
       console.log("Questionnaire Status:", response.data);
@@ -72,6 +72,10 @@ export default function Welcome() {
 
   const handleFilterButton = () => {
     setShowFilter((prevState) => !prevState); // Toggle the visibility of the Filter component
+  };
+
+  const handleRowClick = (id) => {
+    navigate(`/crypto/${id}`); // Navigate to the stock details page
   };
 
   return (
@@ -97,12 +101,13 @@ export default function Welcome() {
                 </tr>
               </thead>
               <tbody>
-                {stocks.map((stock, index) => (
+                {stocks.slice(0, 5).map((stock, index) => (
                   <tr
                     key={index}
                     className={`${
                       index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                    } hover:bg-gray-100 transition-colors`}
+                    } hover:bg-gray-100 transition-colors cursor-pointer`}
+                    onClick={() => handleRowClick(stock.id)} // Add click event
                   >
                     <td className="px-4 py-3">
                       <img

@@ -22,6 +22,7 @@ import Stock from './pages/Stock';
 import Watchlist from './pages/Watchlist';
 import News from './pages/News';
 import GreeceImage from './Images/greece.jpg';
+import NotificationPage from './pages/NotificationPage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false); // Global loading state
@@ -65,6 +66,7 @@ function App() {
           <Route element={<LayoutWithMainHeader setIsLoading={setIsLoading} />}>
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/watchlist" element={<Watchlist />} />
+            <Route path = "/notifications" element={<NotificationPage/>}/>
             <Route path="/news" element={<News/>}></Route>
             <Route path="/docs" element={<Documentation />} />
             <Route path="/questionaire" element={<Questionaire />} />

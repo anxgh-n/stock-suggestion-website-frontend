@@ -23,14 +23,15 @@ export default function NavigationComponent() {
           <div className="container mx-auto w-full flex justify-between items-center px-4">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <img
+              <Link to="/">
+                <img
                 src={logo}
                 alt="AthenaChain Logo"
                 className="h-[120px] w-[80px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
                 style={{
                   transition: "transform 1s ease-out",
                 }}
-              />
+              /></Link>
               <div className="text-white flex flex-col text-left">
                 <span className="text-[50px] font-bold leading-none slide-in-right">
                   Athena
