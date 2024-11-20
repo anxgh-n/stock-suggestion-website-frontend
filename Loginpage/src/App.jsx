@@ -19,6 +19,7 @@ import CryptoData from './pages/CryptoData';
 import Filter from './pages/Filter';
 import About from './pages/About';
 import Watchlist from './pages/Watchlist';
+import News from './pages/News';
 import GreeceImage from './Images/greece.jpg';
 import ProfileHeader from './components/ProfileHeader';
 
@@ -71,6 +72,7 @@ function App() {
           <Route element={<LayoutWithMainHeader setIsLoading={setIsLoading} />}>
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/watchlist" element={<Watchlist />} />
+            <Route path="/news" element={<News/>}></Route>
             <Route path="/docs" element={<Documentation />} />
             <Route path="/questionaire" element={<Questionaire />} />
             <Route path="/filter" element={<Filter />} />

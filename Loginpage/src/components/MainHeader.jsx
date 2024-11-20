@@ -5,6 +5,7 @@ import profileImage from "../Images/profile_pic.png";
 import logo from "../Images/athenablock.png";
 import grc1 from "../Images/greece.jpg";
 import "../CSS/MainHeader.css";
+import NotificationIcon from "./NotificationIcon";
 
 export default function MainHeader() {
   let navigate = useNavigate();
@@ -174,9 +175,11 @@ export default function MainHeader() {
               >
                 NEWS
               </Link>
+              <NotificationIcon/>
             </div>
 
             <div className="relative">
+             
               <div
                 className="text-black text-[20px] border-2 border-white rounded-full bg-white  hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
                 onClick={toggleDropdown}
@@ -191,6 +194,7 @@ export default function MainHeader() {
                   >
                     Profile
                   </button>
+                  
                   <button
                     onClick={handleLogout}
                     className="block w-30 px-4 py-2 text-left text-gray-700 hover:bg-gray-200 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"

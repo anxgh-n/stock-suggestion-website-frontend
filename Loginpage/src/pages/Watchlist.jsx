@@ -149,7 +149,7 @@ export default function Watchlist() {
               Authorization: `Bearer ${token}`,
             },
           });
-          toast.success(n)
+          
         }
       })
       .then((response) => {

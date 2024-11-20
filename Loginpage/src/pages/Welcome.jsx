@@ -34,7 +34,7 @@ export default function Welcome() {
         symbol: coin.item.symbol,
         name: coin.item.name,
         rank: coin.item.market_cap_rank,
-        price: coin.item.price_btc ? `${coin.item.price_btc}` : "N/A",
+        //price: coin.item.price_btc ? `${coin.item.price_btc}` : "N/A",
       }));
       setStocks(coins);
     } catch (err) {
@@ -94,7 +94,6 @@ export default function Welcome() {
                   <th className="px-4 py-2">Ticker</th>
                   <th className="px-4 py-2">Name</th>
                   <th className="px-4 py-2">Rank</th>
-                  <th className="px-4 py-2">Price </th>
                 </tr>
               </thead>
               <tbody>
@@ -117,7 +116,6 @@ export default function Welcome() {
                       {stock.name}
                     </td>
                     <td className="px-4 py-3 text-gray-600">{stock.rank}</td>
-                    <td className="px-4 py-3 text-gray-600">{stock.price}</td>
                   </tr>
                 ))}
               </tbody>
