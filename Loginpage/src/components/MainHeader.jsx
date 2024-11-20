@@ -5,6 +5,7 @@ import profileImage from "../Images/profile_pic.png";
 import logo from "../Images/athenablock.png";
 import grc1 from "../Images/greece.jpg";
 import "../CSS/MainHeader.css";
+import NotificationIcon from "./NotificationIcon";
 
 export default function MainHeader() {
   let navigate = useNavigate();
@@ -98,7 +99,7 @@ export default function MainHeader() {
           backgroundPosition: "center", // Centers both the image and gradient
         }}
       >
-        <nav className="relative flex w-full flex-col overflow-hidden px-2 py-0 md:py-4 md:flex-row md:items-center rounded-3xl ">
+        <nav className="relative flex w-full flex-col overflow-visible px-2 py-0 md:py-4 md:flex-row md:items-center rounded-3xl ">
           <div className="container mx-auto flex justify-between items-center px-4">
             <div className="flex items-center space-x-3">
               <img
@@ -167,9 +168,11 @@ export default function MainHeader() {
               >
                 Documentation
               </Link>
+              <NotificationIcon/>
             </div>
 
             <div className="relative">
+             
               <div
                 className="w-7 h-7 overflow-hidden cursor-pointer"
                 onClick={toggleDropdown}
@@ -179,6 +182,7 @@ export default function MainHeader() {
                   alt="Logo"
                   className="w-full h-full object-cover"
                 />
+                
               </div>
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-35 bg-white border rounded-md shadow-lg p-2">
@@ -188,6 +192,7 @@ export default function MainHeader() {
                   >
                     Profile
                   </button>
+                  
                   <button
                     onClick={handleLogout}
                     className="block w-30 px-4 py-2 text-left text-gray-700 hover:bg-gray-200 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
