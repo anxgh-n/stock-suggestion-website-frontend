@@ -1,0 +1,15 @@
+.red-hat-display-header {
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 400; /* Adjust the weight as needed (300 to 900) */
+    font-style: normal;
+    font-optical-sizing: auto;
+    background-size: cover; /* Ensures the background image covers the header */
+    background-repeat: no-repeat; /* Prevents repetition for both layers */
+    background-position: center; /* Centers the background image */
+    height: 120px; /* Set a fixed height for the header */
+    display: flex;
+    align-items: center; /* Vertically align content */
+    justify-content: center; /* Horizontally center the content */
+    padding: 0 20px; /* Add padding as needed */
+    position: relative; /* Ensure stacking context for z-index */
+  }

@@ -1,16 +1,15 @@
 @keyframes scrollTicker {
-    0% {
-      transform: translateX(0%); /* Start off-screen on the right */
-    }
-    100% {
-      transform: translateX(-100%); /* End off-screen on the left */
-    }
+  0% {
+    transform: translateX(0%); /* Start off-screen on the right */
   }
-  
-  .ticker-scroll {
-    animation: scrollTicker 60s linear infinite; /* Adjust duration as needed */
-    white-space: nowrap; /* Prevent wrapping */
+  100% {
+    transform: translateX(-100%); /* End off-screen on the left */
   }
-  
+}
 
-  
+.ticker-scroll {
+  animation: scrollTicker 60s linear infinite; /* Adjust duration as needed */
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+

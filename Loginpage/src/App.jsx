@@ -21,6 +21,7 @@ import About from './pages/About';
 import Stock from './pages/Stock';
 import Watchlist from './pages/Watchlist';
 import News from './pages/News';
+import GreeceImage from './Images/greece.jpg';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false); // Global loading state
@@ -31,20 +32,16 @@ function App() {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
-      backgroundColor: '#ffffff', // White background
-      position: 'fixed', // Ensures it covers the screen
-      top: 0,
-      left: 0,
-      width: '100%',
-      zIndex: 9999, // Ensures it's above other elements
+      backgroundColor: 'rgba(0, 0, 0, 0.8)', // Background for the loading screen
     },
     animation: {
-      width: '200px', // Adjust animation size
+      width: '200px',
     },
   };
 
   return (
     <AuthProvider>
+
       <BrowserRouter>
         <Toaster position="top-center" />
         <TickerHeader />
@@ -53,6 +50,7 @@ function App() {
             <Lottie animationData={loadingAnimation} style={styles.animation} />
           </div>
         )}
+        
         <Routes>
           <Route element={<LayoutWithNavAndFooter setIsLoading={setIsLoading} />}>
             <Route path="/about" element={<About />} />
