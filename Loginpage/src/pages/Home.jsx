@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Lottie from "lottie-react"; // Correct default import
 import animationData from "../images/loading.json"; // Import your Lottie JSON file
 import grc1 from "../Images/greece.jpg";
-import Footer from "../components/Footer";
 
 export default function Home() {
   const styles = {
