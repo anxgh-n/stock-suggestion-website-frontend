@@ -1,49 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { UserPlus } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useAuth } from '../context/AuthContext';
-import bgImage from '../Images/blue_bg.jpg';
+import bgImage from '../Images/greece2.jpg';
+import logo from "../Images/athenablock.png";
 
-function Login() {
-  const [isLogin, setIsLogin] = useState(true); // Track if it's login or signup form
+function Signup() {
   const [formData, setFormData] = useState({
     username: '',
-    password: '',
     email: '',
-    categoryId: '1', // Default categoryId for signup
+    password: '',
+    categoryId: '1',
   });
   const navigate = useNavigate();
-  const { setToken, setUsername } = useAuth();
 
-  // Toggle between login and signup
-  const toggleForm = () => setIsLogin(!isLogin);
-
-  // Handle login form submission
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:7061/usercredentials/validate-user', formData);
-      if (response.data) {
-        sessionStorage.setItem('token', response.data);
-        sessionStorage.setItem('username', formData.username);
-        setToken(response.data);
-        setUsername(formData.username);
-
-        // Fetch user category
-        await fetchCategoryByUsername(formData.username);
-        toast.success('Login successful!');
-        navigate('/welcome');
-      } else {
-        toast.error('Invalid credentials');
-      }
-    } catch (error) {
-      toast.error('Login failed. Please try again.');
-    }
-  };
-
-  // Handle signup form submission
-  const handleSignup = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:7060/usercredentials/register', formData);
@@ -54,171 +26,96 @@ function Login() {
     }
   };
 
-  // Fetch category data by username (for login)
-  const fetchCategoryByUsername = async (username) => {
-    try {
-      const response = await axios.get(`http://localhost:7061/usercredentials/get-category-by-username/${username}`);
-      if (response.data && response.data.category) {
-        const categoryId = response.data.category.categoryId;
-        sessionStorage.setItem('categoryId', categoryId);
-        console.log('CategoryId set in sessionStorage:', categoryId);
-      }
-    } catch (error) {
-      console.error('Error fetching category:', error);
-    }
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{
-      backgroundImage: `url(${bgImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    }}>
-      <div className="login-wrap">
-        <div className="login-html">
-          <input
-            id="tab-1"
-            type="radio"
-            name="tab"
-            className="sign-in"
-            checked={isLogin}
-            onChange={() => setIsLogin(true)}
-          />
-          <label htmlFor="tab-1" className="tab">Sign In</label>
-          <input
-            id="tab-2"
-            type="radio"
-            name="tab"
-            className="sign-up"
-            checked={!isLogin}
-            onChange={() => setIsLogin(false)}
-          />
-          <label htmlFor="tab-2" className="tab">Sign Up</label>
-
-          <div className="login-form">
-            {/* Login Form */}
-            {isLogin && (
-              <div className="sign-in-htm">
-                <form onSubmit={handleLogin}>
-                  <div className="group">
-                    <label htmlFor="user" className="label">Username</label>
-                    <input
-                      id="user"
-                      type="text"
-                      className="input"
-                      value={formData.username}
-                      onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">Password</label>
-                    <input
-                      id="pass"
-                      type="password"
-                      className="input"
-                      data-type="password"
-                      value={formData.password}
-                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div className="group">
-                    <input
-                      id="check"
-                      type="checkbox"
-                      className="check"
-                      checked
-                      onChange={() => {}}
-                    />
-                    <label htmlFor="check"><span className="icon"></span> Keep me Signed in</label>
-                  </div>
-                  <div className="group">
-                    <input
-                      type="submit"
-                      className="button"
-                      value="Sign In"
-                    />
-                  </div>
-                  <div className="hr"></div>
-                  <div className="foot-lnk">
-                    <Link to="/forgot-password">Forgot Password?</Link>
-                  </div>
-                </form>
-              </div>
-            )}
-
-            {/* Sign Up Form */}
-            {!isLogin && (
-              <div className="sign-up-htm">
-                <form onSubmit={handleSignup}>
-                  <div className="group">
-                    <label htmlFor="user" className="label">Username</label>
-                    <input
-                      id="user"
-                      type="text"
-                      className="input"
-                      value={formData.username}
-                      onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="email" className="label">Email Address</label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="input"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="pass" className="label">Password</label>
-                    <input
-                      id="pass"
-                      type="password"
-                      className="input"
-                      data-type="password"
-                      value={formData.password}
-                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div className="group">
-                    <label htmlFor="category" className="label">Experience</label>
-                    <select
-                      id="category"
-                      className="input"
-                      value={formData.categoryId}
-                      onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })}
-                      required
-                    >
-                      <option value="1">Beginner</option>
-                      <option value="2">Intermediate</option>
-                      <option value="3">Expert</option>
-                    </select>
-                  </div>
-                  <div className="group">
-                    <input
-                      type="submit"
-                      className="button"
-                      value="Sign Up"
-                    />
-                  </div>
-                  <div className="hr"></div>
-                  <div className="foot-lnk">
-                    <Link to="/login">Already a Member?</Link>
-                  </div>
-                </form>
-              </div>
-            )}
+    <div
+      className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center p-4"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="p-10">
+        <div className="bg-black border-white rounded-3xl shadow-xl px-10 py-8 w-full max-w-xl bg-opacity-65">
+        <Link to="/">
+          <div className="flex items-center justify-center mb-12 text-4xl font-extrabold text-white sm:text-4xl">
+            <img
+              src={logo}
+              alt="AthenaChain Logo"
+              className="h-[120px] w-[80px] "
+              style={{
+                transition: "transform 1s ease-out",
+              }}
+            />
           </div>
+          </Link>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-bold text-white mb-2 tracking-[0.1rem]">USERNAME</label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-2 border-b-2 border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
+                  value={formData.username}
+                  onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-white mb-2 tracking-[0.1rem]">EMAIL</label>
+                <input
+                  type="email"
+                  className="w-full px-4 py-2 border-b-2 border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-white mb-2 tracking-[0.1rem]">PASSWORD</label>
+                <input
+                  type="password"
+                  className="w-full px-4 py-2 border-b-2 border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  required
+                />
+              </div>
+              <div>
+  <label className="block text-sm font-bold text-white mb-2 tracking-[0.1rem]">PROFICIENCY</label>
+  <select
+    className="w-full px-4 py-2 border-b-2 border-white bg-transparent text-white focus:ring-0 focus:border-blue-500 focus:border-b-2"
+    style={{
+      color: 'white', // Ensures text color is white
+    }}
+    value={formData.categoryId}
+    onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })}
+    required
+  >
+    <option value="1" className="text-black bg-white">Beginner</option>
+    <option value="2" className="text-black bg-white">Intermediate</option>
+    <option value="3" className="text-black bg-white">Expert</option>
+  </select>
+</div>
+
+            </div>
+            <button
+              type="submit"
+              className="w-full text-black py-2 px-4 rounded-md bg-white hover:bg-black hover:text-white transition duration-200 hover:scale-105"
+            >
+              <strong>Sign In</strong>
+            </button>
+          </form>
+          <p className="mt-6 text-center text-white">
+            <strong>Already have an account?{' '}</strong>
+            <Link to="/login" className="text-white border-white p-1 border-2 border-rounded hover:text-black hover:bg-white hover:rounded hover:p-1 font-medium">
+              Sign in
+            </Link>
+          </p>
         </div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Signup;

@@ -91,12 +91,10 @@ export default function MainHeader() {
   return (
     <>
       <header
-        className="shadow mb-0 sticky top-0 z-50 red-hat-display-header bg-black bg-opacity-30"
+        className="shadow mb-0 sticky top-0 z-50 red-hat-display-header"
         style={{
-          backgroundImage: `url(${grc1}) `,
-          backgroundSize: "cover", // Ensures both gradient and image cover the header
-          backgroundRepeat: "no-repeat", // Prevents repetition for both layers
-          backgroundPosition: "center", // Centers both the image and gradient
+          backgroundColor: "rgba(0, 0, 0, 0.8)", // Transparent header
+          backdropFilter: "blur(10px)", // Optional blur effect for a glassy look
         }}
       >
         <nav className="relative flex w-full flex-col overflow-visible px-2 py-0 md:py-4 md:flex-row md:items-center rounded-3xl ">
@@ -105,7 +103,7 @@ export default function MainHeader() {
               <Link to="/welcome"><img
                 src={logo}
                 alt="AthenaChain Logo"
-                className="h-[120px] w-[80px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
+                className="h-[110px] w-[70px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
                 style={{
                   transition: "transform 1s ease-out", // Slow zoom-out effect with smooth transition
                 }}
@@ -127,7 +125,10 @@ export default function MainHeader() {
                   value={searchQuery}
                   onChange={handleSearchChange}
                   onFocus={handleSearchFocus} // Show suggestions on focus
-                  className="w-full border-b border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none rounded-lg shadow-sm" // Wider input with bottom border only
+                  className="w-full border-b border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none rounded-lg shadow-sm placeholder-black" // Wider input with bottom border only
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.6)", // Slightly opaque background (80% opacity)
+                  }}
                 />
               </form>
               {/* Dropdown for suggestions */}
@@ -158,15 +159,21 @@ export default function MainHeader() {
             <div className="flex space-x-6">
               <Link
                 to="/welcome"
-                className="text-indigo-900 hover:text-black-500 text-lg"
+                className="text-white text-[20px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
               >
-                Home
+                HOME
               </Link>
               <Link
                 to="/docs"
-                className="text-indigo-900 hover:text-black-500 text-lg"
+                className="text-white text-[20px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
               >
-                Documentation
+                DOCS
+              </Link>
+              <Link
+                to="/news"
+                className="text-white text-[20px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
+              >
+                NEWS
               </Link>
               <NotificationIcon/>
             </div>
@@ -174,15 +181,10 @@ export default function MainHeader() {
             <div className="relative">
              
               <div
-                className="w-7 h-7 overflow-hidden cursor-pointer"
+                className="text-black text-[20px] border-2 border-white rounded-full bg-white  hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
                 onClick={toggleDropdown}
               >
-                <img
-                  src={profileImage}
-                  alt="Logo"
-                  className="w-full h-full object-cover"
-                />
-                
+                PROFILE
               </div>
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-35 bg-white border rounded-md shadow-lg p-2">

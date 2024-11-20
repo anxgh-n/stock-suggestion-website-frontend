@@ -18,11 +18,11 @@ import TickerHeader from './components/TickerHeader';
 import CryptoData from './pages/CryptoData';
 import Filter from './pages/Filter';
 import About from './pages/About';
-import Stock from './pages/Stock';
 import Watchlist from './pages/Watchlist';
 import News from './pages/News';
 import GreeceImage from './Images/greece.jpg';
 import NotificationPage from './pages/NotificationPage';
+import ProfileHeader from './components/ProfileHeader';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false); // Global loading state
@@ -33,7 +33,7 @@ function App() {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
-      backgroundColor: 'rgba(0, 0, 0, 0.8)', // Background for the loading screen
+      backgroundColor: 'rgba(255, 255, 255, 0.8)', // Background for the loading screen
     },
     animation: {
       width: '200px',
@@ -58,10 +58,17 @@ function App() {
             <Route path="/" element={<Home />} />
           </Route>
 
+          <Route element={<LoginHeader setIsLoading={setIsLoading} />}>
           <Route path="/login" element={<Login />} />
-          <Route path="/stock" element={<Stock />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/profile" element={<Profile />} />
+          </Route>
+
+          
+
+          <Route element={<ProfileMainHeader setIsLoading={setIsLoading} />}>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/watchlist" element={<Watchlist />} />
+          </Route>
 
           <Route element={<LayoutWithMainHeader setIsLoading={setIsLoading} />}>
             <Route path="/welcome" element={<Welcome />} />
@@ -100,6 +107,35 @@ function LayoutWithMainHeader({ setIsLoading }) {
   return (
     <>
       <MainHeader />
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+}
+
+function ProfileMainHeader({ setIsLoading }) {
+  useLoadingEffect(setIsLoading);
+  return (
+    <>
+      <ProfileHeader />
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+}
+
+function LoginHeader({ setIsLoading }) {
+  useLoadingEffect(setIsLoading);
+  return (
+    <>
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow">
           <Outlet />

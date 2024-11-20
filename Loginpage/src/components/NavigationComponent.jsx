@@ -2,7 +2,6 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import "../CSS/NavigationComponent.css";
 import logo from "../Images/athenablock.png";
-import sky from "../Images/skyimage.jpg";
 
 export default function NavigationComponent() {
   let navigate = useNavigate();
@@ -15,7 +14,7 @@ export default function NavigationComponent() {
       <header
         className="shadow mb-0 sticky top-0 z-50 red-hat-display-header "
         style={{
-          backgroundColor: "black", // Transparent header
+          backgroundColor: "rgba(0, 0, 0, 0.8)", // Transparent header
           backdropFilter: "blur(10px)", // Optional blur effect for a glassy look
         }}
       >
@@ -27,7 +26,7 @@ export default function NavigationComponent() {
                 <img
                 src={logo}
                 alt="AthenaChain Logo"
-                className="h-[120px] w-[80px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
+                className="h-[110px] w-[70px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
                 style={{
                   transition: "transform 1s ease-out",
                 }}
