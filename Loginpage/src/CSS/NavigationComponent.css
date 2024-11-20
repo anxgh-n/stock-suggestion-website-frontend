@@ -1,16 +1,78 @@
-/* Import Squada One Font */
-@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+/* Ensure font is applied */
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
 
-/* Apply Font to Navigation Bar */
-.squada-one-regular {
-  font-family: "Squada One", sans-serif;
-  font-weight: 400;
+/* Header Styling */
+.red-hat-display-header {
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 400; /* Adjust the weight as needed (300 to 900) */
   font-style: normal;
+  font-optical-sizing: auto;
+  background-size: cover; /* Ensures the background image covers the header */
+  background-repeat: no-repeat; /* Prevents repetition for both layers */
+  background-position: center; /* Centers the background image */
+  height: 290px; /* Set a fixed height for the header */
+  display: flex;
+  align-items: center; /* Vertically align content */
+  justify-content: center; /* Horizontally center the content */
+  padding: 0 20px; /* Add padding as needed */
+  position: relative; /* Ensure stacking context for z-index */
 }
 
-
-/* Set up the background with a solid color and gradient */
-.header-background {
-  background: rgb(0, 0, 0), linear-gradient(357deg, rgba(0, 0, 0, 1) 0%, rgba(4, 14, 32, 1) 53%, rgba(3, 8, 17, 1) 80%, rgba(8, 29, 66, 1) 100%);
-  background-blend-mode: overlay; /* Ensures the gradient blends over the solid color */
+/* Animation for Zooming Out Image */
+@keyframes zoomOut {
+  0% {
+    transform: scale(3); /* Start with a super-sized image */
+    opacity: 0; /* Start invisible */
+  }
+  100% {
+    transform: scale(1); /* End at original size */
+    opacity: 1; /* Fully visible */
+  }
 }
+
+.zoom-in-on-load {
+  animation: zoomOut 1.5s ease-out forwards; /* Apply animation */
+}
+
+/* Animation for Right-to-Left Slide */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0; /* Start invisible */
+  }
+  100% {
+    transform: translateX(0); /* End at normal position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+/* Apply the slide-in-right animation to each element */
+.slide-in-right {
+  animation: slideInFromRight 1s ease-out forwards;
+}
+
+.slide-in-right.delay-1 {
+  animation-delay: 0.2s; /* Delay the first element */
+}
+
+.slide-in-right.delay-2 {
+  animation-delay: 0.4s; /* Delay the second element */
+}
+
+.slide-in-right.delay-3 {
+  animation-delay: 0.6s; /* Delay the third element */
+}
+
+/* Ensure Links and Buttons have the same z-index behavior */
+.relative {
+  position: relative; /* Make sure position context is established */
+}
+
+.hover\:scale-110:hover {
+  transform: scale(1.1); /* Smooth scale on hover */
+}
+
+.hover\:z-10:hover {
+  z-index: 10; /* Ensure it's on top during hover */
+}
+

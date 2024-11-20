@@ -25,7 +25,7 @@ export default function TickerHeader() {
   }, []);
 
   return (
-    <header className="shadow-none mb-0 sticky top-0 z-50 bg-black p-0">
+    <header className="shadow-none mb-0 sticky top-0 z-50 bg-[rgba(0,0,0,1)] p-2">
       <nav className="relative flex w-full flex-col overflow-hidden">
         <div className="flex items-center w-full">
           <div className="tickername text-1xl font-light text-white overflow-hidden whitespace-nowrap w-full">
