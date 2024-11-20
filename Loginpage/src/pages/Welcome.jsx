@@ -14,7 +14,7 @@ export default function Welcome() {
 
   const API_URL = ""; // CoinGecko API  https://api.coingecko.com/api/v3/search/trending
   const username = sessionStorage.getItem("username"); // Replace with the actual username or fetch dynamically
-  const BACKEND_URL = `http://localhost:7061/usercredentials/get-questionnaire-status/${username}`; // Backend API
+  const BACKEND_URL = `http://localhost:7060/usercredentials/get-questionnaire-status/${username}`; // Backend API
   const API_TOKEN = "CG-y1GGhURGBtELwoPE88Xk7Vvc";
 
   // Fetch trending coins from the CoinGecko API
@@ -45,7 +45,11 @@ export default function Welcome() {
   // Fetch questionnaire status from the backend
   const fetchQuestionnaireStatus = async () => {
     try {
-      const response = await axios.get(BACKEND_URL);
+      const response = await axios.get(BACKEND_URL,{
+        headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        }
+      });
       setQuestionnaireStatus(response.data); // Directly set the boolean value
       console.log("Questionnaire Status:", response.data);
     } catch (err) {

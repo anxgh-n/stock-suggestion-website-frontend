@@ -8,7 +8,7 @@ export default function Filter() {
 
   const username = sessionStorage.getItem("username");
   const categoryId = sessionStorage.getItem("categoryId"); // Get categoryId from sessionStorage
-  const questionAnswersUrl = `http://localhost:7065/answer/get-questions-with-answers/${username}`;
+  const questionAnswersUrl = `http://localhost:7060/answer/get-questions-with-answers/${username}`;
   const stocksUrl =
     ""; //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
 
@@ -17,7 +17,11 @@ export default function Filter() {
     console.log(username);
     console.log(categoryId);
     axios
-      .get(questionAnswersUrl)
+      .get(questionAnswersUrl,{
+        headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        }
+      })
       .then((response) => {
         setUserAnswers(response.data.questions || []);
       })

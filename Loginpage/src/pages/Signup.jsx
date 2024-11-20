@@ -46,7 +46,7 @@ function Login() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:7061/usercredentials/register', formData);
+      await axios.post('http://localhost:7060/usercredentials/register', formData);
       toast.success('Registration successful! Please login.');
       navigate('/login');
     } catch (error) {

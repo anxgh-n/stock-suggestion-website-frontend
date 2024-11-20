@@ -44,13 +44,14 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        'http://localhost:7061/usercredentials/validate-user',
-        formData
-      );
+      const response = await axios.post('http://localhost:7060/usercredentials/validate-user', formData);
       if (response.data) {
         sessionStorage.setItem('token', response.data);
-        sessionStorage.setItem('username', formData.username);
+        console.log(sessionStorage.getItem("token"));
+        // localStorage.setItem('username', formData.username);
+        sessionStorage.setItem('username',formData.username);
+        console.log(sessionStorage.getItem('username'));
+        // console.log(`username is set:${sessionStorage.getItem("username")}`);
         setToken(response.data);
         setUsername(formData.username);
 

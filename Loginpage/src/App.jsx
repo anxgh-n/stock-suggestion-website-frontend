@@ -17,7 +17,7 @@ import CryptoData from './pages/CryptoData';
 import Filter from './pages/Filter';
 import About from './pages/About';
 import Stock from './pages/Stock';
-
+import Watchlist from './pages/Watchlist';
 // const PrivateRoute = ({ children }) => {
 //   const { token } = useAuth();
 //   return token ? <>{children}</> : <Navigate to="/login" />;
@@ -47,12 +47,13 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
           
+          
           {/* <Route path="/questionaire" element={<Questionaire />} ></Route> */}
 
 
           <Route element={<LayoutWithMainHeader/>}>
             <Route path="/welcome" element={<Welcome />} />
-            
+            <Route path="/watchlist" element={<Watchlist/>}/>
             <Route path="/docs" element={<Documentation/>}/>
             <Route path="/questionaire" element={<Questionaire/>}/>
             <Route path='/filter' element={<Filter></Filter>}></Route>
