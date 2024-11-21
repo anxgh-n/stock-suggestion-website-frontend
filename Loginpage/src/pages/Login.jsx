@@ -45,7 +45,6 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-<<<<<<< HEAD
       const response = await axios.post('http://localhost:7060/usercredentials/validate-user', formData,
         {
           headers: {
@@ -56,15 +55,6 @@ function Login() {
       if (response.data) {
         sessionStorage.setItem('token', response.data);
        // console.log(sessionStorage.getItem("token"));
-=======
-      const response = await axios.post(
-        "http://localhost:7060/usercredentials/validate-user",
-        formData
-      );
-      if (response.data) {
-        sessionStorage.setItem("token", response.data);
-        console.log(sessionStorage.getItem("token"));
->>>>>>> 1c5683591800263312141580cbb80e9e18f24322
         // localStorage.setItem('username', formData.username);
         sessionStorage.setItem("username", formData.username);
         console.log(sessionStorage.getItem("username"));
