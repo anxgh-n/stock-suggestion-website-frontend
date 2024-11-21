@@ -94,9 +94,9 @@ export default function Welcome() {
             ) : stocks.length === 0 ? (
               <p className="text-gray-500">Loading data...</p>
             ) : (
-              <table className="w-full text-left shadow-lg overflow-hidden rounded-[40px]">
+              <table className="w-full text-left shadow-lg border border-white border-2 overflow-hidden rounded-[20px]">
                 <thead
-                  className="text-white uppercase text-sm rounded-t-lg "
+                  className="text-black uppercase text-sm rounded-t-lg "
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
                 >
                   <tr>
@@ -111,7 +111,7 @@ export default function Welcome() {
                     <tr
                       key={index}
                       className={`${
-                        index % 2 === 0 ? "bg-[#1c0513]" : "bg-[#0f0b0e]"
+                        index % 2 === 0 ? "bg-black" : "bg-[#1b1b1c]"
                       } hover:bg-[#520231] transition-colors cursor-pointer`}
                       onClick={() => handleRowClick(stock.id)} // Add click event
                     >
@@ -159,17 +159,17 @@ export default function Welcome() {
                     </button>
                   </div>
                 ) : (
-                  <div className="bg-blue-100 p-6 mx-20 rounded-lg ">
-                    <h2 className="text-2xl font-bold text-indigo-900 mb-4">
+                  <div className="p-6 mx-20 rounded-lg " style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
+                    <h2 className="text-2xl font-bold text-[#992366] mb-4">
                       Fill Questionnaire
                     </h2>
-                    <p className="text-gray-700 mb-6">
+                    <p className="text-[#a84c80] mb-6">
                       Fill the questionnaire to explore more coin options
                       tailored to your interests.
                     </p>
                     <button
                       onClick={handleQuestionnaireButton}
-                      className="rounded-md border-2 border-indigo-900 px-6 py-2 font-medium text-indigo-900 transition-colors hover:bg-indigo-900 hover:text-white"
+                      className="rounded-md border-2 border-[#992366] px-6 py-2 font-medium text-[#992366] transition-colors hover:bg-[#992366] hover:text-white"
                     >
                       Fill Questionnaire
                     </button>
