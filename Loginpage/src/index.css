@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    @apply bg-white; /* This will ensure the background is white */
-  }
+body{
+
+    @apply bg-white;
+}

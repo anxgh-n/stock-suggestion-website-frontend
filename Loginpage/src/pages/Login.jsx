@@ -45,13 +45,16 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:7060/usercredentials/validate-user",
-        formData
+      const response = await axios.post('http://localhost:7060/usercredentials/validate-user', formData,
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+          },
+        }
       );
       if (response.data) {
-        sessionStorage.setItem("token", response.data);
-        console.log(sessionStorage.getItem("token"));
+        sessionStorage.setItem('token', response.data);
+       // console.log(sessionStorage.getItem("token"));
         // localStorage.setItem('username', formData.username);
         sessionStorage.setItem("username", formData.username);
         console.log(sessionStorage.getItem("username"));

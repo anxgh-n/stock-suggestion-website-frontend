@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { GoBookmarkSlashFill, GoBellFill } from "react-icons/go";
+import ProfileHeader from "../components/ProfileHeader";
 
 export default function Watchlist() {
   const [watchlist, setWatchlist] = useState([]);
@@ -201,7 +202,16 @@ export default function Watchlist() {
         if (!response.ok) {
           throw new Error("Failed to save or update notification");
         }
-        setNotifiedStocks((prev) => new Set([...prev, selectedStock.id]));
+
+        // Update threshold in the table
+        setMergedData((prevData) =>
+          prevData.map((item) =>
+            item.id === selectedStock.id
+              ? { ...item, threshold: thresholdValue }
+              : item
+          )
+        );
+
         handleCloseModal();
       })
       .catch((error) => {
@@ -219,6 +229,8 @@ export default function Watchlist() {
   }
 
   return (
+    <>
+    <ProfileHeader/>
     <div className="flex flex-col items-center min-h-screen bg-gray-100 py-10">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Watchlist</h1>
       <div className="overflow-x-auto">
@@ -278,6 +290,36 @@ export default function Watchlist() {
           </tbody>
         </table>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-xl font-bold mb-4">Set Threshold</h2>
+            <input
+              type="number"
+              value={thresholdValue}
+              onChange={(e) => setThresholdValue(e.target.value)}
+              className="border border-gray-300 rounded-md p-2 w-full"
+            />
+            <div className="flex justify-end mt-4">
+              <button
+                onClick={handleCloseModal}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md mr-2"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSaveThreshold}
+                className="bg-blue-500 text-white px-4 py-2 rounded-md"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
+    </>
   );
 }

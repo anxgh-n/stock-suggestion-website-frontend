@@ -67,12 +67,12 @@ function App() {
 
           <Route element={<ProfileMainHeader setIsLoading={setIsLoading} />}>
             <Route path="/profile" element={<Profile />} />
-            <Route path="/watchlist" element={<Watchlist />} />
+           
           </Route>
-
+           
           <Route element={<LayoutWithMainHeader setIsLoading={setIsLoading} />}>
+            
             <Route path="/welcome" element={<Welcome />} />
-            <Route path="/watchlist" element={<Watchlist />} />
             <Route path = "/notifications" element={<NotificationPage/>}/>
             <Route path="/news" element={<News/>}></Route>
             <Route path="/docs" element={<Documentation />} />
@@ -80,6 +80,8 @@ function App() {
             <Route path="/filter" element={<Filter />} />
             <Route path="/crypto/:id" element={<CryptoData />} />
           </Route>
+          
+          <Route path="/watchlist" element={<Watchlist />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
