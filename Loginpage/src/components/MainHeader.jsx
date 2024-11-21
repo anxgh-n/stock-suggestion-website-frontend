@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import profileImage from "../Images/profile_pic.png";
 import logo from "../Images/athenablock.png";
-import gr1 from "../Images/greece.jpg";
 import NotificationIcon from "./NotificationIcon";
 import iconn from "../Images/menuop.png";
 
@@ -179,24 +177,24 @@ export default function MainHeader() {
                 />
               </div>
               {isDropdownOpenTwo && (
-                <div className="absolute right-0 mt-2 w-35 bg-white border rounded-md shadow-lg p-2">
+                <div className="absolute right-0 mt-2 w-35 bg-black  rounded-md shadow-lg p-2">
                   <button
                     onClick={handleHome}
-                    className="block w-30 px-4 py-2 text-left text-gray-700 hover:bg-gray-200 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
+                    className="block w-30 px-4 py-2 text-left text-white hover:bg-gray-800 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
                   >
-                    HOME
+                    Home
                   </button>
                   <button
                     onClick={handleDocs}
-                    className="block w-30 px-4 py-2 text-left text-gray-700 hover:bg-gray-200 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
+                    className="block w-30 px-4 py-2 text-left text-white hover:bg-gray-800 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
                   >
-                    DOCS
+                    Documentation
                   </button>
                   <button
                     onClick={handleNews}
-                    className="block w-30 px-4 py-2 text-left text-gray-700 hover:bg-gray-200 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
+                    className="block w-30 px-4 py-2 text-left text-white hover:bg-gray-800 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
                   >
-                    NEWS
+                    News
                   </button>
                 </div>
               )}
@@ -210,17 +208,17 @@ export default function MainHeader() {
                 PROFILE
               </div>
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-35 bg-white border rounded-md shadow-lg p-2">
+                <div className="absolute right-0 mt-2 w-35 bg-black rounded-md shadow-lg p-2">
                   <button
                     onClick={handleProfile}
-                    className="block w-30 px-4 py-2 text-left text-gray-700 hover:bg-gray-200 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
+                    className="block w-30 px-4 py-2 text-left text-white hover:bg-gray-800 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
                   >
                     Profile
                   </button>
 
                   <button
                     onClick={handleLogout}
-                    className="block w-30 px-4 py-2 text-left text-gray-700 hover:bg-gray-200 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
+                    className="block w-30 px-4 py-2 text-left text-white hover:bg-gray-800  hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
                   >
                     Logout
                   </button>

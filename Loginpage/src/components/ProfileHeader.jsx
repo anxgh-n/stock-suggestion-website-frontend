@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import "../CSS/NavigationComponent.css";
 import logo from "../Images/athenablock.png";
-import gr1 from "../Images/greece.jpg"
+import NotificationIcon from "./NotificationIcon";
+import iconn from "../Images/menuop.png";
 
 export default function ProfileHeader() {
   let navigate = useNavigate();
@@ -10,27 +10,24 @@ export default function ProfileHeader() {
   return (
     <>
       {/* Navigation Bar with Dark Gradient */}
-      <header
-        className="shadow mb-0 sticky top-0 z-0 red-hat-display-header"
-        style={{
-          backgroundColor: "rgba(0, 0, 0)", // Transparent header
-          backdropFilter: "blur(10px)", // Optional blur effect for a glassy look
-          padding: "10px 0", // Reduce padding to shrink the height
-        }}
-      >
-        <nav className="relative flex w-full h-20 flex-col bg-transparent overflow-hidden px-2 py-1 md:py-1 md:flex-row md:items-center">
+      <header className="shadow mb-0 sticky top-0 z-0 red-hat-display-header h-[100px] bg-black">
+        <nav className="relative flex w-full h-20 flex-col bg-transparent overflow-hidden px-2 py-1 md:py-1 md:flex-row md:items-center rounded-3xl">
           <div className="container mx-auto w-full flex justify-between items-center px-4">
-            {/* Logo */}
             <div className="flex items-center space-x-3">
-              
-              <div className="text-white flex flex-col text-left">
-                <span className="text-[30px] font-bold leading-none slide-in-right">
-                  ATHENA
-                </span>
-                <span className="text-[30px] font-bold leading-none slide-in-right">
-                  CHAIN
-                </span>
-              </div>
+            <Link to="/">
+                <img
+                  src={logo}
+                  alt="AthenaChain Logo"
+                  className="h-[80px] w-[50px] overflow-visible "
+                />
+              </Link>
+              <Link to="/">
+                <div className="text-white flex flex-col text-left">
+                  <span className="text-[50px] font-bold leading-none">
+                    AthenaChain
+                  </span>
+                </div>
+              </Link>
             </div>
 
             {/* Navigation Links */}
