@@ -11,7 +11,7 @@ export default function ProfileHeader() {
     <>
       {/* Navigation Bar with Dark Gradient */}
       <header
-        className="shadow mb-0 sticky top-0 z-0 red-hat-display-header"
+        className="shadow mb-0 sticky top-0 z-2 red-hat-display-header"
         style={{
           backgroundColor: "rgba(0, 0, 0)", // Transparent header
           backdropFilter: "blur(10px)", // Optional blur effect for a glassy look
@@ -25,10 +25,7 @@ export default function ProfileHeader() {
               
               <div className="text-white flex flex-col text-left">
                 <span className="text-[30px] font-bold leading-none slide-in-right">
-                  ATHENA
-                </span>
-                <span className="text-[30px] font-bold leading-none slide-in-right">
-                  CHAIN
+                  ATHENACHAIN
                 </span>
               </div>
             </div>
@@ -40,18 +37,6 @@ export default function ProfileHeader() {
                 className="text-white text-[16px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
               >
                 HOME
-              </Link>
-              <Link
-                to="/profile"
-                className="text-white text-[16px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
-              >
-                PROFILE
-              </Link>
-              <Link
-                to="/watchlist"
-                className="text-white text-[16px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
-              >
-                WATCHLIST
               </Link>
               <Link
                 to="/"

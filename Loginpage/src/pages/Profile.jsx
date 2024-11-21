@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios"; // We will use axios to make HTTP requests
+import axios from "axios";
 
 const Profile = () => {
-  // Define state variables
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [backgroundColor] = useState(getRandomColor()); // Initialize only once
 
-  // Function to fetch user data
   const fetchUserData = async () => {
-    const username = sessionStorage.getItem('username');
-    const token = sessionStorage.getItem('token');
+    const username = sessionStorage.getItem("username");
+    const token = sessionStorage.getItem("token");
     const url = `http://localhost:7060/usercredentials/get-user-by-id/${username}`;
 
     try {
@@ -18,24 +18,21 @@ const Profile = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setUser(response.data); // Store the user data in state
+      setUser(response.data);
     } catch (err) {
       setError("Failed to fetch user data");
       console.error("Error fetching user data:", err);
     }
   };
 
-  // Fetch user data on component mount
   useEffect(() => {
     fetchUserData();
   }, []);
 
-  // Check if user data is available
   if (!user) {
     return <div>Loading...</div>;
   }
 
-  // Determine category based on categoryId
   const getCategory = (categoryId) => {
     switch (categoryId) {
       case "1":
@@ -49,92 +46,86 @@ const Profile = () => {
     }
   };
 
-  // Generate random background color (excluding white)
-  const getRandomColor = () => {
+  function getRandomColor() {
     const letters = "0123456789ABCDEF";
     let color = "#";
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color === "#FFFFFF" ? getRandomColor() : color;
-  };
+  }
 
-  const backgroundColor = getRandomColor();
-  const firstLetter = user.username.charAt(0).toUpperCase(); // Get the first letter of the username
+  const firstLetter = user.username.charAt(0).toUpperCase();
 
   const styles = {
     container: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'flex-start', // Align to the top of the viewport
-      minHeight: '100vh',
-      background: '#f0f2f5',
-      paddingTop: '50px', // This will move the card upwards a little bit
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "flex-start",
+      minHeight: "100vh",
+      background: "#f0f2f5",
+      zIndex: 1,
+      paddingTop: "100px",
     },
     profileCard: {
-      width: '350px',
-      borderRadius: '10px',
-      backgroundColor: 'white',
-      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-      overflow: 'hidden',
-      textAlign: 'center',
-      padding: '20px',
-      transition: 'all 0.3s ease-in-out',
-    },
-    profileCardHover: {
-      transform: 'translateY(-10px)',
-      boxShadow: '0 8px 12px rgba(0, 0, 0, 0.2)',
+      width: "350px",
+      borderRadius: "30px",
+      backgroundColor: "white",
+      overflow: "hidden",
+      textAlign: "center",
+      padding: "20px",
+      transition: "all 0.3s ease-in-out",
+      transform: isHovered ? "translateY(-10px)" : "translateY(0)",
+      boxShadow: isHovered
+        ? "0 8px 12px rgba(0, 0, 0, 0.2)"
+        : "0 4px 6px rgba(0, 0, 0, 0.1)",
     },
     profileHeader: {
-      marginBottom: '20px',
+      marginBottom: "20px",
     },
     profileImage: {
-      width: '80px',
-      height: '80px',
-      borderRadius: '50%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      color: 'white',
-      fontSize: '30px',
-      fontWeight: 'bold',
-      margin: '0 auto',
-      backgroundColor: backgroundColor,
+      width: "80px",
+      height: "80px",
+      borderRadius: "50%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      color: "white",
+      fontSize: "30px",
+      fontWeight: "bold",
+      margin: "0 auto",
+      backgroundColor: backgroundColor, // Static color
     },
     profileName: {
-      marginTop: '10px',
-      fontSize: '24px',
-      fontWeight: '600',
-      color: '#333',
+      marginTop: "10px",
+      fontSize: "30px",
+      fontWeight: "600",
+      color: "#333",
     },
     profileEmail: {
-      color: '#777',
-      fontSize: '14px',
-      marginTop: '5px',
+      color: "blue",
+      fontSize: "17px",
+      marginTop: "5px",
     },
     profileBody: {
-      marginTop: '20px',
+      marginTop: "20px",
     },
     profileCategory: {
-      fontSize: '16px',
-      color: '#555',
-      fontWeight: '500',
+      fontSize: "20px",
+      color: "black",
+      fontWeight: "500",
     },
   };
 
   return (
     <div style={styles.container}>
       <div
-        style={{
-          ...styles.profileCard,
-          ...(styles.profileCardHover), // Hover effect
-        }}
+        style={styles.profileCard}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <div style={styles.profileHeader}>
-          {/* Profile circle with first letter */}
-          <div style={styles.profileImage}>
-            {firstLetter}
-          </div>
+          <div style={styles.profileImage}>{firstLetter}</div>
           <h4 style={styles.profileName}>{user.username}</h4>
           <p style={styles.profileEmail}>{user.email}</p>
         </div>

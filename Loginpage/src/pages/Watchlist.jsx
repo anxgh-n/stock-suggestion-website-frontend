@@ -230,7 +230,6 @@ export default function Watchlist() {
 
   return (
     <>
-      <ProfileHeader />
       <div className="flex flex-col items-center min-h-screen bg-gray-100 py-10 px-4">
         <h1 className="text-3xl font-semibold text-gray-900 mb-6">Your Watchlist</h1>
         <div className="overflow-x-auto w-full max-w-6xl">

@@ -5,8 +5,6 @@ import upp from "../Images/upwardb.png";
 import downn from "../Images/downwardb.png";
 import axios from "axios";
 import toast from "react-hot-toast";
-import grc1 from "../Images/greece.jpg";
-//import { toast } from "react-toastify";
 
 function CryptoData() {
   const { id } = useParams();
@@ -386,21 +384,7 @@ function CryptoData() {
       </div>
 
       {/* New Div Bar Section */}
-      <div className="desc w-full p-4 bg-gray-100 rounded-xl shadow-md">
-  <div className="flex items-center justify-center space-x-5 mt-10">
-    <button
-      className={`${
-        activeTab === "description"
-          ? "border-b-4 border-blue-500"
-          : "text-gray-600"
-      } text-lg`}
-    >
-      Description
-    </button>
-  </div>
-  
- 
-</div>
+      
 
     </div>
   );
