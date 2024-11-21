@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Filter() {
   const [stocks, setStocks] = useState([]);
   const [filteredStocks, setFilteredStocks] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
-
+  let navigate = useNavigate();
   const username = sessionStorage.getItem("username");
   const categoryId = sessionStorage.getItem("categoryId"); // Get categoryId from sessionStorage
   const questionAnswersUrl = `http://localhost:7060/answer/get-questions-with-answers/${username}`;
@@ -229,15 +230,20 @@ export default function Filter() {
     setFilteredStocks(filtered);
   };
 
+  const handleRowClick = (id) => {
+    navigate(`/crypto/${id}`); // Navigate to the stock details page
+  };
+
   return (
-    <div className="max-w-4xl mx-5 p-2 bg-white rounded-lg shadow-lg">
+    <div className="max-w-4xl  mx-20 p-2 bg-gray-300 rounded-lg shadow-lg">
       {filteredStocks.length > 0 ? (
         <ul className="space-y-5">
           {/* Slice the first 3 stocks */}
           {filteredStocks.slice(0, 3).map((stock) => (
             <li
               key={stock.id}
-              className="flex items-center space-x-4 bg-gray-100 p-1 rounded-lg shadow-sm hover:bg-gray-200 transition duration-200"
+              className="flex items-center space-x-4 bg-gray-300 p-1 rounded-lg shadow-sm hover:bg-gray-200 transition duration-200"
+              onClick={() => handleRowClick(stock.id)}
             >
               <img
                 src={stock.image}
