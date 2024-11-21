@@ -103,7 +103,7 @@ function Login() {
               </label>
               <input
                 type="text"
-                className="w-full px-4 py-2 border-b-2 border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
+                className="w-full px-4 py-2 border-b-2 text-white border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
                 value={formData.username}
                 onChange={(e) =>
                   setFormData({ ...formData, username: e.target.value })
@@ -117,7 +117,7 @@ function Login() {
               </label>
               <input
                 type="password"
-                className="w-full px-4 py-2 border-b-2 border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
+                className="w-full px-4 py-2 border-b-2 text-white border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
                 value={formData.password}
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })

@@ -97,8 +97,8 @@ export default function MainHeader() {
           backdropFilter: "blur(10px)", // Optional blur effect for a glassy look
         }}
       >
-        <nav className="relative flex w-full flex-col overflow-visible px-2 py-0 md:py-4 md:flex-row md:items-center rounded-3xl ">
-          <div className="container mx-auto flex justify-between items-center px-4">
+        <nav className="relative flex w-full h-8 flex-col overflow-visible px-2 py-0 md:py-4 md:flex-row md:items-center rounded-3xl ">
+          <div className="container mx-auto h-5 flex justify-between items-center px-4">
             <div className="flex items-center space-x-3">
               <Link to="/welcome"><img
                 src={logo}
@@ -175,7 +175,7 @@ export default function MainHeader() {
               >
                 NEWS
               </Link>
-              <NotificationIcon/>
+              
             </div>
 
             <div className="relative">
@@ -186,6 +186,8 @@ export default function MainHeader() {
               >
                 PROFILE
               </div>
+              
+              
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-35 bg-white border rounded-md shadow-lg p-2">
                   <button
@@ -201,9 +203,12 @@ export default function MainHeader() {
                   >
                     Logout
                   </button>
+                  
                 </div>
               )}
             </div>
+            {/* <NotificationIcon/> */}
+
           </div>
         </nav>
       </header>

@@ -1,4 +1,5 @@
 import React from "react";
+import { FaEnvelope, FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -11,29 +12,55 @@ export default function Footer() {
           alt="Logo"
         /> */}
       </div>
+
+      {/* Footer Heading */}
       
-      {/* Navigation Links */}
-      <nav
-        aria-label="Footer Navigation"
-        className="mx-auto mb-10 flex max-w-lg flex-col gap-10 text-center sm:flex-row sm:text-left"
-      >
-        <a href="#" className="font-medium text-white">
-          Demo
+
+      {/* Main Footer Content: Flex layout to divide into left and right sections */}
+      <div className="flex justify-between text-gray-300">
+        {/* Left Section: Quick Links */}
+        <div className="flex flex-col items-start gap-2">
+          <h3 className="text-lg font-bold text-white">Quick Links</h3>
+          <nav className="flex flex-col gap-1">
+            <a href="#" className="font-medium text-white hover:text-sky-500">
+              Home
+            </a>
+            <a href="#" className="font-medium text-white hover:text-sky-500">
+              About
+            </a>
+          </nav>
+        </div>
+        <h2 className="text-center text-white text-xl font-bold mb-6">
+        Athena Chain
+      </h2>
+
+        {/* Right Section: Contact Us */}
+        <div className="flex flex-col items-start gap-2">
+          <h3 className="text-lg font-bold text-white">Contact Us</h3>
+          <p>Phone: +1 234 567 890</p>
+          <p>Email: athenachain8@gmail.com</p>
+        </div>
+      </div>
+
+      {/* Social Media Icons: Centered and aligned horizontally */}
+      <div className="mt-6 flex justify-center gap-6 text-gray-300">
+        <a href="mailto:contact@athenachain.com" className="text-2xl hover:text-white">
+          <FaEnvelope />
         </a>
-        <a href="#" className="font-medium text-white">
-          Support
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-white">
+          <FaLinkedin />
         </a>
-        <a href="#" className="font-medium text-white">
-          Privacy Policy
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-white">
+          <FaTwitter />
         </a>
-        <a href="#" className="font-medium text-white">
-          Terms & Conditions
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-white">
+          <FaGithub />
         </a>
-      </nav>
+      </div>
 
       {/* Footer Text */}
-      <p className="py-10 text-center text-gray-300">
-        © 2024 StockWise | All Rights Reserved
+      <p className="py-6 text-center text-gray-300">
+        © 2024 Athena Chain | All Rights Reserved
       </p>
     </footer>
   );

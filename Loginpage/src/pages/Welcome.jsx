@@ -133,7 +133,7 @@ export default function Welcome() {
           {!loadingStatus && (
             <>
               {questionnaireStatus ? (
-                <div className="bg-green-100 p-6 rounded-lg">
+                <div className="bg-green-100 p-6 rounded-lg mx-20 w-100">
                   <h2 className="text-2xl font-bold text-green-900 mb-4">
                     Filtered Stocks
                   </h2>
@@ -149,7 +149,7 @@ export default function Welcome() {
                   </button>
                 </div>
               ) : (
-                <div className="bg-blue-100 p-6 rounded-lg">
+                <div className="bg-blue-100 p-6 mx-20 rounded-lg ">
                   <h2 className="text-2xl font-bold text-indigo-900 mb-4">
                     Fill Questionnaire
                   </h2>
