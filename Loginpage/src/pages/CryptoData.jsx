@@ -399,24 +399,7 @@ function CryptoData() {
     </button>
   </div>
   
-  <div className="mt-4">
-    {exchangeData.length > 0 ? (
-      exchangeData.map((exchange) => (
-        <div key={exchange.id} className="exchange-info p-4 bg-white rounded-lg shadow-md mb-4">
-          <h3 className="text-xl font-bold">{exchange.name}</h3>
-          <p><strong>Year Established:</strong> {exchange.year_established || "N/A"}</p>
-          <p><strong>Country:</strong> {exchange.country || "N/A"}</p>
-          <p><strong>Description:</strong> {exchange.description || "No description available."}</p>
-          <p><strong>URL:</strong> <a href={exchange.url} target="_blank" rel="noopener noreferrer">{exchange.url}</a></p>
-          {exchange.image && <img src={exchange.image} alt={exchange.name} className="w-32 h-32 object-cover mt-2" />}
-          <p><strong>Trust Score:</strong> {exchange.trust_score}</p>
-          <p><strong>Trust Score Rank:</strong> {exchange.trust_score_rank}</p>
-        </div>
-      ))
-    ) : (
-      <p>Loading exchange data...</p>
-    )}
-  </div>
+ 
 </div>
 
     </div>
