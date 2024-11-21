@@ -2,21 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
 
 /* Header Styling */
-.red-hat-display-header {
-  font-family: "Red Hat Display", sans-serif;
-  font-weight: 400; /* Adjust the weight as needed (300 to 900) */
-  font-style: normal;
-  font-optical-sizing: auto;
-  background-size: cover; /* Ensures the background image covers the header */
-  background-repeat: no-repeat; /* Prevents repetition for both layers */
-  background-position: center; /* Centers the background image */
-  height: 200px; /* Set a fixed height for the header */
-  display: flex;
-  align-items: center; /* Vertically align content */
-  justify-content: center; /* Horizontally center the content */
-  padding: 0 20px; /* Add padding as needed */
-  position: relative; /* Ensure stacking context for z-index */
-}
+
 
 /* Animation for Zooming Out Image */
 @keyframes slideInFromLeft {
@@ -56,16 +42,5 @@
   animation-delay: 3.5s; /* Delay the first element */
 }
 
-/* Ensure Links and Buttons have the same z-index behavior */
-.relative {
-  position: relative; /* Make sure position context is established */
-}
 
-.hover\:scale-110:hover {
-  transform: scale(1.1); /* Smooth scale on hover */
-}
-
-.hover\:z-10:hover {
-  z-index: 10; /* Ensure it's on top during hover */
-}
 

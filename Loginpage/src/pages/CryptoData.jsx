@@ -383,7 +383,6 @@ function CryptoData() {
         </div>
       </div>
 
-      {/* New Div Bar Section */}
       
 
     </div>

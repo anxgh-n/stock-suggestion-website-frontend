@@ -1,101 +1,91 @@
-import { LogOut } from "lucide-react";
-import NavigationComponent from "../components/NavigationComponent";
-import React, { useState, useEffect } from "react";
-import Lottie from "lottie-react"; // Correct default import
-import animationData from "../images/loading.json"; // Import your Lottie JSON file
-import grc1 from "../Images/greece.jpg";
+import React from "react";
+import hmabImage from "../Images/homeaboutBg.png";
+import logoImage from "../Images/athenablock.png"; // Import the logo image
+import { Link } from "react-router-dom";
 
 export default function Home() {
-  
-
   return (
-    <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 bg-white">
-      {/* Grid */}
-      <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
-        <div>
-          <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
-            Start your journey with <span className="text-blue-600">Preline</span>
-          </h1>
-          <p className="mt-3 text-lg text-gray-800 dark:text-neutral-400">
-            Hand-picked professionals and expertly crafted components, designed for any kind of entrepreneur.
-          </p>
-
-          {/* Buttons */}
-          <div className="mt-7 grid gap-3 w-full sm:inline-flex">
-            <a
-              className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-              href="#"
-            >
-              Get started
-              <svg
-                className="shrink-0 size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </a>
-            <a
-              className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
-              href="#"
-            >
-              Contact sales team
-            </a>
-          </div>
-          {/* End Buttons */}
-
-          {/* Review */}
-          <div className="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
-            {/* Review */}
-            <div className="py-5">
-              <div className="flex gap-x-1">
-                <svg
-                  className="size-4 text-gray-800 dark:text-neutral-200"
-                  width="51"
-                  height="51"
-                  viewBox="0 0 51 51"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z" fill="currentColor" />
-                </svg>
-                <svg
-                  className="size-4 text-gray-800 dark:text-neutral-200"
-                  width="51"
-                  height="51"
-                  viewBox="0 0 51 51"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z" fill="currentColor" />
-                </svg>
-                <svg
-                  className="size-4 text-gray-800 dark:text-neutral-200"
-                  width="51"
-                  height="51"
-                  viewBox="0 0 51 51"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z" fill="currentColor" />
-                </svg>
-              </div>
-
-              <p className="mt-3 text-sm text-gray-800 dark:text-neutral-400">
-                Based on 12k reviews
-              </p>
-            </div>
-            {/* End Review */}
-          </div>
+    <div
+      className="min-h-screen bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${hmabImage})`,
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Hero Section */}
+      <div className=" flex flex-col items-center justify-center text-white bg-transparent bg-opacity-60 pt-10 pb-20">
+        {/* Logo Section */}
+        <img src={logoImage} alt="Logo" className="mb-4 w-32 md:w-40" /> {/* Logo above the title */}
+        
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 text-center">
+          Simplify Your Crypto Journey
+        </h1>
+        <p className="text-lg md:text-xl mb-6 text-center max-w-2xl">
+          Discover the best cryptocurrencies, tailored to your preferences, and
+          make informed investment decisions with ease.
+        </p>
+        <div className="flex space-x-4">
+          <Link to="/login">
+            <button className="bg-[#821b57] hover:bg-[#4f0d33] text-white font-semibold py-3 px-8 rounded-full">
+              Get Started
+            </button>
+          </Link>
         </div>
       </div>
+
+      <div className="w-full border-t-2 border-gray-600"></div>
+
+      {/* Features Section */}
+      <section className=" text-white py-12 px-6"
+      style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+          Key Features
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+            <h3 className="text-xl font-semibold mb-3">Trending Cryptocurrencies</h3>
+            <p>Stay updated with the Top Trending Cryptocurrencies.</p>
+          </div>
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+            <h3 className="text-xl font-semibold mb-3">Personalized Recommendations</h3>
+            <p>Try out our personalized questionnaire and get crypto suggestions tailored to your investment goals.</p>
+          </div>
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+            <h3 className="text-xl font-semibold mb-3">Educational Resources</h3>
+            <p>Learn about crypto investing with beginner-friendly our documentation which is available on successful <Link to="/login"> <span className="text-blue-500">SignIn</span> </Link>.</p>
+          </div>
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+            <h3 className="text-xl font-semibold mb-3">Live News Updates</h3>
+            <p>Get daily news updates to stay informed on market trends.</p>
+          </div>
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+            <h3 className="text-xl font-semibold mb-3">Watchlist & Notifications</h3>
+            <p>Track your favorite coins and receive real-time alerts.</p>
+          </div>
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+            <h3 className="text-xl font-semibold mb-3">Secure Transactions</h3>
+            <p>Your data is protected with JWT-based secure authentication.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Beginner Resources Section */}
+      <section className="bg-transparent text-white py-12 px-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+        Not Sure What we Offer?
+        </h2>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+          <div className=" p-6 rounded-lg max-w-md shadow-md hover:shadow-lg transition " style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+            <h3 className="text-xl font-semibold mb-3">Our Goals</h3>
+            <p>Start your crypto journey by knowing what we stand for by going through our <Link to="/about"> <span className="text-blue-500">About Page</span> </Link> .</p>
+          </div>
+          <div className=" p-6 rounded-lg max-w-md shadow-md hover:shadow-lg transition " style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+            <h3 className="text-xl font-semibold mb-3">Take our quick Questionnaire</h3>
+            <p>Take up the short Quiz from our Homepage after  <Link to="/login"> <span className="text-blue-500">Signing In</span> </Link> .</p>
+          </div>
+        </div>
+        
+      </section>
     </div>
   );
 }

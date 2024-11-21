@@ -2,8 +2,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import "../CSS/NavigationComponent.css";
 import logo from "../Images/athenablock.png";
-import gr1 from "../Images/greece.jpg"
-
+import NotificationIcon from "./NotificationIcon";
 export default function ProfileHeader() {
   let navigate = useNavigate();
 
@@ -25,7 +24,7 @@ export default function ProfileHeader() {
               
               <div className="text-white flex flex-col text-left">
                 <span className="text-[30px] font-bold leading-none slide-in-right">
-                  ATHENACHAIN
+                  Athenachain
                 </span>
               </div>
             </div>
@@ -44,7 +43,9 @@ export default function ProfileHeader() {
               >
                 LOGOUT
               </Link>
+              <NotificationIcon />
             </div>
+           
           </div>
         </nav>
       </header>
