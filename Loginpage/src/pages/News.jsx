@@ -1,4 +1,5 @@
 import React from "react";
+import bgImage from "../Images/greece.jpg";
 
 const cryptoNews = [
   {
@@ -29,9 +30,24 @@ const cryptoNews = [
 ];
 
 export default function News() {
+  const backgroundStyle = {
+    backgroundImage: `url(${bgImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    height: "100vh",
+    zIndex: -1, 
+    filter: "blur(5px)"
+  };
+
   const containerStyle = {
-    maxWidth: "600px",
+    maxWidth: "700px",
     margin: "30px auto",
+    position: "relative", // Ensure carousel content stays above the background
+    zIndex: 1,
   };
 
   const imgStyle = {
@@ -39,106 +55,83 @@ export default function News() {
   };
 
   const captionStyle = {
-    backgroundColor: "black",
-   // padding: "10px",
-   // borderRadius: "8px",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    padding: "10px 15px",
+    borderRadius: "12px",
+    maxWidth: "80%",
+    margin: "0 auto",
   };
 
   const headingStyle = {
     color: "#fff",
     fontSize: "1.5rem",
-    marginBottom: "10px",
-  };
-
-  const buttonStyle = {
-    backgroundColor: "#1e90ff",
-    border: "none",
-    fontSize: "1rem",
-    padding: "5px 15px",
-    borderRadius: "5px",
-    color: "#fff",
-    textDecoration: "none",
-  };
-
-  const buttonHoverStyle = {
-    backgroundColor: "#0056b3",
+    marginBottom: "0",
   };
 
   return (
-    <div style={containerStyle}>
-      <div
-        id="carouselExampleIndicators"
-        className="carousel slide"
-        data-bs-ride="carousel"
-      >
-        {/* Carousel Indicators */}
-        <ol className="carousel-indicators">
-          {cryptoNews.map((_, index) => (
-            <li
-              key={index}
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to={index}
-              className={index === 0 ? "active" : ""}
-            ></li>
-          ))}
-        </ol>
+    <>
+      {/* Background Image */}
+      <div style={backgroundStyle}></div>
 
-        {/* Carousel Items */}
-        <div className="carousel-inner">
-          {cryptoNews.map((news, index) => (
-            <div
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
-              key={index}
-            >
-              <img
-                src={news.image}
-                className="d-block w-100"
-                alt={news.heading}
-                style={imgStyle}
-              />
-              <div className="carousel-caption d-none d-md-block" style={captionStyle}>
-                <a style={headingStyle} href={news.url}>{news.heading}</a>
-                {/* <a
-                  href={news.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ ...buttonStyle }}
-                  onMouseOver={(e) =>
-                    (e.currentTarget.style.backgroundColor =
-                      buttonHoverStyle.backgroundColor)
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.style.backgroundColor =
-                      buttonStyle.backgroundColor)
-                  }
-                >
-                  Read More
-                </a> */}
+      {/* Carousel Container */}
+      <div style={containerStyle}>
+        <div
+          id="carouselExampleIndicators"
+          className="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <ol className="carousel-indicators">
+            {cryptoNews.map((_, index) => (
+              <li
+                key={index}
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to={index}
+                className={index === 0 ? "active" : ""}
+              ></li>
+            ))}
+          </ol>
+
+          <div className="carousel-inner">
+            {cryptoNews.map((news, index) => (
+              <div
+                className={`carousel-item ${index === 0 ? "active" : ""}`}
+                key={index}
+              >
+                <img
+                  src={news.image}
+                  className="d-block w-100"
+                  alt={news.heading}
+                  style={imgStyle}
+                />
+                <div className="carousel-caption d-none d-md-block" style={captionStyle}>
+                  <a style={headingStyle} href={news.url}>
+                    {news.heading}
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Carousel Controls */}
-        <a
-          className="carousel-control-prev"
-          href="#carouselExampleIndicators"
-          role="button"
-          data-bs-slide="prev"
-        >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="sr-only">Previous</span>
-        </a>
-        <a
-          className="carousel-control-next"
-          href="#carouselExampleIndicators"
-          role="button"
-          data-bs-slide="next"
-        >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="sr-only">Next</span>
-        </a>
+          <a
+            className="carousel-control-prev"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-bs-slide="prev"
+          >
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
+          </a>
+          <a
+            className="carousel-control-next"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-bs-slide="next"
+          >
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="sr-only">Next</span>
+          </a>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

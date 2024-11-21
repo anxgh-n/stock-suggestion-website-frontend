@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import "../CSS/NavigationComponent.css";
 import logo from "../Images/athenablock.png";
+import gr1 from "../Images/greece.jpg"
 
 export default function ProfileHeader() {
   let navigate = useNavigate();
@@ -14,8 +15,9 @@ export default function ProfileHeader() {
       <header
         className="shadow mb-0 sticky top-0 z-50 red-hat-display-header "
         style={{
-          backgroundColor: "rgba(0, 0, 0, 0.8)", // Transparent header
-          backdropFilter: "blur(10px)", // Optional blur effect for a glassy look
+          backgroundImage: `url(${gr1})`, // Set the background image
+          backgroundPosition: 'center',
+          backgroundSize: 'cover', // Apply blur effect to the background image
         }}
       >
         <nav className="relative flex w-full flex-col bg-transparent overflow-hidden px-2 py-0 md:py-4 md:flex-row md:items-center">
