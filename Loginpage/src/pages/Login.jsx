@@ -28,7 +28,12 @@ function Login() {
   const fetchCategoryByUsername = async (username) => {
     try {
       const response = await axios.get(
-        `http://localhost:7060/usercredentials/get-category-by-username/${username}`
+        `http://localhost:7060/usercredentials/get-category-by-username/${username}`,
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+          },
+        }
       );
       if (response.data && response.data.category) {
         const categoryId = response.data.category.categoryId;

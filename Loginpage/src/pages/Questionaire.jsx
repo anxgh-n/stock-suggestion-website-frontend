@@ -13,7 +13,7 @@ export default function Questionnaire() {
     "http://localhost:7060/questions/get-questions-by-categoryid";
   const submitUrl = "http://localhost:7060/answer/save"; //
   const updateStatusUrl = `http://localhost:7060/usercredentials/update-questionnaire-status/${username}?status=true`;
-
+console.log(categoryId);
   useEffect(() => {
     fetch(`${questionUrl}/${categoryId}`, {
         method: 'GET', 
@@ -21,7 +21,14 @@ export default function Questionnaire() {
           "Authorization": `Bearer ${sessionStorage.getItem('token')}`,
         },
       })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch questions");
+        }
+        return response.json(); // Parse the response body to JSON
+      })
       .then((data) => {
+        console.log(data);
         const transformedQuestions = data.map((q) => ({
           ...q,
           options: [q.optionA, q.optionB, q.optionC, q.optionD].filter(Boolean),

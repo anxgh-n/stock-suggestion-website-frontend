@@ -79,7 +79,7 @@ export default function Welcome() {
         {/* Left Section */}
         <div className="w-full md:w-7/12 flex flex-col">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            {questionnaireStatus ? "Trending Coins" : "No coins to display"}
+            {questionnaireStatus ? "Trending Coins" : "Trending coins"}
           </h2>
           {error ? (
             <p className="text-red-500">{error}</p>
