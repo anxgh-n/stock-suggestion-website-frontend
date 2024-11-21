@@ -13,7 +13,7 @@ export default function Home() {
       }}
     >
       {/* Hero Section */}
-      <div className="min-h-screen flex flex-col items-center justify-center text-white bg-black bg-opacity-60 pt-0">
+      <div className=" flex flex-col items-center justify-center text-white bg-transparent bg-opacity-60 pt-10 pb-20">
         {/* Logo Section */}
         <img src={logoImage} alt="Logo" className="mb-4 w-32 md:w-40" /> {/* Logo above the title */}
         
@@ -26,43 +26,43 @@ export default function Home() {
         </p>
         <div className="flex space-x-4">
           <Link to="/login">
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded">
+            <button className="bg-[#821b57] hover:bg-[#4f0d33] text-white font-semibold py-3 px-8 rounded-full">
               Get Started
             </button>
           </Link>
-          <button className="bg-transparent border border-white hover:bg-white hover:text-black text-white font-semibold py-2 px-6 rounded">
-            Learn More
-          </button>
         </div>
       </div>
 
+      <div className="w-full border-t-2 border-gray-600"></div>
+
       {/* Features Section */}
-      <section className="bg-gray-900 text-white py-12 px-6">
+      <section className=" text-white py-12 px-6"
+      style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
           Key Features
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
             <h3 className="text-xl font-semibold mb-3">Trending Cryptocurrencies</h3>
-            <p>Stay updated with the top 3 trending cryptocurrencies.</p>
+            <p>Stay updated with the Top Trending Cryptocurrencies.</p>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
             <h3 className="text-xl font-semibold mb-3">Personalized Recommendations</h3>
-            <p>Get crypto suggestions tailored to your investment goals.</p>
+            <p>Try out our personalized questionnaire and get crypto suggestions tailored to your investment goals.</p>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
             <h3 className="text-xl font-semibold mb-3">Educational Resources</h3>
-            <p>Learn about crypto investing with beginner-friendly docs and FAQs.</p>
+            <p>Learn about crypto investing with beginner-friendly our documentation which is available on successful <Link to="/login"> <span className="text-blue-500">SignIn</span> </Link>.</p>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
             <h3 className="text-xl font-semibold mb-3">Live News Updates</h3>
             <p>Get daily news updates to stay informed on market trends.</p>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
             <h3 className="text-xl font-semibold mb-3">Watchlist & Notifications</h3>
             <p>Track your favorite coins and receive real-time alerts.</p>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+          <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
             <h3 className="text-xl font-semibold mb-3">Secure Transactions</h3>
             <p>Your data is protected with JWT-based secure authentication.</p>
           </div>
@@ -70,44 +70,22 @@ export default function Home() {
       </section>
 
       {/* Beginner Resources Section */}
-      <section className="bg-gray-800 text-white py-12 px-6">
+      <section className="bg-transparent text-white py-12 px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-          Resources for Beginners
+        Not Sure What we Offer?
         </h2>
         <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-          <div className="bg-gray-700 p-6 rounded-lg max-w-md shadow-md hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-3">FAQs</h3>
-            <p>Find answers to common questions about cryptocurrency.</p>
+          <div className=" p-6 rounded-lg max-w-md shadow-md hover:shadow-lg transition " style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+            <h3 className="text-xl font-semibold mb-3">Our Goals</h3>
+            <p>Start your crypto journey by knowing what we stand for by going through our <Link to="/about"> <span className="text-blue-500">About Page</span> </Link> .</p>
           </div>
-          <div className="bg-gray-700 p-6 rounded-lg max-w-md shadow-md hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-3">Glossary</h3>
-            <p>Understand crypto terms like blockchain, tokens, and wallets.</p>
-          </div>
-          <div className="bg-gray-700 p-6 rounded-lg max-w-md shadow-md hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-3">Beginner’s Guide</h3>
-            <p>Start your crypto journey with simple, step-by-step tutorials.</p>
+          <div className=" p-6 rounded-lg max-w-md shadow-md hover:shadow-lg transition " style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+            <h3 className="text-xl font-semibold mb-3">Take our quick Questionnaire</h3>
+            <p>Take up the short Quiz from our Homepage after  <Link to="/login"> <span className="text-blue-500">Signing In</span> </Link> .</p>
           </div>
         </div>
+        
       </section>
-
-      {/* Call-to-Action Section */}
-      <section className="bg-gray-900 text-white py-12 px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Not Sure Where to Start?
-        </h2>
-        <p className="text-lg md:text-xl mb-6">
-          Take our quick questionnaire to find the right cryptocurrencies for
-          you.
-        </p>
-        <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded">
-          Take the Questionnaire
-        </button>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-black text-gray-400 py-6 text-center">
-        <p>© 2024 CryptoInvest. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
