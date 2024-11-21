@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import "../CSS/NavigationComponent.css";
 import logo from "../Images/athenablock.png";
+import gr1 from "../Images/greece.jpg"
 
 export default function ProfileHeader() {
   let navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function ProfileHeader() {
       <header
         className="shadow mb-0 sticky top-0 z-0 red-hat-display-header"
         style={{
-          backgroundColor: "rgba(0, 0, 0, 0.8)", // Transparent header
+          backgroundColor: "rgba(0, 0, 0)", // Transparent header
           backdropFilter: "blur(10px)", // Optional blur effect for a glassy look
           padding: "10px 0", // Reduce padding to shrink the height
         }}
@@ -21,20 +22,13 @@ export default function ProfileHeader() {
           <div className="container mx-auto w-full flex justify-between items-center px-4">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <img
-                src={logo}
-                alt="AthenaChain Logo"
-                className="h-[70px] w-[50px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
-                style={{
-                  transition: "transform 1s ease-out",
-                }}
-              />
+              
               <div className="text-white flex flex-col text-left">
                 <span className="text-[30px] font-bold leading-none slide-in-right">
-                  Athena
+                  ATHENA
                 </span>
                 <span className="text-[30px] font-bold leading-none slide-in-right">
-                  Chain
+                  CHAIN
                 </span>
               </div>
             </div>

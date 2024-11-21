@@ -33,7 +33,7 @@ function App() {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
-      backgroundColor: 'rgba(255, 255, 255, 0.8)', // Background for the loading screen
+      backgroundColor: 'rgba(255, 255, 255, 0.8', // Background for the loading screen
     },
     animation: {
       width: '200px',
