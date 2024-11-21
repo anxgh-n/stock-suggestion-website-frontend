@@ -39,24 +39,14 @@ export default function ProfileHeader() {
                 HOME
               </Link>
               <Link
-                to="/profile"
-                className="text-white text-[16px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
-              >
-                PROFILE
-              </Link>
-              <Link
-                to="/watchlist"
-                className="text-white text-[16px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
-              >
-                WATCHLIST
-              </Link>
-              <Link
                 to="/"
                 className="text-black text-[16px] border-2 border-white rounded-full bg-white hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
               >
                 LOGOUT
               </Link>
+              <NotificationIcon />
             </div>
+           
           </div>
         </nav>
       </header>

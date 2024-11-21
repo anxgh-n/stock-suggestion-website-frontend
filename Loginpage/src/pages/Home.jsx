@@ -55,8 +55,8 @@ export default function Home() {
             <p>Learn about crypto investing with beginner-friendly our documentation which is available on successful <Link to="/login"> <span className="text-blue-500">SignIn</span> </Link>.</p>
           </div>
           <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
-            <h3 className="text-xl font-semibold mb-3">Live News Updates</h3>
-            <p>Get daily news updates to stay informed on market trends.</p>
+            <h3 className="text-xl font-semibold mb-3">News Updates</h3>
+            <p>Get  news updates to stay informed on market trends.</p>
           </div>
           <div className="p-6 rounded-lg shadow-md hover:shadow-lg transition" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
             <h3 className="text-xl font-semibold mb-3">Watchlist & Notifications</h3>

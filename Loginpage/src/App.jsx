@@ -23,6 +23,7 @@ import News from './pages/News';
 import GreeceImage from './Images/greece.jpg';
 import NotificationPage from './pages/NotificationPage';
 import ProfileHeader from './components/ProfileHeader';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false); // Global loading state
@@ -66,9 +67,10 @@ function App() {
           
 
           <Route element={<ProfileMainHeader setIsLoading={setIsLoading} />}>
-            <Route path="/profile" element={<Profile />} />
+            
            
           </Route>
+          <Route path="/profile" element={<Profile />} />
            
           <Route element={<LayoutWithMainHeader setIsLoading={setIsLoading} />}>
             
@@ -80,7 +82,7 @@ function App() {
             <Route path="/filter" element={<Filter />} />
             <Route path="/crypto/:id" element={<CryptoData />} />
           </Route>
-          
+          <Route path ="/profilepage" element={<ProfilePage/>}></Route>
           <Route path="/watchlist" element={<Watchlist />} />
         </Routes>
       </BrowserRouter>

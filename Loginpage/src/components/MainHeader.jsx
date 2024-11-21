@@ -33,7 +33,7 @@ export default function MainHeader() {
   }, []);
 
   const handleProfile = () => {
-    navigate("/profile");
+    navigate("/profilepage");
     setIsDropdownOpen(false); // Close the dropdown after selecting Profile
   };
 

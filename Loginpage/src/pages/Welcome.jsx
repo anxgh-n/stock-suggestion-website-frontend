@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Filter from "./Filter"; // Import the Filter component
-import profileImage from "../Images/profile_pic.png";
 
 export default function Welcome() {
   let navigate = useNavigate();
@@ -39,7 +38,6 @@ export default function Welcome() {
       setStocks(coins);
     } catch (err) {
       setError("Failed to fetch trending coins.");
-      console.error(err);
     }
   };
 
@@ -52,10 +50,7 @@ export default function Welcome() {
         },
       });
       setQuestionnaireStatus(response.data); // Directly set the boolean value
-      console.log("Questionnaire Status:", response.data);
     } catch (err) {
-      setError("Failed to fetch questionnaire status.");
-      console.error(err);
     } finally {
       setLoadingStatus(false); // Stop loading once request completes
     }
@@ -84,12 +79,12 @@ export default function Welcome() {
         {/* Left Section */}
         <div className="w-full md:w-7/12 flex flex-col">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            {questionnaireStatus ? "Trending Stocks" : "Trending Stocks"}
+            {questionnaireStatus ? "Trending Coins" : "No coins to display"}
           </h2>
           {error ? (
             <p className="text-red-500">{error}</p>
           ) : stocks.length === 0 ? (
-            <p className="text-gray-500">Loading stock data...</p>
+            <p className="text-gray-500">Loading data...</p>
           ) : (
             <table className="w-full text-left">
               <thead className="bg-gray-200 text-gray-700 uppercase text-sm">
@@ -135,17 +130,17 @@ export default function Welcome() {
               {questionnaireStatus ? (
                 <div className="bg-green-100 p-6 rounded-lg mx-20 w-100">
                   <h2 className="text-2xl font-bold text-green-900 mb-4">
-                    Filtered Stocks
+                    Filtered Coins
                   </h2>
                   <p className="text-gray-700">
                     You have already filled out the questionnaire. The displayed
-                    stocks are filtered based on your preferences.
+                    coins are filtered based on your preferences.
                   </p>
                   <button
                     onClick={handleFilterButton}
                     className="rounded-md border-2 border-green-900 px-6 py-2 font-medium text-green-900 transition-colors hover:bg-green-900 hover:text-white"
                   >
-                    {showFilter ? "Hide Filtered Stocks" : "View Filtered Stocks"}
+                    {showFilter ? "Hide Filtered Coins" : "View Filtered Coins"}
                   </button>
                 </div>
               ) : (
@@ -154,7 +149,7 @@ export default function Welcome() {
                     Fill Questionnaire
                   </h2>
                   <p className="text-gray-700 mb-6">
-                    Fill the questionnaire to explore more stock options tailored
+                    Fill the questionnaire to explore more coin options tailored
                     to your interests.
                   </p>
                   <button

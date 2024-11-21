@@ -5,8 +5,6 @@ import upp from "../Images/upwardb.png";
 import downn from "../Images/downwardb.png";
 import axios from "axios";
 import toast from "react-hot-toast";
-import grc1 from "../Images/greece.jpg";
-//import { toast } from "react-toastify";
 
 function CryptoData() {
   const { id } = useParams();
@@ -384,6 +382,8 @@ function CryptoData() {
           </div>
         </div>
       </div>
+
+      
 
     </div>
   );
