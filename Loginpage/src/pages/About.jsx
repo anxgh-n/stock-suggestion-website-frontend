@@ -1,7 +1,5 @@
 import React from "react";
 import hmabImage from "../Images/homeaboutBg.png";
-import logoImage from "../Images/athenablock.png"; // Import the logo image
-import { Link } from "react-router-dom";
 
 export default function About() {
   return (
