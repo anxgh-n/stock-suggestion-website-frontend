@@ -199,7 +199,7 @@ export default function MainHeader() {
                 </div>
               )}
             </div>
-            {/* <NotificationIcon/> */}
+            <NotificationIcon/>
 
           </div>
         </nav>

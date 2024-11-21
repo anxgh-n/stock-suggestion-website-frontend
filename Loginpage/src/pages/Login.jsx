@@ -136,10 +136,13 @@ function Login() {
             <strong>Don't have an account?{" "}</strong>
             <Link
               to="/signup"
-              className="text-white border-white p-1 border-2 border-rounded hover:text-black hover:bg-white hover:rounded hover:p-1 font-medium"
+              className="text-white font-medium hover:text-gray-300 hover:underline hover:scale-105 transition duration-200"
             >
-              Sign up
+              Sign Up
             </Link>
+
+
+
           </p>
         </div>
       </div>

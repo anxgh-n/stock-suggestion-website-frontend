@@ -98,13 +98,16 @@ function Signup() {
               type="submit"
               className="w-full text-black py-2 px-4 rounded-md bg-white hover:bg-black hover:text-white transition duration-200 hover:scale-105"
             >
-              <strong>Sign In</strong>
+              <strong>Sign Up</strong>
             </button>
           </form>
           <p className="mt-6 text-center text-white">
             <strong>Already have an account?{' '}</strong>
-            <Link to="/login" className="text-white border-white p-1 border-2 border-rounded hover:text-black hover:bg-white hover:rounded hover:p-1 font-medium">
-              Sign in
+            <Link
+              to="/login"
+              className="text-white font-medium hover:text-gray-300 hover:underline hover:scale-105 transition duration-200"
+            >
+              Sign In
             </Link>
           </p>
         </div>

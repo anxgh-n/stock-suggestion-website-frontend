@@ -230,96 +230,94 @@ export default function Watchlist() {
 
   return (
     <>
-    <ProfileHeader/>
-    <div className="flex flex-col items-center min-h-screen bg-gray-100 py-10">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Watchlist</h1>
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
-          <thead>
-            <tr className="bg-gray-200 text-gray-700 text-left">
-              <th className="px-6 py-3 border-b-2 border-gray-300">Stock Name</th>
-              <th className="px-6 py-3 border-b-2 border-gray-300">
-                Current Price (USD)
-              </th>
-              <th className="px-6 py-3 border-b-2 border-gray-300">
-                Market Cap Rank
-              </th>
-              <th className="px-6 py-3 border-b-2 border-gray-300">Threshold</th>
-              <th className="px-6 py-3 border-b-2 border-gray-300"></th>
-              <th className="px-6 py-3 border-b-2 border-gray-300"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {mergedData.map((item) => (
-              <tr
-                key={item.watchlistId}
-                className="hover:bg-gray-100 transition-colors"
-              >
-                <td className="px-6 py-4 border-b border-gray-300">
-                  {item.name || "N/A"}
-                </td>
-                <td className="px-6 py-4 border-b border-gray-300">
-                  {item.current_price !== undefined
-                    ? `$${item.current_price.toFixed(2)}`
-                    : "N/A"}
-                </td>
-                <td className="px-6 py-4 border-b border-gray-300">
-                  {item.market_cap_rank || "N/A"}
-                </td>
-                <td className="px-6 py-4 border-b border-gray-300">
-                  {item.threshold || "No Threshold Set"}
-                </td>
-                <td className="px-6 py-4 border-b border-gray-300">
-                  <button
-                    onClick={() => handleDelete(item.watchlistId)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    <GoBookmarkSlashFill />
-                  </button>
-                </td>
-                <td className="px-6 py-4 border-b border-gray-300">
-                  <button
-                    onClick={() => handleOpenModal(item)}
-                    className="text-blue-500 hover:text-blue-700"
-                  >
-                    <GoBellFill />
-                  </button>
-                </td>
+      <ProfileHeader />
+      <div className="flex flex-col items-center min-h-screen bg-gray-100 py-10 px-4">
+        <h1 className="text-3xl font-semibold text-gray-900 mb-6">Your Watchlist</h1>
+        <div className="overflow-x-auto w-full max-w-6xl">
+          <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+            <thead className="bg-gray-900 text-white">
+              <tr>
+                <th className="px-6 py-3 text-left">Stock Name</th>
+                <th className="px-6 py-3 text-left">Current Price (USD)</th>
+                <th className="px-6 py-3 text-left">Market Cap Rank</th>
+                <th className="px-6 py-3 text-left">Threshold</th>
+                <th className="px-6 py-3 text-center"></th>
+                <th className="px-6 py-3 text-center"></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {mergedData.map((item) => (
+                <tr
+                  key={item.watchlistId}
+                  className="hover:bg-gray-50 transition-colors"
+                >
+                  <td className="px-6 py-4 border-b border-gray-300">
+                    {item.name || "N/A"}
+                  </td>
+                  <td className="px-6 py-4 border-b border-gray-300">
+                    {item.current_price !== undefined
+                      ? `$${item.current_price.toFixed(2)}`
+                      : "N/A"}
+                  </td>
+                  <td className="px-6 py-4 border-b border-gray-300">
+                    {item.market_cap_rank || "N/A"}
+                  </td>
+                  <td className="px-6 py-4 border-b border-gray-300">
+                    {item.threshold || "No Threshold Set"}
+                  </td>
+                  <td className="px-6 py-4 border-b border-gray-300 text-center">
+                    <button
+                      onClick={() => handleDelete(item.watchlistId)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      <GoBookmarkSlashFill size={20} />
+                    </button>
+                  </td>
+                  <td className="px-6 py-4 border-b border-gray-300 text-center">
+                    <button
+                      onClick={() => handleOpenModal(item)}
+                      className="text-blue-500 hover:text-blue-700"
+                    >
+                      <GoBellFill size={20} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Set Threshold</h2>
-            <input
-              type="number"
-              value={thresholdValue}
-              onChange={(e) => setThresholdValue(e.target.value)}
-              className="border border-gray-300 rounded-md p-2 w-full"
-            />
-            <div className="flex justify-end mt-4">
-              <button
-                onClick={handleCloseModal}
-                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md mr-2"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSaveThreshold}
-                className="bg-blue-500 text-white px-4 py-2 rounded-md"
-              >
-                Save
-              </button>
+        {isModalOpen && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white p-6 rounded-lg shadow-md w-96">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                Set Threshold for {selectedStock.name}
+              </h2>
+              <input
+                type="number"
+                value={thresholdValue}
+                onChange={(e) => setThresholdValue(e.target.value)}
+                className="w-full p-2 mb-4 border border-gray-300 rounded-md"
+                placeholder="Enter threshold value"
+              />
+              <div className="flex justify-between">
+                <button
+                  onClick={handleCloseModal}
+                  className="px-4 py-2 bg-gray-300 rounded-md text-gray-900"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleSaveThreshold}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md"
+                >
+                  Save
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
     </>
   );
 }
