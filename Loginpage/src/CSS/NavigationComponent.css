@@ -10,7 +10,7 @@
   background-size: cover; /* Ensures the background image covers the header */
   background-repeat: no-repeat; /* Prevents repetition for both layers */
   background-position: center; /* Centers the background image */
-  height: 200px; /* Set a fixed height for the header */
+  height: 100px; /* Set a fixed height for the header */
   display: flex;
   align-items: center; /* Vertically align content */
   justify-content: center; /* Horizontally center the content */

@@ -4,13 +4,14 @@ import { useState, useEffect, useRef } from "react";
 import profileImage from "../Images/profile_pic.png";
 import logo from "../Images/athenablock.png";
 import gr1 from "../Images/greece.jpg";
-import "../CSS/MainHeader.css";
 import NotificationIcon from "./NotificationIcon";
+import iconn from "../Images/menuop.png";
 
 export default function MainHeader() {
   let navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpenTwo, setIsDropdownOpenTwo] = useState(false);
   const [cryptoList, setCryptoList] = useState([]); // Stores fetched crypto list
   const [filteredCryptos, setFilteredCryptos] = useState([]); // Stores filtered suggestions
   const [showSuggestions, setShowSuggestions] = useState(false); // Controls when suggestions are displayed
@@ -41,6 +42,23 @@ export default function MainHeader() {
   const handleLogout = () => {
     navigate("/");
     setIsDropdownOpen(false); // Close the dropdown after Logout
+  };
+
+  const handleHome = () => {
+    navigate("/welcome");
+    setIsDropdownOpenTwo(false); // Close the dropdown after Logout
+  };
+  const handleDocs = () => {
+    navigate("/docs");
+    setIsDropdownOpenTwo(false); // Close the dropdown after Logout
+  };
+  const handleNews = () => {
+    navigate("/news");
+    setIsDropdownOpenTwo(false); // Close the dropdown after Logout
+  };
+
+  const toggleDropdownTwo = () => {
+    setIsDropdownOpenTwo(!isDropdownOpenTwo);
   };
 
   const toggleDropdown = () => {
@@ -90,26 +108,26 @@ export default function MainHeader() {
 
   return (
     <>
-      <header
-        className="shadow mb-0 sticky top-0 z-50 red-hat-display-header bg-black"
-        
-      >
-        <nav className="relative flex w-full h-8 flex-col overflow-visible px-2 py-0 md:py-4 md:flex-row md:items-center rounded-3xl ">
-          <div className="container mx-auto h-5 flex justify-between items-center px-4">
+      <header className="shadow mb-0 sticky top-0 z-50 red-hat-display-header h-[100px] bg-black">
+        <nav className="relative flex w-full  flex-col overflow-visible px-2 py-0 md:py-4 md:flex-row md:items-center rounded-3xl ">
+          <div className="container mx-auto flex justify-between items-center px-4">
             <div className="flex items-center space-x-3">
-              <Link to="/welcome">
-              <div className="text-white flex flex-col text-left">
-                <span className="text-[50px] font-bold leading-none slide-in-right">
-                  Athena
-                </span>
-                <span className="text-[50px] font-bold leading-none slide-in-right">
-                  Chain
-                </span>
-              </div>
+              <Link to="/">
+                <img
+                  src={logo}
+                  alt="AthenaChain Logo"
+                  className="h-[80px] w-[50px] overflow-visible "
+                />
               </Link>
-              
+              <Link to="/">
+                <div className="text-white flex flex-col text-left">
+                  <span className="text-[50px] font-bold leading-none">
+                    AthenaChain
+                  </span>
+                </div>
+              </Link>
             </div>
-            <div className="relative w-1/4=5" ref={searchRef}>
+            <div className="relative w-1/3" ref={searchRef}>
               <form className="flex items-center">
                 <input
                   type="text"
@@ -117,9 +135,9 @@ export default function MainHeader() {
                   value={searchQuery}
                   onChange={handleSearchChange}
                   onFocus={handleSearchFocus} // Show suggestions on focus
-                  className="w-full border-b border-black px-4 py-2 focus:border-indigo-500 focus:outline-none rounded-lg shadow-sm placeholder-black" // Wider input with bottom border only
+                  className="w-full bg-opacity-60 border-b border-black px-4 py-2 focus:border-indigo-500 focus:outline-none rounded-lg shadow-sm placeholder-white" // Wider input with bottom border only
                   style={{
-                    backgroundColor: "rgba(255, 255, 255)", // Slightly opaque background (80% opacity)
+                    backgroundColor: "rgba(255, 255, 255,0.3)", // Slightly opaque background (80% opacity)
                   }}
                 />
               </form>
@@ -148,38 +166,49 @@ export default function MainHeader() {
                 </div>
               )}
             </div>
-            <div className="flex space-x-6">
-              <Link
-                to="/welcome"
-                className="text-white text-[20px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
+
+            <div className="relative">
+              <div
+                className="px-4 py-2"
+                onClick={toggleDropdownTwo}
               >
-                HOME
-              </Link>
-              <Link
-                to="/docs"
-                className="text-white text-[20px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
-              >
-                DOCS
-              </Link>
-              <Link
-                to="/news"
-                className="text-white text-[20px] rounded-full bg-black bg-opacity-50 hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
-              >
-                NEWS
-              </Link>
-              
+                <img
+                  src={iconn}
+                  alt="Profile Icon" // Provide an alt text for accessibility
+                  className="h-[40px] w-[40px] object-contain " // Adjust size as needed
+                />
+              </div>
+              {isDropdownOpenTwo && (
+                <div className="absolute right-0 mt-2 w-35 bg-white border rounded-md shadow-lg p-2">
+                  <button
+                    onClick={handleHome}
+                    className="block w-30 px-4 py-2 text-left text-gray-700 hover:bg-gray-200 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
+                  >
+                    HOME
+                  </button>
+                  <button
+                    onClick={handleDocs}
+                    className="block w-30 px-4 py-2 text-left text-gray-700 hover:bg-gray-200 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
+                  >
+                    DOCS
+                  </button>
+                  <button
+                    onClick={handleNews}
+                    className="block w-30 px-4 py-2 text-left text-gray-700 hover:bg-gray-200 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
+                  >
+                    NEWS
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="relative">
-             
               <div
-                className="text-black text-[20px] border-2 border-white rounded-full bg-white  hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
+                className="text-black text-[18px] border-2 border-white rounded-full bg-white  hover:text-gray-300 hover:z-10 hover:border-2 hover:border-white hover:rounded-full px-4 py-2 transition-transform duration-200 ease-in-out relative"
                 onClick={toggleDropdown}
               >
                 PROFILE
               </div>
-              
-              
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-35 bg-white border rounded-md shadow-lg p-2">
                   <button
@@ -188,19 +217,17 @@ export default function MainHeader() {
                   >
                     Profile
                   </button>
-                  
+
                   <button
                     onClick={handleLogout}
                     className="block w-30 px-4 py-2 text-left text-gray-700 hover:bg-gray-200 hover:scale-105 transform transition duration-200 ease-in-out rounded-lg"
                   >
                     Logout
                   </button>
-                  
                 </div>
               )}
             </div>
-            <NotificationIcon/>
-
+            <NotificationIcon />
           </div>
         </nav>
       </header>
