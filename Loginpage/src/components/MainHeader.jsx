@@ -110,14 +110,14 @@ export default function MainHeader() {
         <nav className="relative flex w-full  flex-col overflow-visible px-2 py-0 md:py-4 md:flex-row md:items-center rounded-3xl ">
           <div className="container mx-auto flex justify-between items-center px-4">
             <div className="flex items-center space-x-3">
-              <Link to="/">
+              <Link to="/welcome">
                 <img
                   src={logo}
                   alt="AthenaChain Logo"
                   className="h-[80px] w-[50px] overflow-visible "
                 />
               </Link>
-              <Link to="/">
+              <Link to="/welcome">
                 <div className="text-white flex flex-col text-left">
                   <span className="text-[50px] font-bold leading-none">
                     AthenaChain

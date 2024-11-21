@@ -87,7 +87,7 @@ export default function Welcome() {
           {/* Left Section */}
           <div className="w-full md:w-7/12 flex flex-col">
             <h2 className="text-3xl font-bold text-white mb-4">
-              {questionnaireStatus ? "Trending Coins" : "No coins to display"}
+              {questionnaireStatus ? "Trending Coins" : "Trending coins"}
             </h2>
             {error ? (
               <p className="text-red-500">{error}</p>
@@ -141,17 +141,18 @@ export default function Welcome() {
             {!loadingStatus && (
               <>
                 {questionnaireStatus ? (
-                  <div className="bg-green-100 p-6 rounded-lg mx-20 w-100">
-                    <h2 className="text-2xl font-bold text-green-900 mb-4">
+                  <div className="bg-gray-400 border-gray-300 p-6 rounded-lg mx-20 w-100">
+                    <h2 className="text-2xl font-bold text-pink-900 mb-4" style={{fontFamily:"cursive"}}>
                       Filtered Coins
                     </h2>
-                    <p className="text-gray-700">
+                    <p className="text-pink-700">
                       You have already filled out the questionnaire. The
                       displayed coins are filtered based on your preferences.
                     </p>
                     <button
                       onClick={handleFilterButton}
-                      className="rounded-md border-2 border-green-900 px-6 py-2 font-medium text-green-900 transition-colors hover:bg-green-900 hover:text-white"
+                      className="rounded-md border-2 mt-4 border-pink-900 px-6 py-2 font-medium text-pink-900 transition-colors hover:bg-pink-900 hover:text-white"
+                      style={{fontFamily:"revert-layer"}}
                     >
                       {showFilter
                         ? "Hide Filtered Coins"
