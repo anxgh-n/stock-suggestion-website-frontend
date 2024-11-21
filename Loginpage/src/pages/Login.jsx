@@ -4,7 +4,7 @@ import { LogIn } from "lucide-react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
-import bgImage from "../Images/greece2.jpg";
+import bgImage from "../Images/bgBlackk.png";
 import logo from "../Images/athenablock.png";
 
 function Login() {
@@ -74,6 +74,8 @@ function Login() {
   };
 
   return (
+    <>
+    
     <div
       className="min-h-screen flex items-center justify-center p-4"
       style={{
@@ -82,20 +84,17 @@ function Login() {
         backgroundPosition: "center",
       }}
     >
-      <div className="p-10">
-        <div className="bg-black border-white rounded-3xl shadow-xl pr-20 pl-20 pt-10 pb-5 w-full max-w-md bg-opacity-65 ">
-        <Link to="/">
-          <div className="flex items-center justify-center mb-12 text-4xl font-extrabold text-white sm:text-4xl">
-            <img
-              src={logo}
-              alt="AthenaChain Logo"
-              className="h-[120px] w-[80px] "
-              style={{
-                transition: "transform 1s ease-out",
-              }}
-            />
-          </div>
-          </Link>
+      {/* Transparent clickable div */}
+  
+      <div className="p-10 relative">
+      <div
+      className="absolute top-[-50px] left-1/2 transform -translate-x-1/2 w-[400px] h-[80px]  cursor-pointer"
+      onClick={() => navigate("/")}
+      title="Go to Home"
+      style={{ backgroundColor: "transparent" }} // Ensures it doesn't interfere visually
+    ></div>
+        <div className="bg-black bg-opacity-50 border-2 border-white rounded-3xl shadow-xl pr-10 pl-10 pt-4 pb-5 w-full max-w-md  ">
+        
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-bold text-white mb-2 tracking-[0.1rem]">
@@ -145,6 +144,7 @@ function Login() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

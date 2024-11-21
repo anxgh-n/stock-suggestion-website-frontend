@@ -12,7 +12,73 @@ export default function Documentation() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Left Navigation Bar */}
-     
+      <aside className="w-1/4 bg-blue-50 py-10 px-6 sticky top-0 h-screen">
+        <nav className="space-y-4">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">Documentation</h2>
+          <ul className="space-y-2">
+            <li>
+              <a
+                href="#introduction"
+                className="flex items-center text-indigo-600 hover:text-indigo-800 transition duration-200"
+                onClick={() => handleLinkClick("introduction")}
+              >
+                {activeLink === "introduction" && (
+                  <PiGreaterThan className="mr-2" />
+                )}
+                Introduction to Cryptocurrencies
+              </a>
+            </li>
+            <li>
+              <a
+                href="#how-to-invest"
+                className="flex items-center text-indigo-600 hover:text-indigo-800 transition duration-200"
+                onClick={() => handleLinkClick("how-to-invest")}
+              >
+                {activeLink === "how-to-invest" && (
+                  <PiGreaterThan className="mr-2" />
+                )}
+                How to Invest in Cryptocurrencies
+              </a>
+            </li>
+            <li>
+              <a
+                href="#risks"
+                className="flex items-center text-indigo-600 hover:text-indigo-800 transition duration-200"
+                onClick={() => handleLinkClick("risks")}
+              >
+                {activeLink === "risks" && (
+                  <PiGreaterThan className="mr-2" />
+                )}
+                Risks of Cryptocurrency Investment
+              </a>
+            </li>
+            <li>
+              <a
+                href="#tips"
+                className="flex items-center text-indigo-600 hover:text-indigo-800 transition duration-200"
+                onClick={() => handleLinkClick("tips")}
+              >
+                {activeLink === "tips" && (
+                  <PiGreaterThan className="mr-2" />
+                )}
+                Tips for Beginners
+              </a>
+            </li>
+            <li>
+              <a
+                href="#resources"
+                className="flex items-center text-indigo-600 hover:text-indigo-800 transition duration-200"
+                onClick={() => handleLinkClick("resources")}
+              >
+                {activeLink === "resources" && (
+                  <PiGreaterThan className="mr-2" />
+                )}
+                Useful Resources
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
 
       {/* Documentation Content */}
       <main className="w-3/4 py-10 px-6 md:px-12 lg:px-20">

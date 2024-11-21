@@ -1,16 +1,25 @@
-export default function About(){
-    return(<>
-      <section
-        className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
-      >
-        <div className="container mx-auto flex flex-col items-center justify-center text-center">
-          <h2 className="text-4xl font-extrabold text-gray-800 sm:text-6xl">
-            About
-          </h2>
-          <p className="bg-gradient-to-r from-pink-500 to-indigo-500 bg-clip-text text-2xl font-medium text-transparent sm:text-3xl mt-4">
-            Welcome to StockWise, where smart investing meets personalization.
-          </p>
-        </div>
-      </section>
-    </>);
+import React from "react";
+import hmabImage from "../Images/homeaboutBg.png";
+
+export default function About() {
+  return (
+    <div
+      className="min-h-screen bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${hmabImage})`,
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Content Area */}
+      <div className="min-h-screen flex flex-col items-center justify-center text-white bg-black bg-opacity-50">
+        <h1 className="text-4xl font-bold mb-6">Welcome to Home</h1>
+        <p className="text-lg mb-4">
+          This is the content area. As you scroll, only this content changes.
+        </p>
+        <p className="text-lg">
+          Scroll to see more content while the background stays static.
+        </p>
+      </div>
+    </div>
+  );
 }
