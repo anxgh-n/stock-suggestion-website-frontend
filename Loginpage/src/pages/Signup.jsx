@@ -43,14 +43,14 @@ function Signup() {
       title="Go to Home"
       style={{ backgroundColor: "transparent" }} // Ensures it doesn't interfere visually
     ></div>
-        <div className="bg-black bg-opacity-50 border-2 border-white rounded-3xl shadow-xl px-10 py-8 w-full max-w-xl bg-opacity-65">
+        <div className="bg-black border-2 border-white rounded-3xl shadow-xl px-10 py-8 w-full max-w-xl bg-opacity-65">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-bold text-white mb-2 tracking-[0.1rem]">USERNAME</label>
                 <input
                   type="text"
-                  className="w-full px-4 py-2 border-b-2 border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
+                  className="w-full px-4 py-2 border-b-2 text-white border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
                   value={formData.username}
                   onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                   required
@@ -60,7 +60,7 @@ function Signup() {
                 <label className="block text-sm font-bold text-white mb-2 tracking-[0.1rem]">EMAIL</label>
                 <input
                   type="email"
-                  className="w-full px-4 py-2 border-b-2 border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
+                  className="w-full px-4 py-2 border-b-2 text-white border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
@@ -70,7 +70,7 @@ function Signup() {
                 <label className="block text-sm font-bold text-white mb-2 tracking-[0.1rem]">PASSWORD</label>
                 <input
                   type="password"
-                  className="w-full px-4 py-2 border-b-2 border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
+                  className="w-full px-4 py-2 border-b-2 text-white border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   required
