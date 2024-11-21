@@ -18,25 +18,23 @@ export default function NavigationComponent() {
       >
         <nav className="relative flex w-full flex-col bg-transparent overflow-hidden px-2 py-0 md:py-4 md:flex-row md:items-center">
           <div className="container mx-auto w-full flex justify-between items-center px-4">
-            {/* Logo */}
             <div className="flex items-center space-x-3">
               <Link to="/">
                 <img
                 src={logo}
                 alt="AthenaChain Logo"
-                className="h-[110px] w-[70px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
+                className="h-[100px] w-[70px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
                 style={{
                   transition: "transform 1s ease-out",
                 }}
               /></Link>
-              <div className="text-white flex flex-col text-left">
-                <span className="text-[50px] font-bold leading-none slide-in-right">
-                  Athena
-                </span>
-                <span className="text-[50px] font-bold leading-none slide-in-right">
-                  Chain
+             <Link to="/">
+             <div className="text-white flex flex-col text-left">
+                <span className="text-[40px] font-bold leading-none slide-in-right">
+                  AthenaChain
                 </span>
               </div>
+             </Link>
             </div>
 
             {/* Navigation Links */}

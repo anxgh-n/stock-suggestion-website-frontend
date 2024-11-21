@@ -82,8 +82,8 @@ function Login() {
         backgroundPosition: "center",
       }}
     >
-      <div className="p-10">
-        <div className="bg-black border-white rounded-3xl shadow-xl pr-20 pl-20 pt-10 pb-5 w-full max-w-md bg-opacity-65 ">
+      <div className="p-0">
+        <div className="bg-black border-white rounded-3xl shadow-xl pr-20 pl-20 pt-3 pb-5 w-full max-w-md bg-opacity-65 ">
         <Link to="/">
           <div className="flex items-center justify-center mb-12 text-4xl font-extrabold text-white sm:text-4xl">
             <img
@@ -137,10 +137,13 @@ function Login() {
             <strong>Don't have an account?{" "}</strong>
             <Link
               to="/signup"
-              className="text-white border-white p-1 border-2 border-rounded hover:text-black hover:bg-white hover:rounded hover:p-1 font-medium"
+              className="text-white font-medium hover:text-gray-300 hover:underline hover:scale-105 transition duration-200"
             >
-              Sign up
+              Sign Up
             </Link>
+
+
+
           </p>
         </div>
       </div>

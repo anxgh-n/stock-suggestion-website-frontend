@@ -9,17 +9,18 @@ export default function Filter() {
   const username = sessionStorage.getItem("username");
   const categoryId = sessionStorage.getItem("categoryId"); // Get categoryId from sessionStorage
   const questionAnswersUrl = `http://localhost:7060/answer/get-questions-with-answers/${username}`;
-  const stocksUrl =""; //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
+  const stocksUrl =
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"; //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
 
   useEffect(() => {
     // Fetch user answers
     console.log(username);
     console.log(categoryId);
     axios
-      .get(questionAnswersUrl,{
+      .get(questionAnswersUrl, {
         headers: {
-            Authorization: `Bearer ${sessionStorage.getItem('token')}`
-        }
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
       })
       .then((response) => {
         setUserAnswers(response.data.questions || []);
@@ -229,27 +230,27 @@ export default function Filter() {
   };
 
   return (
-    <div className="max-w-4xl mx-10  p-8 bg-white rounded-lg shadow-lg">
-    {filteredStocks.length > 0 ? (
-      <ul className="space-y-4">
-        {filteredStocks.map((stock) => (
-          <li
-            key={stock.id}
-            className="flex items-center space-x-4 bg-gray-100 p-4 rounded-lg shadow-sm hover:bg-gray-200 transition duration-200"
-          >
-            <img
-              src={stock.image}
-              alt={`${stock.name} icon`}
-              className="w-12 h-12 rounded-full"
-            />
-            <span className="text-lg font-medium text-gray-800">{stock.name}</span>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p className="text-gray-600">No stocks match your criteria.</p>
-    )}
-  </div>
-  
+    <div className="max-w-4xl mx-5 p-2 bg-white rounded-lg shadow-lg">
+      {filteredStocks.length > 0 ? (
+        <ul className="space-y-5">
+          {/* Slice the first 3 stocks */}
+          {filteredStocks.slice(0, 3).map((stock) => (
+            <li
+              key={stock.id}
+              className="flex items-center space-x-4 bg-gray-100 p-1 rounded-lg shadow-sm hover:bg-gray-200 transition duration-200"
+            >
+              <img
+                src={stock.image}
+                alt={`${stock.name} icon`}
+                className="w-12 h-12 rounded-full"
+              />
+              <span className="text-lg font-medium text-gray-800">{stock.name}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-gray-600">No stocks match your criteria.</p>
+      )}
+    </div>
   );
 }
