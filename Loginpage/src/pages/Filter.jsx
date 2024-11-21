@@ -9,8 +9,7 @@ export default function Filter() {
   const username = sessionStorage.getItem("username");
   const categoryId = sessionStorage.getItem("categoryId"); // Get categoryId from sessionStorage
   const questionAnswersUrl = `http://localhost:7060/answer/get-questions-with-answers/${username}`;
-  const stocksUrl =
-    ""; //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
+  const stocksUrl =""; //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
 
   useEffect(() => {
     // Fetch user answers

@@ -101,14 +101,14 @@ export default function MainHeader() {
         <nav className="relative flex w-full flex-col overflow-visible px-2 py-0 md:py-4 md:flex-row md:items-center rounded-3xl ">
           <div className="container mx-auto flex justify-between items-center px-4">
             <div className="flex items-center space-x-3">
-              <img
+              <Link to="/welcome"><img
                 src={logo}
                 alt="AthenaChain Logo"
                 className="h-[110px] w-[70px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
                 style={{
                   transition: "transform 1s ease-out", // Slow zoom-out effect with smooth transition
                 }}
-              />
+              /></Link>
               <div className="text-white flex flex-col text-left">
                 <span className="text-[50px] font-bold leading-none slide-in-right">
                   Athena
