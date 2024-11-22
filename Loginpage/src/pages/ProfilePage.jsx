@@ -2,6 +2,8 @@ import React from "react";
 import Profile from "./Profile"; // Ensure the correct file path for Profile
 import Watchlist from "./Watchlist"; // Ensure the correct file path for Watchlist
 import ProfileHeader from "../components/ProfileHeader";
+
+import hmabImage from "../Images/homeaboutBg.png";
 const ProfilePage = () => {
   const styles = {
     container: {

@@ -94,7 +94,7 @@ export default function Welcome() {
             ) : stocks.length === 0 ? (
               <p className="text-gray-500">Loading data...</p>
             ) : (
-              <table className="w-full text-left shadow-lg border border-white border-2 overflow-hidden rounded-[20px]">
+              <table className="w-full text-left shadow-lg border-white border-2 overflow-hidden rounded-[20px]">
                 <thead
                   className="text-black uppercase text-sm rounded-t-lg "
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
@@ -137,7 +137,7 @@ export default function Welcome() {
           </div>
 
           {/* Right Section */}
-          <div className="w-full md:w-5/12 flex flex-col space-y-6">
+          <div className="w-[30%] md:w-[30%] flex flex-col space-y-6">
             {!loadingStatus && (
               <>
                 {questionnaireStatus ? (
@@ -146,9 +146,10 @@ export default function Welcome() {
                       Filtered Coins
                     </h2>
                     <p className="text-pink-700">
-                      You have already filled out the questionnaire. The
-                      displayed coins are filtered based on your preferences.
+                      Questionnaire filled successfully. 
+                     
                     </p>
+                    <p className="text-pink-700"> Filtered coins displayed below.</p>
                     <button
                       onClick={handleFilterButton}
                       className="rounded-md border-2 mt-4 border-pink-900 px-6 py-2 font-medium text-pink-900 transition-colors hover:bg-pink-900 hover:text-white"

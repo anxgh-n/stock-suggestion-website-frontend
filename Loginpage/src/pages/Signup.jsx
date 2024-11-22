@@ -4,7 +4,7 @@ import { UserPlus } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import bgImage from '../Images/bgBlackk.png';
-import logo from "../Images/athenablock.png";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -14,6 +14,12 @@ function Signup() {
     categoryId: '1',
   });
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,13 +72,31 @@ function Signup() {
                   required
                 />
               </div>
-              <div>
-                <label className="block text-sm font-bold text-white mb-2 tracking-[0.1rem]">PASSWORD</label>
+              <div className="relative">
+                <div className="flex items-center justify-between">
+                  <label className="block text-sm font-bold text-white tracking-[0.1rem]">
+                    PASSWORD
+                  </label>
+                  <span
+                    onClick={togglePasswordVisibility}
+                    className="cursor-pointer"
+                  >
+                    {showPassword ? (
+                      <AiFillEyeInvisible
+                        style={{ color: "white", fontSize: "1rem" }}
+                      />
+                    ) : (
+                      <AiFillEye style={{ color: "white", fontSize: "1rem" }} />
+                    )}
+                  </span>
+                </div>
                 <input
-                  type="password"
-                  className="w-full px-4 py-2 border-b-2 text-white border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
+                  type={showPassword ? "text" : "password"}
+                  className="w-full px-4 py-2 mt-2 border-b-2 text-white border-white bg-transparent focus:ring-0 focus:border-blue-500 focus:border-b-2"
                   value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, password: e.target.value })
+                  }
                   required
                 />
               </div>

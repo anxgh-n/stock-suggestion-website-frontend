@@ -207,13 +207,7 @@ function CryptoData() {
   };
 
   return (
-    <div
-      className="min-h-screen bg-cover bg-center relative"
-      style={{
-        backgroundImage: `url(${hmabImage})`,
-        backgroundAttachment: "fixed",
-      }}
-    >
+    
     <div className="flex flex-col m-3 space-y-5 bg-transparent" >
       <div className="flex space-x-5">
         {/* Left Card Section */}
@@ -257,7 +251,7 @@ function CryptoData() {
     <div className="mt-2 mb-4 flex items-center justify-between"> {/* Reduced bottom margin */}
       <p className="flex justify-between w-full">
         <span className="text-[30px] font-bold text-black">
-          {cryptoData.current_price}
+        $ {cryptoData.current_price}
         </span>
         <span
           className={`text-medium font-bold ${
@@ -390,7 +384,7 @@ function CryptoData() {
         </div>
       </div>
       </div>
-    </div>
+    
   );
 }
 

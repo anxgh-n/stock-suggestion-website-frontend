@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import hmabImage from "../Images/homeaboutBg.png";
+
 export default function Questionnaire() {
   const [questions, setQuestions] = useState([]);
   const [formData, setFormData] = useState({});
@@ -132,15 +134,23 @@ console.log(categoryId);
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-lg">
-      <h4 className="text-4xl font-extrabold text-indigo-900 py-9 px-20">
+    <div
+      className="min-h-screen bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${hmabImage})`,
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="pt-10">
+    <div className="max-w-2xl mx-auto p-8  rounded-lg shadow-lg" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
+      <h4 className="text-4xl font-extrabold text-[#BD72A5] py-9 px-20">
         Stock Questionnaire
       </h4>
       <div key={currentQuestion.questionId} className="mb-4">
-        <h5 className="text-lg font-semibold text-gray-700">
+        <h5 className="text-lg font-semibold text-white">
           Question {currentQuestionIndex + 1} of {questions.length}
         </h5>
-        <label className="block mb-2 text-xl font-serif text-black-700">
+        <label className="block mb-2 text-xl font-serif text-white">
           {currentQuestion.questionDescription}
         </label>
         <div className="flex space-x-4">
@@ -155,9 +165,9 @@ console.log(categoryId);
               />
               <label
                 htmlFor={`${currentQuestion.questionId}-${index}`}
-                className={`block w-full text-center bg-gray-100 p-4 rounded-md hover:bg-[#d4e3f3] hover:text-black ${
+                className={`block w-full text-center bg-gray-100 p-4 rounded-md hover:bg-[#F1D2E6] hover:text-black ${
                   formData[currentQuestion.questionId] === option
-                    ? "bg-[#d4e3f3] text-black font-bold"
+                    ? "bg-[#F1D2E6] text-black font-bold"
                     : ""
                 }`}
                 onClick={() =>
@@ -196,6 +206,8 @@ console.log(categoryId);
           {currentQuestionIndex < questions.length - 1 ? "Next" : "Submit"}
         </button>
       </div>
+    </div>
+    </div>
     </div>
   );
 }

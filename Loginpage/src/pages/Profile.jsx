@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import hmabImage from "../Images/homeaboutBg.png";
+
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -118,6 +120,7 @@ const Profile = () => {
   };
 
   return (
+    
     <div style={styles.container}>
       <div
         style={styles.profileCard}
