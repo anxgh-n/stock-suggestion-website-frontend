@@ -33,7 +33,7 @@ export default function NotificationIcon() {
           );
           if (marketStock) {
             const currentPrice = marketStock.current_price;
-            if (currentPrice > parseFloat(stock.threshold)) {
+            if (currentPrice == parseFloat(stock.threshold)) {
               addNotification(
                 `${coin.name} price has exceeded the threshold of $${stock.threshold}! Current price: $${currentPrice}`
               );
