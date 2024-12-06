@@ -130,6 +130,7 @@ export default function Watchlist() {
         if (!response.ok) {
           throw new Error("Failed to delete item from watchlist");
         }
+  
         setMergedData(
           mergedData.filter((item) => item.watchlistId !== watchlistId)
         );
