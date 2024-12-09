@@ -11,18 +11,16 @@ export default function Documentation() {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center"
+      className="min-h-screen bg-cover bg-center bg-fixed"
       style={{
-        backgroundImage: `url(${hmabImage})`,
-        backgroundAttachment: "fixed",
+        backgroundImage: `url(${hmabImage})`
       }}
     >
       <div className="flex min-h-screen bg-transparent">
         {/* Left Navigation Bar */}
 
         <aside
-          className="w-[25%]  py-10 px-6 sticky top-0 h-screen"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+          className="w-[25%]  py-10 px-6 sticky top-0 h-screen bg-[rgba(0,0,0,0.8)]"
         >
           <nav className="space-y-4">
             <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#e68cbf] to-white mb-6">
@@ -114,8 +112,7 @@ export default function Documentation() {
 
           <div className="space-y-10">
             <div
-              className="rounded-lg border border-gray-200 p-6 shadow"
-              style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+              className="rounded-lg border border-gray-200 p-6 shadow bg-[rgba(0,0,0,0.6)]"
             >
               <section id="introduction" className="scroll-mt-24">
                 <h3 className="text-2xl font-bold text-[#a35f85] mb-4">
@@ -133,8 +130,7 @@ export default function Documentation() {
             </div>
 
             <div
-              className="rounded-lg border border-gray-200 p-6 shadow"
-              style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+              className="rounded-lg border border-gray-200 p-6 shadow bg-[rgba(0,0,0,0.6)]"
             >
               <section id="how-to-invest" className="scroll-mt-24">
                 <h3 className="text-2xl font-bold text-[#a35f85] mb-4">
@@ -172,8 +168,7 @@ export default function Documentation() {
             </div>
 
             <div
-              className="rounded-lg border border-gray-200  p-6 shadow"
-              style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+              className="rounded-lg border border-gray-200  p-6 shadow bg-[rgba(0,0,0,0.8)]"
             >
               <section id="risks" className="scroll-mt-24">
                 <h3 className="text-2xl font-bold text-[#a35f85] mb-4">
@@ -205,8 +200,7 @@ export default function Documentation() {
             </div>
 
             <div
-              className="rounded-lg border border-gray-200 p-6 shadow"
-              style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+              className="rounded-lg border border-gray-200 p-6 shadow bg-[rgba(0,0,0,0.8)]"
             >
               <section id="tips" className="scroll-mt-24">
                 <h3 className="text-2xl font-bold text-[#a35f85] mb-4">
@@ -234,8 +228,7 @@ export default function Documentation() {
             </div>
 
             <div
-              className="rounded-lg border border-gray-200 p-6 shadow"
-              style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+              className="rounded-lg border border-gray-200 p-6 shadow bg-[rgba(0,0,0,0.8)]"
             >
               <section id="resources" className="scroll-mt-24">
                 <h3 className="text-2xl font-bold text-[#a35f85] mb-4">

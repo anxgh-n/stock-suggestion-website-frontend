@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import "../CSS/NavigationComponent.css";
 import logo from "../Images/athenablock.png";
-import gr1 from "../Images/greece.jpg"
 
 export default function NavigationComponent() {
   let navigate = useNavigate();
@@ -13,7 +11,7 @@ export default function NavigationComponent() {
     <>
       {/* Navigation Bar with Dark Gradient */}
       <header
-        className="shadow mb-0 sticky top-0 z-80 red-hat-display-header bg-black "
+        className="shadow mb-0 sticky top-0 z-80 font-red-hat bg-black "
         
       >
         <nav className="relative flex w-full flex-col bg-transparent overflow-hidden px-2 py-0 md:py-4 md:flex-row md:items-center">
@@ -23,14 +21,12 @@ export default function NavigationComponent() {
                 <img
                 src={logo}
                 alt="AthenaChain Logo"
-                className="h-[80px] w-[50px] overflow-visible slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
-                style={{
-                  transition: "transform 1s ease-out",
-                }}
+                className="h-[80px] w-[50px] overflow-visible animate-slide-in-left transition-transform transform hover:scale-150 hover:translate-y-[20%] hover:translate-x-[0%]"
+                
               /></Link>
              <Link to="/">
              <div className="text-white flex flex-col text-left">
-                <span className="text-[50px] font-bold leading-none slide-in-right">
+                <span className="text-[50px] font-bold leading-none animate-slide-in-right">
                   AthenaChain
                 </span>
               </div>

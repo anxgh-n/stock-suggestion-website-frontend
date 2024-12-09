@@ -8,7 +8,6 @@ export default function Footer() {
       <div className="flex flex-wrap justify-between">
         {/* Left Column: Logo, Title, and Social Media Icons */}
         <div className="flex flex-col items-start gap-4 w-full md:w-1/3">
-          {/* Logo */}
           <img
             src={logo}
             alt="AthenaChain Logo"
@@ -17,20 +16,36 @@ export default function Footer() {
               transition: "transform 0.5s ease-out",
             }}
           />
-          {/* Title */}
           <h2 className="text-xl font-bold text-white">AthenaChain</h2>
-          {/* Social Media Icons */}
           <div className="mt-4 flex gap-6">
-            <a href="mailto:contact@athenachain.com" className="text-2xl hover:text-white">
+            <a
+              href="mailto:contact@athenachain.com"
+              className="text-2xl hover:text-white"
+            >
               <FaEnvelope />
             </a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-white">
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-2xl hover:text-white"
+            >
               <FaLinkedin />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-white">
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-2xl hover:text-white"
+            >
               <FaTwitter />
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-white">
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-2xl hover:text-white"
+            >
               <FaGithub />
             </a>
           </div>

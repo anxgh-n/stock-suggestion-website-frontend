@@ -135,14 +135,13 @@ console.log(categoryId);
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center"
+      className="min-h-screen bg-cover bg-center bg-fixed"
       style={{
         backgroundImage: `url(${hmabImage})`,
-        backgroundAttachment: "fixed",
       }}
     >
       <div className="pt-10">
-    <div className="max-w-2xl mx-auto p-8  rounded-lg shadow-lg" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
+    <div className="max-w-2xl mx-auto p-8  rounded-lg shadow-lg bg-[rgba(0,0,0,0.6)]">
       <h4 className="text-4xl font-extrabold text-[#BD72A5] py-9 px-20">
         Stock Questionnaire
       </h4>

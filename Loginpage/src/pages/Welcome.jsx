@@ -76,10 +76,9 @@ export default function Welcome() {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center"
+      className="min-h-screen bg-cover bg-center bg-fixed"
       style={{
         backgroundImage: `url(${hmabImage})`,
-        backgroundAttachment: "fixed",
       }}
     >
       <section className="bg-transparent min-h-screen p-6">
@@ -95,10 +94,7 @@ export default function Welcome() {
               <p className="text-gray-500">Loading data...</p>
             ) : (
               <table className="w-full text-left shadow-lg border-white border-2 overflow-hidden rounded-[20px]">
-                <thead
-                  className="text-black uppercase text-sm rounded-t-lg "
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
-                >
+                <thead className="text-black uppercase text-sm rounded-t-lg bg-[rgba(255,255,255,0.8)] ">
                   <tr>
                     <th className="px-4 py-3">Icon</th>
                     <th className="px-4 py-3">Ticker</th>
@@ -122,9 +118,7 @@ export default function Welcome() {
                           className="w-10 h-10 rounded-full"
                         />
                       </td>
-                      <td className="px-4 py-3 text-white">
-                        {stock.symbol}
-                      </td>
+                      <td className="px-4 py-3 text-white">{stock.symbol}</td>
                       <td className="px-4 py-3 text-white font-medium">
                         {stock.name}
                       </td>
@@ -142,18 +136,19 @@ export default function Welcome() {
               <>
                 {questionnaireStatus ? (
                   <div className="bg-gray-400 border-gray-300 p-6 rounded-lg mx-20 w-100">
-                    <h2 className="text-2xl font-bold text-pink-900 mb-4" style={{fontFamily:"cursive"}}>
+                    <h2 className="text-2xl font-bold text-pink-900 mb-4 font-[cursive]">
                       Filtered Coins
                     </h2>
                     <p className="text-pink-700">
-                      Questionnaire filled successfully. 
-                     
+                      Questionnaire filled successfully.
                     </p>
-                    <p className="text-pink-700"> Filtered coins displayed below.</p>
+                    <p className="text-pink-700">
+                      {" "}
+                      Filtered coins displayed below.
+                    </p>
                     <button
                       onClick={handleFilterButton}
-                      className="rounded-md border-2 mt-4 border-pink-900 px-6 py-2 font-medium text-pink-900 transition-colors hover:bg-pink-900 hover:text-white"
-                      style={{fontFamily:"revert-layer"}}
+                      className="rounded-md border-2 mt-4 border-pink-900 px-6 py-2 font-medium font-[revert-layer] text-pink-900 transition-colors hover:bg-pink-900 hover:text-white"
                     >
                       {showFilter
                         ? "Hide Filtered Coins"
@@ -161,7 +156,7 @@ export default function Welcome() {
                     </button>
                   </div>
                 ) : (
-                  <div className="p-6 mx-20 rounded-lg " style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
+                  <div className="p-6 mx-20 rounded-lg bg-[rgba(0,0,0,0.6)] ">
                     <h2 className="text-2xl font-bold text-[#992366] mb-4">
                       Fill Questionnaire
                     </h2>

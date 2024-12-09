@@ -20,10 +20,10 @@ import Filter from './pages/Filter';
 import About from './pages/About';
 import Watchlist from './pages/Watchlist';
 import News from './pages/News';
-import GreeceImage from './Images/greece.jpg';
 import NotificationPage from './pages/NotificationPage';
 import ProfileHeader from './components/ProfileHeader';
 import ProfilePage from './pages/ProfilePage';
+import ForgotPw from './pages/ForgotPw';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false); // Global loading state
@@ -62,6 +62,7 @@ function App() {
           <Route element={<LoginHeader setIsLoading={setIsLoading} />}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/forgotpw" element={<ForgotPw />} />
           </Route>
 
           
@@ -144,7 +145,6 @@ function LoginHeader({ setIsLoading }) {
         <main className="flex-grow">
           <Outlet />
         </main>
-        <Footer />
       </div>
     </>
   );

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LogIn } from "lucide-react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import bgImage from "../Images/bgBlackk.png";
-import logo from "../Images/athenablock.png";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import ForgotPw from "./ForgotPw";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -15,11 +14,22 @@ function Login() {
   });
   const navigate = useNavigate();
   const { setToken, setUsername } = useAuth();
-
+  const [isForgotPasswordModalOpen, setIsForgotPasswordModalOpen] =
+    useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = isForgotPasswordModalOpen
+      ? "hidden"
+      : "auto";
+  }, [isForgotPasswordModalOpen]);
+
+  const handleForgotPasswordToggle = () => {
+    setIsForgotPasswordModalOpen(!isForgotPasswordModalOpen);
   };
 
   useEffect(() => {
@@ -68,11 +78,8 @@ function Login() {
       );
       if (response.data) {
         sessionStorage.setItem("token", response.data);
-        // console.log(sessionStorage.getItem("token"));
-        // localStorage.setItem('username', formData.username);
         sessionStorage.setItem("username", formData.username);
         console.log(sessionStorage.getItem("username"));
-        // console.log(`username is set:${sessionStorage.getItem("username")}`);
         setToken(response.data);
         setUsername(formData.username);
 
@@ -90,23 +97,20 @@ function Login() {
   return (
     <>
       <div
-        className="min-h-screen flex items-center justify-center p-4"
+        className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center"
         style={{
           backgroundImage: `url(${bgImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
         }}
       >
         {/* Transparent clickable div */}
 
         <div className="p-10 relative">
           <div
-            className="absolute top-[-50px] left-1/2 transform -translate-x-1/2 w-[400px] h-[80px]  cursor-pointer"
+            className="absolute bg-transparent top-[-50px] left-1/2 transform -translate-x-1/2 w-[400px] h-[80px]  cursor-pointer"
             onClick={() => navigate("/")}
-            title="Go to Home"
-            style={{ backgroundColor: "transparent" }} // Ensures it doesn't interfere visually
+            title="Go to Home" // Ensures it doesn't interfere visually
           ></div>
-          <div className="bg-black bg-opacity-50 border-2 border-white rounded-3xl shadow-xl pr-10 pl-10 pt-4 pb-5 w-full max-w-md  ">
+          <div className="bg-black bg-opacity-50 border-2 mt-10 border-white rounded-3xl shadow-xl pr-10 pl-10 pt-4 pb-5 w-full max-w-md  ">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-sm font-bold text-white mb-2 tracking-[0.1rem]">
@@ -132,11 +136,9 @@ function Login() {
                     className="cursor-pointer"
                   >
                     {showPassword ? (
-                      <AiFillEyeInvisible
-                        style={{ color: "white", fontSize: "1rem" }}
-                      />
+                      <AiFillEyeInvisible className="text-white text-base" />
                     ) : (
-                      <AiFillEye style={{ color: "white", fontSize: "1rem" }} />
+                      <AiFillEye className="text-white text-base" />
                     )}
                   </span>
                 </div>
@@ -167,9 +169,18 @@ function Login() {
                 Sign Up
               </Link>
             </p>
+            <p
+              className="mt-2 text-center text-gray-300 hover:text-white cursor-pointer hover:underline"
+              onClick={handleForgotPasswordToggle}
+            >
+              Forgot Password?
+            </p>
           </div>
         </div>
       </div>
+      {isForgotPasswordModalOpen && (
+        <ForgotPw onClose={handleForgotPasswordToggle} />
+      )}
     </>
   );
 }

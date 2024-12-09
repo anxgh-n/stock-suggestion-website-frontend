@@ -10,10 +10,10 @@ export default function MainHeader() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownOpenTwo, setIsDropdownOpenTwo] = useState(false);
-  const [cryptoList, setCryptoList] = useState([]); // Stores fetched crypto list
-  const [filteredCryptos, setFilteredCryptos] = useState([]); // Stores filtered suggestions
-  const [showSuggestions, setShowSuggestions] = useState(false); // Controls when suggestions are displayed
-  const searchRef = useRef(null); // Ref to track the search input and dropdown
+  const [cryptoList, setCryptoList] = useState([]); 
+  const [filteredCryptos, setFilteredCryptos] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false); 
+  const searchRef = useRef(null); 
 
   useEffect(() => {
     // Fetch initial list of cryptocurrencies
@@ -34,17 +34,17 @@ export default function MainHeader() {
 
   const handleProfile = () => {
     navigate("/profilepage");
-    setIsDropdownOpen(false); // Close the dropdown after selecting Profile
+    setIsDropdownOpen(false); 
   };
 
   const handleLogout = () => {
     navigate("/");
-    setIsDropdownOpen(false); // Close the dropdown after Logout
+    setIsDropdownOpen(false); 
   };
 
   const handleHome = () => {
     navigate("/welcome");
-    setIsDropdownOpenTwo(false); // Close the dropdown after Logout
+    setIsDropdownOpenTwo(false);
   };
   const handleDocs = () => {
     navigate("/docs");
@@ -133,17 +133,14 @@ export default function MainHeader() {
                   value={searchQuery}
                   onChange={handleSearchChange}
                   onFocus={handleSearchFocus} // Show suggestions on focus
-                  className="w-full bg-opacity-60 border-b border-black px-4 py-2 focus:border-indigo-500 focus:outline-none rounded-lg shadow-sm placeholder-white" // Wider input with bottom border only
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255,0.3)", // Slightly opaque background (80% opacity)
-                  }}
+                  className="w-full bg-white bg-opacity-30 border-b border-black px-4 py-2 focus:border-indigo-500 focus:outline-none rounded-lg shadow-sm placeholder-black"
                 />
               </form>
               {/* Dropdown for suggestions */}
               {showSuggestions && filteredCryptos.length > 0 && (
                 <div
-                  className="absolute bg-white border rounded-md shadow-lg mt-1 w-[150%] scale-95 transform transition duration-200 ease-in-out z-50"
-                  style={{ left: "-25%" }} // Center the dropdown wider than input
+                className="absolute bg-white border rounded-md shadow-lg mt-1 w-[150%] scale-95 transform transition duration-200 ease-in-out z-50 left-[-25%]"
+                // Center the dropdown wider than input
                 >
                   {filteredCryptos.map((crypto) => (
                     <div

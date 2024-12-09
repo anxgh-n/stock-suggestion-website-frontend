@@ -4,10 +4,10 @@ import hmabImage from "../Images/homeaboutBg.png";
 const cryptoNews = [
   {
     image:
-      "https://www.coindesk.com/resizer/RW0CjmFEeIqmtKTdEuaXTdgIWSQ=/1056x594/filters:quality(80):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/coindesk/QOV3FM2ZUJDQRJNPTAGVS4JHDU.jpg",
+      "https://cimg.co/wp-content/uploads/2024/12/09063322/1733726002-image-1733725949807_optimized.jpg",
     heading:
-      "Ethena Sees $1B Inflows as Crypto Rally Brings Back Double-Digit Yields",
-    url: "https://www.coindesk.com/markets/2024/11/19/ethena-sees-1b-inflows-as-crypto-rally-brings-back-double-digit-yields/?_gl=1*6mvmtf*_up*MQ..*_ga*MTQyNjg5MTM5OC4xNzMyMDkxMjA4*_ga_VM3STRYVN8*MTczMjA5MTIwNy4xLjAuMTczMjA5MTIwNy4wLjAuMTc0Mzg0NTUyMQ..",
+      "Cardano X account Hacked, Spreading False SEC Lawsuit Claims",
+    url: "https://cryptonews.com/news/cardano-x-account-hacked-spreading-false-sec-lawsuit-claims/",
   },
   {
     image:
@@ -39,58 +39,21 @@ const cryptoNews = [
 ];
 
 export default function News() {
-  const backgroundStyle = {
-    backgroundImage: `url(${hmabImage})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100vw",
-    height: "100vh",
-    zIndex: -1,
-  };
-
-  const containerStyle = {
-    maxWidth: "700px",
-    marginTop: "50px", // 20px margin on top
-    marginBottom: "100px", // 20px margin on bottom
-    marginLeft: "auto", // Center horizontally
-    marginRight: "auto", // Center horizontally
-    position: "relative", // Ensure carousel content stays above the background
-    zIndex: 1,
-  };
-
-  const imgStyle = {
-    borderRadius: "10px",
-    objectFit: "cover",
-    height: "300px",
-  };
-
-  const captionStyle = {
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
-    padding: "10px 15px",
-    borderRadius: "12px",
-    maxWidth: "80%",
-    margin: "0 auto",
-  };
-
-  const headingStyle = {
-    
-    fontSize: "1.5rem",
-    marginBottom: "0",
-  };
-
   return (
     <>
       {/* Background Image */}
-      <div style={backgroundStyle}></div>
+      <div
+        className="fixed top-0 left-0 w-full h-full bg-cover bg-center z-[-1]"
+        style={{ backgroundImage: `url(${hmabImage})` }}
+      ></div>
+
+      {/* Title */}
       <h1 className="text-5xl md:text-6xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#450529] via-white to-[#450529]">
         Daily News!
       </h1>
 
       {/* Carousel Container */}
-      <div style={containerStyle}>
+      <div className="max-w-[700px] mt-12 mb-24 mx-auto relative z-10">
         <div
           id="carouselExampleIndicators"
           className="carousel slide"
@@ -115,15 +78,14 @@ export default function News() {
               >
                 <img
                   src={news.image}
-                  className="d-block w-100"
+                  className="d-block w-full rounded-lg object-cover h-[300px]"
                   alt={news.heading}
-                  style={imgStyle}
                 />
-                <div
-                  className="carousel-caption d-none d-md-block"
-                  style={captionStyle}
-                >
-                  <a style={headingStyle} href={news.url}>
+                <div className="carousel-caption d-none d-md-block bg-[rgba(0,0,0,0.7)] p-3 rounded-lg max-w-[80%] mx-auto">
+                  <a
+                    href={news.url}
+                    className="text-white text-lg mb-0 text-xl"
+                  >
                     {news.heading}
                   </a>
                 </div>

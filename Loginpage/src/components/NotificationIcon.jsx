@@ -75,7 +75,7 @@ export default function NotificationIcon() {
         className="relative text-gray-600 hover:text-gray-900"
         onClick={handleBellClick}
       >
-        <GoBellFill style={{ fontSize: "35px", color: "#fff" }} />
+        <GoBellFill className="text-white text-[35px]" />
         {/* Display notification count on top of the bell icon */}
         {unreadCount > 0 && (
           <span className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">

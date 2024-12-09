@@ -4,10 +4,9 @@ import hmabImage from "../Images/homeaboutBg.png";
 export default function About() {
   return (
     <div
-      className="min-h-screen bg-cover bg-center"
+      className="min-h-screen bg-cover bg-center bg-fixed"
       style={{
-        backgroundImage: `url(${hmabImage})`,
-        backgroundAttachment: "fixed",
+        backgroundImage: `url(${hmabImage})`
       }}
     >
       {/* Hero Section */}
@@ -19,18 +18,14 @@ export default function About() {
 
       <div className="w-full border-t-2 border-gray-600"></div>
 
-      <section
-        className=" text-white py-12 px-6"
-        style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
-      >
+      <section className="text-white py-12 px-6 bg-[rgba(0,0,0,0.2)]">
+
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
           Key Features
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div
-            className="p-6 rounded-lg shadow-md text-center  hover:shadow-lg transition"
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
-          >
+        <div className="p-6 rounded-lg shadow-md text-center hover:shadow-lg transition bg-[rgba(0,0,0,0.7)]">
+
             <h3 className="text-4xl font-semibold mb-3">Vision</h3>
             <p>
               "To revolutionize cryptocurrency investing by making it
@@ -39,8 +34,8 @@ export default function About() {
             </p>
           </div>
           <div
-            className="p-6 rounded-lg shadow-md text-center  hover:shadow-lg transition"
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
+            className="p-6 rounded-lg shadow-md text-center  hover:shadow-lg transition bg-[rgba(0,0,0,0.7)]"
+            
           >
             <h3 className="text-4xl font-semibold mb-3">Mission</h3>
             <p>
@@ -50,8 +45,7 @@ export default function About() {
             </p>
           </div>
           <div
-            className="p-6 rounded-lg shadow-md text-center  hover:shadow-lg transition"
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
+            className="p-6 rounded-lg shadow-md text-center  hover:shadow-lg transition bg-[rgba(0,0,0,0.7)]"
           >
             <h3 className="text-4xl font-semibold mb-3">Core Values</h3>
             <p>
