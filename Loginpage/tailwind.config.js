@@ -5,7 +5,17 @@ export default {
     "./src/**/*.{js,jsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        scrollTicker: "scrollTicker 200s linear infinite",
+      },
+      keyframes: {
+        scrollTicker: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+      },
+    },
   },
   plugins: [],
-}
+};

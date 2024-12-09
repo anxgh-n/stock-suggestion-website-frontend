@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import '../CSS/ticker.css'; 
-
 import upp from '../Images/upward.png';
 import downn from '../Images/downward.png';
 
@@ -29,22 +27,26 @@ export default function TickerHeader() {
       <nav className="relative flex w-full flex-col overflow-hidden">
         <div className="flex items-center w-full">
           <div className="tickername text-1xl font-light text-white overflow-hidden whitespace-nowrap w-full">
-            <h6 className="ticker-scroll" >
-              {/* Displaying each symbol and price change percentage */}
+            <h6 className="animate-scrollTicker inline-block">
               {cryptos.map((crypto, index) => {
                 const isNegative = crypto.price_change_percentage_24h < 0;
                 return (
                   <span key={crypto.id} className="inline-flex items-center">
-                    <span className="px-1" ><strong>{crypto.symbol.toUpperCase()}</strong></span>
+                    <span className="px-1">
+                      <strong>{crypto.symbol.toUpperCase()}</strong>
+                    </span>
                     <img
                       src={isNegative ? downn : upp}
                       alt={isNegative ? "Downward" : "Upward"}
-                      className="w-4 h-4 mx-2" // Adjust size and spacing
+                      className="w-4 h-4 mx-2"
                     />
-                    <span><strong className="">{crypto.price_change_percentage_24h.toFixed(2)}%</strong></span>
-                    {/* Equidistant "•" */}
+                    <span>
+                      <strong>
+                        {crypto.price_change_percentage_24h.toFixed(2)}%
+                      </strong>
+                    </span>
                     {index < cryptos.length - 1 && (
-                      <span className="mx-4 text-gray-400">•</span> // Add consistent margin
+                      <span className="mx-4 text-gray-400">•</span>
                     )}
                   </span>
                 );
