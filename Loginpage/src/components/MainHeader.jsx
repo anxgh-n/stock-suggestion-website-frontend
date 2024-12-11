@@ -20,7 +20,7 @@ export default function MainHeader() {
     const fetchCryptos = async () => {
       try {
         const response = await fetch(
-          ""
+          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"
         );//https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
         const data = await response.json();
         setCryptoList(data);
