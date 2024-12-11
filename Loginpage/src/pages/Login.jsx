@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 import bgImage from "../Images/bgBlackk.png";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import ForgotPw from "./ForgotPw";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -14,22 +13,10 @@ function Login() {
   });
   const navigate = useNavigate();
   const { setToken, setUsername } = useAuth();
-  const [isForgotPasswordModalOpen, setIsForgotPasswordModalOpen] =
-    useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
-  };
-
-  useEffect(() => {
-    document.body.style.overflow = isForgotPasswordModalOpen
-      ? "hidden"
-      : "auto";
-  }, [isForgotPasswordModalOpen]);
-
-  const handleForgotPasswordToggle = () => {
-    setIsForgotPasswordModalOpen(!isForgotPasswordModalOpen);
   };
 
   useEffect(() => {
@@ -55,7 +42,6 @@ function Login() {
       if (response.data && response.data.category) {
         const categoryId = response.data.category.categoryId;
         sessionStorage.setItem("categoryId", categoryId);
-        console.log("CategoryId set in sessionStorage:", categoryId);
       } else {
         console.error("No category data found for the user.");
       }
@@ -79,7 +65,6 @@ function Login() {
       if (response.data) {
         sessionStorage.setItem("token", response.data);
         sessionStorage.setItem("username", formData.username);
-        console.log(sessionStorage.getItem("username"));
         setToken(response.data);
         setUsername(formData.username);
 
@@ -169,18 +154,9 @@ function Login() {
                 Sign Up
               </Link>
             </p>
-            <p
-              className="mt-2 text-center text-gray-300 hover:text-white cursor-pointer hover:underline"
-              onClick={handleForgotPasswordToggle}
-            >
-              Forgot Password?
-            </p>
           </div>
         </div>
       </div>
-      {isForgotPasswordModalOpen && (
-        <ForgotPw onClose={handleForgotPasswordToggle} />
-      )}
     </>
   );
 }

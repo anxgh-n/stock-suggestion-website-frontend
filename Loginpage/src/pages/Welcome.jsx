@@ -13,7 +13,7 @@ export default function Welcome() {
   const [loadingStatus, setLoadingStatus] = useState(true); // Handle loading state
   const [showFilter, setShowFilter] = useState(false); // Manage filter visibility
 
-  const API_URL = ""; // CoinGecko API https://api.coingecko.com/api/v3/search/trending
+  const API_URL = "https://api.coingecko.com/api/v3/search/trending"; // CoinGecko API 
   const username = sessionStorage.getItem("username"); // Replace with the actual username or fetch dynamically
   const BACKEND_URL = `http://localhost:7060/usercredentials/get-questionnaire-status/${username}`; // Backend API
   const API_TOKEN = "CG-y1GGhURGBtELwoPE88Xk7Vvc";
@@ -38,7 +38,7 @@ export default function Welcome() {
       }));
       setStocks(coins);
     } catch (err) {
-      setError("Failed to fetch trending coins.");
+      setError("No trending coins found.");
     }
   };
 
@@ -131,7 +131,7 @@ export default function Welcome() {
           </div>
 
           {/* Right Section */}
-          <div className="w-[30%] md:w-[30%] flex flex-col space-y-6">
+          <div className="w-[40%] md:w-[40%] flex flex-col space-y-6">
             {!loadingStatus && (
               <>
                 {questionnaireStatus ? (
@@ -156,7 +156,7 @@ export default function Welcome() {
                     </button>
                   </div>
                 ) : (
-                  <div className="p-6 mx-20 rounded-lg bg-[rgba(0,0,0,0.6)] ">
+                  <div className="p-6 mx-20 rounded-lg bg-[rgba(255,255,255,0.8)] ">
                     <h2 className="text-2xl font-bold text-[#992366] mb-4">
                       Fill Questionnaire
                     </h2>

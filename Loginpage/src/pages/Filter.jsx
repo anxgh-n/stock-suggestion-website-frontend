@@ -14,9 +14,6 @@ export default function Filter() {
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"; //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
 
   useEffect(() => {
-    // Fetch user answers
-    console.log(username);
-    console.log(categoryId);
     axios
       .get(questionAnswersUrl, {
         headers: {
@@ -136,7 +133,6 @@ export default function Filter() {
               )
                 return stock.ath_change_percentage >= 0;
               if (chosenAnswer === "No, I’m looking for undervalued assets") {
-                console.log(`change percentage:${stock.name}`);
                 return stock.ath_change_percentage < 0;
               }
 
