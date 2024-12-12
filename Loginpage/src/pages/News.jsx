@@ -4,37 +4,38 @@ import hmabImage from "../Images/homeaboutBg.png";
 const cryptoNews = [
   {
     image:
-      "https://cimg.co/wp-content/uploads/2024/12/09063322/1733726002-image-1733725949807_optimized.jpg",
+      "https://cimg.co/wp-content/uploads/2024/12/11210558/1733951158-image-1733951134247_optimized.jpg",
     heading:
-      "Cardano X account Hacked, Spreading False SEC Lawsuit Claims",
-    url: "https://cryptonews.com/news/cardano-x-account-hacked-spreading-false-sec-lawsuit-claims/",
+      "Supreme Court Allows Class-Action Lawsuit Against Nvidia Over Crypto Mining Claims",
+    url: "https://cryptonews.com/news/supreme-court-allows-class-action-lawsuit-against-nvidia-over-crypto-mining-claims/",
   },
   {
     image:
-      "https://www.coindesk.com/resizer/b8C2JwUaA7nTjHzJRH7veJi6u1o=/1056x594/filters:quality(80):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/coindesk/B3DINV7VIZB3DLCZJPZLM3LJPM.jpg",
+      "https://cimg.co/wp-content/uploads/2024/12/11154020/1733931620-image-1733931570907_optimized.jpg",
     heading:
-      "Bitcoin ETF Options Attract $2B on Day One, Shifting BTC’s Market Structure",
-    url: "https://www.coindesk.com/markets/2024/11/20/bitcoin-etf-options-attract-2b-on-day-one-shifting-btcs-market-structure/?_gl=1*1cs15rs*_up*MQ..*_ga*MTg4Mzc2NjcwNS4xNzMyMDk0OTc1*_ga_VM3STRYVN8*MTczMjA5NDk3NC4xLjAuMTczMjA5NDk3NC4wLjAuNDQwNDA0NzU3",
+      "Roger Ver: US Intelligence “Hijacked” Bitcoin, Turned It Into “Financial Trap”",
+    url: "https://cryptonews.com/news/roger-ver-us-intelligence-hijacked-bitcoin/",
   },
   {
     image:
-      "https://www.coindesk.com/resizer/OX-aGawxka9gINjqyUHpkzSDwRs=/1056x594/filters:quality(80):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/coindesk/54BP4UOSBRFB7F7PBUYPMJHRQE.jpg",
-    heading: "Coinbase Delists Wrapped Bitcoin wBTC, Citing 'Listing Concerns'",
-    url: "https://www.coindesk.com/tech/2024/11/20/coinbase-delists-wrapped-bitcoin-wbtc-citing-listing-concerns/?_gl=1*rqubg1*_up*MQ..*_ga*MTMzNDIzNTQ2Mi4xNzMyMDk1MzE3*_ga_VM3STRYVN8*MTczMjA5NTMxNi4xLjAuMTczMjA5NTMxNi4wLjAuMjAwNTc1MTIwMw..",
+      "https://cimg.co/wp-content/uploads/2024/12/11150512/1733929511-image-1733929481711_optimized.jpg",
+    heading:
+      "Kyrgyzstan Passes Law Defining Digital Som CBDC Framework",
+    url: "https://cryptonews.com/news/kyrgyzstan-passes-law-defining-digital-som-cbdc-framework/",
   },
   {
     image:
-      "https://www.coindesk.com/resizer/duiqTDT6I0RHVudFVBNqJYGw9kw=/1056x594/filters:quality(80):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/coindesk/7LOBLOL3EVGJLCXVKGSJ6HBBIU.jpeg",
+      "https://cimg.co/wp-content/uploads/2024/12/11164034/1733935234-image-1733934250817_optimized.jpg",
     heading:
-      "Michael Saylor's MicroStrategy Added Additional 51,780 Bitcoin for $4.6B",
-    url: "https://www.coindesk.com/markets/2024/11/18/michael-saylors-microstrategy-added-additional-51780-bitcoin-for-46b/?_gl=1*1aw0ver*_up*MQ..*_ga*NDQ0OTE3MzUuMTczMjA5NTQ1OQ..*_ga_VM3STRYVN8*MTczMjA5NTQ1OC4xLjAuMTczMjA5NTQ1OC4wLjAuMTg3MzM0ODE5MQ..",
+      "Russian Scientists Say They have Developed a Solution to 'Fight BTC, ETH-powered Crime'",
+    url: "https://cryptonews.com/news/russian-scientists-say-theyve-developed-a-solution-to-fight-btc-eth-powered-crime/",
   },
   {
     image:
-      "https://cimg.co/wp-content/uploads/2024/11/20064030/1732084829-image-1732084772413_optimized.jpg",
+      "https://cimg.co/wp-content/uploads/2024/12/11123817/1733920697-image-1733920663111_optimized.jpg",
     heading:
-      "Michael Saylor to Pitch Bitcoin Investment Strategy to Microsoft Board",
-    url: "https://cryptonews.com/news/michael-saylor-to-pitch-bitcoin-to-microsoft-board/",
+      "Bitget Eyes Lithuania for EU Regional Hub Amid MiCA Compliance Plans",
+    url: "https://cryptonews.com/news/bitget-eyes-lithuania-for-eu-regional-hub-amid-mica-compliance-plans/",
   },
 ];
 
@@ -49,7 +50,7 @@ export default function News() {
 
       {/* Title */}
       <h1 className="text-5xl md:text-6xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#450529] via-white to-[#450529]">
-        Daily News!
+        News
       </h1>
 
       {/* Carousel Container */}
